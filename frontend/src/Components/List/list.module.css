@@ -1,0 +1,25 @@
+.listHeader {
+    min-height: 20px;
+    padding: 10px 8px;
+}
+
+.listTitle {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    height: 28px;
+    background: #0000;
+    border: 0px;
+    border-radius: 3px;
+    box-shadow: none;
+    font-weight: 600;
+    max-height: 256px;
+    min-height: 20px;
+    /* padding: 4px 8px; */
+    resize: none;
+    width: 100%;
+}
+
+.isEditing {
+    background-color: #fff;
+    box-shadow: inset 0 0 0 2px #0079bf;
+}
