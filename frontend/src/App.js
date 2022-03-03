@@ -1,8 +1,7 @@
-/** @format */
-
 import { Provider } from "react-redux";
 import Board from "./BoardComponent/index";
 import { store } from "./Redux/store";
+import SingleCard from "./Components/Card/SingleCard";
 
 function App() {
   return (
