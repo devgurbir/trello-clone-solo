@@ -39,7 +39,8 @@
   font-weight: bold;
 }
 .titleFormChange {
-  background-color: rgb(70, 79, 88);
+  background: rgb(217, 220, 223) !important;
+  border: rgb(217, 220, 223) !important;
   cursor: pointer;
   /* border: none !important; */
 }

@@ -15,7 +15,6 @@ const Column = (props) => {
   const [column, setColumn] = useState(props.columns);
   const [dragingItem, setDragingitem] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
   const [columnvalue, setColumnvalue] = useState();
   const dispatch = useDispatch();
 
@@ -158,14 +157,14 @@ const Column = (props) => {
               grpIndex={grpIndex}
             />
           </div>
-          <ModalRemoveColumn
-            show={showConfirmModal}
-            onAction={onConfirmModalAction}
-            title="remove column"
-            content={`Are you sure you want to remove <strong> ${title} <strong>`}
-          />
         </div>
       ))}
+      <ModalRemoveColumn
+        show={showConfirmModal}
+        onAction={onConfirmModalAction}
+        title="remove column"
+        content={`Are you sure you want to remove?`}
+      />
     </>
   );
 };
