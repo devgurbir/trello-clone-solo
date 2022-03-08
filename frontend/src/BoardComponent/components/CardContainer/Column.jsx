@@ -15,7 +15,7 @@ const Column = (props) => {
   const [column, setColumn] = useState(props.columns);
   const [dragingItem, setDragingitem] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const [toggleNewCard, setToggleNewCard] = useState(false);
+
   const [columnvalue, setColumnvalue] = useState();
   const dispatch = useDispatch();
 
@@ -78,8 +78,6 @@ const Column = (props) => {
     setColumnvalue(index);
     setShowConfirmModal(!showConfirmModal);
   };
-
-  const toggleNewColumnCard = () => setToggleNewCard(!toggleNewCard);
 
   const onConfirmModalAction = (type) => {
     if (type === "confirm") {
@@ -154,41 +152,11 @@ const Column = (props) => {
             ))}
           </ul>
           <div>
-            {toggleNewCard && (
-              <>
-                <AddCardTitleField
-                  cards={cards}
-                  column={column}
-                  grpIndex={grpIndex}
-                />
-                <div style={{ marginTop: "10px" }}>
-                  <Button
-                    // onClick={addCardTitleField}
-                    className={styles.buttonClass}
-                  >
-                    {" "}
-                    Add Card
-                  </Button>{" "}
-                  <span
-                    onClick={toggleNewColumnCard}
-                    className={styles.spanIconFrame}
-                  >
-                    <i className="fa fa-times"></i>
-                  </span>
-                </div>
-              </>
-            )}
-            {!toggleNewCard && (
-              <footer onClick={toggleNewColumnCard} className={styles.footer}>
-                <div className={styles.footerAction}>
-                  <i
-                    className="fa fa-plus"
-                    style={{ fontSize: "14px", marginRight: "10px" }}
-                  />
-                  Add another Card
-                </div>
-              </footer>
-            )}
+            <AddCardTitleField
+              cards={cards}
+              column={column}
+              grpIndex={grpIndex}
+            />
           </div>
           <ModalRemoveColumn
             show={showConfirmModal}

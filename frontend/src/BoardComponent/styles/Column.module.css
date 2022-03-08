@@ -25,7 +25,7 @@
 }
 .column > * {
   background-color: rgb(217, 220, 223);
-  padding: 0 8px;
+  padding: 4px 8px;
   color: #333;
 }
 .header {
