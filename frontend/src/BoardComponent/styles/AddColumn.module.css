@@ -1,0 +1,63 @@
+/** @format */
+
+.addIframeCol {
+  font-size: 14px;
+  font-size: 14px;
+  background-color: rgb(213, 215, 207);
+  height: 41px;
+  line-height: 36px;
+  font-size: 16px;
+  border-radius: 5px;
+
+  max-width: 270px;
+  padding: 3px 0 4px 15px;
+  color: rgb(91 99 104);
+  margin-left: 10px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+.addIframeCol:hover {
+  color: black;
+}
+
+.formInputColumn {
+  max-width: 270px;
+  background-color: rgb(213, 215, 207);
+  line-height: 36px;
+  margin-left: 11px;
+  padding: 3px 0 4px 15px;
+  border-radius: 5px;
+}
+.inputForm {
+  border: none;
+  width: 240px;
+  margin-left: -5px;
+  margin-top: 4px;
+}
+
+.buttonClass {
+  background-color: rgb(19, 121, 191);
+  border: none;
+  width: 91px;
+  color: white;
+  border-radius: 5px;
+  margin-left: -7px;
+  margin-top: 8px;
+}
+.spanIconFrame {
+  margin-left: 9px;
+  color: rgb(230, 71, 71);
+  font-size: 22px;
+}
+.addAnotherCol {
+  /* width: auto; */
+  margin: 0;
+  flex: 0 0 auto;
+  width: 280px;
+  height: calc(100% - 1rem);
+}
+.column > * {
+  background-color: rgb(217, 220, 223);
+  padding: 4px 8px;
+  color: #333;
+}
