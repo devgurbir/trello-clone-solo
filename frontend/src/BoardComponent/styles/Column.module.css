@@ -25,7 +25,7 @@
 }
 .column > * {
   background-color: rgb(217, 220, 223);
-  padding: 4px 8px;
+  padding: 8px;
   color: #333;
 }
 .header {
@@ -128,4 +128,7 @@
   color: rgb(230, 71, 71);
   font-size: 22px;
   cursor: pointer;
+}
+.inputFormBg {
+  background-color: aqua;
 }

@@ -52,4 +52,12 @@
 .addAnotherCol {
   /* width: auto; */
   margin: 0;
+  flex: 0 0 auto;
+  width: 280px;
+  height: calc(100% - 1rem);
+}
+.column > * {
+  background-color: rgb(217, 220, 223);
+  padding: 4px 8px;
+  color: #333;
 }
