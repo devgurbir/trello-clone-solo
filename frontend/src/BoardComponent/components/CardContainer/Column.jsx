@@ -1,25 +1,25 @@
 /** @format */
-import { useRef, useState } from "react";
-import { Button, Dropdown, Form } from "react-bootstrap";
+import { useEffect, useRef, useState } from "react";
+import { Dropdown } from "react-bootstrap";
 import styles from "../../styles/Column.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ModalRemoveColumn from "./ModalRemove";
-import { useEffect } from "react";
 import TitleFormHandle from "./TitleFormHandler";
-import { useDispatch } from "react-redux";
-import { deletColumnAndUpdate } from "../../../Redux/Actions";
 import AddCardTitleField from "./AddCardTitleField";
+import { removeColumn } from "../../../Api";
 
 const Column = (props) => {
-  // console.log(props);
   const [column, setColumn] = useState(props.columns);
   const [dragingItem, setDragingitem] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [columnvalue, setColumnvalue] = useState();
-  const dispatch = useDispatch();
 
   const dragItem = useRef();
   const dragNode = useRef();
+
+  useEffect(() => {
+    setColumn(props.columns);
+  }, [props.columns]);
 
   const getStyles = (params) => {
     const reItem = styles.reItemList;
@@ -36,7 +36,7 @@ const Column = (props) => {
   };
 
   const handleDragEnd = () => {
-    console.log("drag ending .. ");
+    // console.log("drag ending .. ");
     setDragingitem(false);
     dragNode.current.removeEventListener("dragend", handleDragEnd);
     dragItem.current = null;
@@ -59,13 +59,10 @@ const Column = (props) => {
       setColumn((oldList) => {
         let newList = JSON.parse(JSON.stringify(oldList));
 
-        newList[params.grpIndex].cards.splice(
+        newList[params.grpIndex].row.splice(
           params.itemIndex,
           0,
-          newList[currentItem.grpIndex].cards.splice(
-            currentItem.itemIndex,
-            1
-          )[0]
+          newList[currentItem.grpIndex].row.splice(currentItem.itemIndex, 1)[0]
         );
         dragItem.current = params;
         return newList;
@@ -78,10 +75,10 @@ const Column = (props) => {
     setShowConfirmModal(!showConfirmModal);
   };
 
-  const onConfirmModalAction = (type) => {
+  const onConfirmModalAction = async (type) => {
     if (type === "confirm") {
+      await removeColumn(column[columnvalue]._id);
       delete column[columnvalue];
-      deletColumnAndUpdate(column)(dispatch);
       setShowConfirmModal(false);
     } else {
       setShowConfirmModal(false);
@@ -90,11 +87,11 @@ const Column = (props) => {
 
   return (
     <>
-      {column?.map(({ title, cards }, grpIndex) => (
+      {column?.map(({ title, row }, grpIndex) => (
         <div
           draggable
           onDragEnter={
-            dragingItem && !cards.length
+            dragingItem && !row.length
               ? (e) => handleDragEnter(e, { itemIndex: 0, grpIndex })
               : null
           }
@@ -124,7 +121,7 @@ const Column = (props) => {
             </div>
           </header>
           <ul className={styles.ul}>
-            {cards.map((card, itemIndex) => (
+            {row?.map((card, itemIndex) => (
               <li
                 draggable
                 onDragStart={(e) =>
@@ -151,11 +148,7 @@ const Column = (props) => {
             ))}
           </ul>
           <div>
-            <AddCardTitleField
-              cards={cards}
-              column={column}
-              grpIndex={grpIndex}
-            />
+            <AddCardTitleField row={row} column={column} grpIndex={grpIndex} />
           </div>
         </div>
       ))}

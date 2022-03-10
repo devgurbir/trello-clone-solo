@@ -21,7 +21,7 @@
   flex: 0 0 auto;
   width: 280px;
   margin-left: 12px;
-  height: calc(100% - 1rem);
+  height: calc(100% - 3rem);
 }
 .column > * {
   background-color: rgb(217, 220, 223);
@@ -33,7 +33,7 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   display: flex;
-  height: 36px;
+  height: 56px;
   line-height: 36px;
   font-size: 16px;
   font-weight: bold;

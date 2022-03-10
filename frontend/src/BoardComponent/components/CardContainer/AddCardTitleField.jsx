@@ -2,30 +2,30 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addNewFormTitle } from "../../../Redux/Actions";
+import { addNewRowAction } from "../../../Redux/Actions";
 import styles from "../../styles/Column.module.css";
 
 const AddCardTitleField = ({ cards, column, grpIndex }) => {
+  const dispatch = useDispatch();
   const [addCardTitle, setAddCardTitle] = useState("");
   const [toggleNewCard, setToggleNewCard] = useState(false);
-  const dispatch = useDispatch();
   const addCardTitleField = () => {
     if (!addCardTitle) {
       return;
     }
 
     const newAddCard = {
-      id: Math.random().toString(36).substring(2, 8),
       boardId: column[grpIndex].boardId,
-      columnId: column[grpIndex].id,
+      columnId: column[grpIndex]._id,
       title: addCardTitle.trim(),
-      cover: null,
     };
+    addNewRowAction(newAddCard)(dispatch);
+    /** 
     console.log("cards", column[grpIndex]);
     let newColumn = { ...column };
-    newColumn[grpIndex].cardOrder.push(newAddCard.id);
+    newColumn[grpIndex].cardOrder.push(newAddCard._id);
     newColumn[grpIndex].cards.push(newAddCard);
-    addNewFormTitle(newColumn)(dispatch);
+    */
   };
 
   const toggleNewColumnCard = () => setToggleNewCard(!toggleNewCard);
