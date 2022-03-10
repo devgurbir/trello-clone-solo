@@ -1,0 +1,135 @@
+/** @format */
+
+.ul {
+  padding: 0;
+  margin: 0;
+  max-height: calc(100% - 36px - 36px);
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+::-webkit-scrollbar:horizontal {
+  width: 11px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(179, 182, 192);
+  border-right: 5px solid rgb(217, 220, 223);
+}
+
+.column {
+  flex: 0 0 auto;
+  width: 280px;
+  margin-left: 12px;
+  height: calc(100% - 1rem);
+}
+.column > * {
+  background-color: rgb(217, 220, 223);
+  padding: 8px;
+  color: #333;
+}
+.header {
+  padding-left: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  height: 36px;
+  line-height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.titleFormChange {
+  background: rgb(217, 220, 223) !important;
+  border: rgb(217, 220, 223) !important;
+  cursor: pointer;
+  /* border: none !important; */
+}
+
+.headerText {
+  flex: 90%;
+  margin-top: 5px;
+  margin-left: 4px;
+}
+.headerDropDown {
+  float: right;
+  /* width: 46px; */
+}
+.dropdownToggle {
+  letter-spacing: 1px;
+  padding: 4px;
+  border: none !important;
+  background-color: rgb(217, 220, 223) !important;
+}
+.dropdownToggle:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.dropdownToggle:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.dropdownToggle:hover {
+  color: black !important;
+}
+
+.itemList {
+  background-color: white;
+  list-style: none;
+  border-radius: 4px;
+  box-shadow: 3px 3px teal;
+  padding: 10px;
+  margin-bottom: 8px;
+  margin-top: 14px;
+}
+
+.reItemList {
+  background-color: rgb(217, 220, 223);
+  list-style: none;
+  border-radius: 4px;
+  visibility: hidden;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  padding-left: 10px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 16px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.footerAction {
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: rgb(217, 220, 223);
+  color: rgb(91 99 104);
+}
+.footerAction:hover {
+  color: black;
+}
+.addNewColumnForm {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 3px 3px teal;
+  /* padding: 10px; */
+  margin-bottom: 8px;
+  /* margin-top: 14px; */
+}
+.buttonClass {
+  background-color: rgb(19, 121, 191);
+  border: none;
+  /* width: 91px; */
+  color: white;
+  margin-bottom: 10px;
+}
+.spanIconFrame {
+  margin-left: 9px;
+  color: rgb(230, 71, 71);
+  font-size: 22px;
+  cursor: pointer;
+}
+.inputFormBg {
+  background-color: aqua;
+}

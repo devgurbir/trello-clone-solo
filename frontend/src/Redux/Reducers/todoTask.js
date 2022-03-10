@@ -129,10 +129,33 @@ const initalData = {
 
 export const boardsReducer = (state = initalData, action) => {
   switch (action.type) {
-    case "LOGIN_SUCCESS": {
+    case "ADD_NEWCOLUMN": {
+      console.log(action);
       return {
         ...state,
-        columnId: action,
+        boards: [{ ...action.payload }],
+      };
+    }
+    case "DEL_COLUMN_UPDATE": {
+      console.log(action);
+      return {
+        ...state,
+        // boards: [{ columns: [...state, action.payload] }],
+      };
+    }
+
+    case "ADD_NEW_FORMTITLE": {
+      console.log(action);
+      return {
+        ...state,
+        // boards: [{ columns: [...state, action.payload] }],
+      };
+    }
+    case "ADD_NEWCOLUMN_FORMNAME": {
+      console.log(action);
+      return {
+        ...state,
+        // boards: [{ columns: [...state, action.payload] }],
       };
     }
     default:
