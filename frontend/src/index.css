@@ -82,7 +82,7 @@ body, button, html, input, select, textarea {
 h3 {
   font-size: 16px;
   color: #172b4d;
-  font-weight: 600px!important;
+  font-weight: 600;
   line-height: 20px;
   min-height: 18px;
 }
@@ -99,3 +99,11 @@ h3 {
   text-decoration: none;
 }
 
+hr {
+  background-color: #091e4221;
+  border: 0;
+  height: 1px;
+  margin: 16px 0;
+  padding: 0;
+  width: 100%;
+}

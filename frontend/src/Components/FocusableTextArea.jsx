@@ -5,10 +5,8 @@ import { useState } from 'react'
 const FocusableTextArea = (props) => {
     
   const [isEditing, setIsEditing] = useState(false)
-
   const handleEdit = () => {
-      setIsEditing(!isEditing)
-      
+      setIsEditing(!isEditing)      
   }
   return (
     <>
