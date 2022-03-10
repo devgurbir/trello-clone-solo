@@ -1,9 +1,7 @@
-/** @format */
-
 import { createStore, applyMiddleware } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-// import reducer from "./Reducers/index.js";
+import reducer from "./Reducers/index.js";
 import singleCardReducer from "./Card/reducers";
 import { boardsReducer } from "./Reducers/todoTask.js";
 import { combineReducers } from "redux";
@@ -16,6 +14,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     workspace: workspaceReducer
 })
+
 
 const composed = composeWithDevTools(applyMiddleware(thunk));
 

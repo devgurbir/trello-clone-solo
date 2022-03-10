@@ -4,12 +4,10 @@ import { store } from "./Redux/store";
 import SingleCard from "./Components/Card/SingleCard";
 import AllRoutes from "./Routes/AllRoutes"
 
-
 function App() {
   
   return (
     <div>
-        {/* <Board /> */}
         <AllRoutes />
     </div>
   );

@@ -1,20 +1,18 @@
 /** @format */
 
 import styles from "../../styles/AddColumn.module.css";
-
 import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addNewColumnAction } from "../../../Redux/Actions";
 
-const AddColumn = ({ boards }) => {
-  const formControlRef = useRef(null);
-
+const AddColumn = ({ board }) => {
   const dispatch = useDispatch();
-  const [boardData, setBoardData] = useState(boards);
+
+  const formControlRef = useRef(null);
+  const [boardData, setBoardData] = useState(board);
   const [toggleForm, setToggleForm] = useState(false);
   const [addFormTitle, setAddFormTitle] = useState("");
 
@@ -24,26 +22,21 @@ const AddColumn = ({ boards }) => {
     }
   }, [toggleForm]);
 
-  const toggleNewForm = () => setToggleForm(!toggleForm);
+  useEffect(() => {
+    setBoardData(board);
+  }, [board]);
 
+  const toggleNewForm = () => setToggleForm(!toggleForm);
   const addFormField = () => {
     if (!addFormTitle) {
       formControlRef.current.focus();
       return;
     }
-    /*data should go to column*/
     const newColumnAdd = {
-      id: Math.random().toString(36).substring(2, 8),
       title: addFormTitle.trim(),
-      boardId: boardData.id,
-      cardOrder: [],
-      cards: [],
+      boardId: boardData._id,
     };
-    let newColumn = { ...boardData };
-    newColumn.columns.push(newColumnAdd);
-    newColumn.columnOrder.push(newColumnAdd.id);
-
-    addNewColumnAction(newColumn)(dispatch);
+    addNewColumnAction(newColumnAdd)(dispatch);
   };
 
   return (

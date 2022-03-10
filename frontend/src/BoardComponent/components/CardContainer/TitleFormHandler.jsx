@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addNewFormColumnName } from "../../../Redux/Actions";
+import {
+  addNewFormColumnName,
+  updateColumnTitleAction,
+} from "../../../Redux/Actions";
 import styles from "../../styles/Column.module.css";
 
 const TitleFormHandle = ({ title, col }) => {
   const [addFormTitle, setAddFormTitle] = useState("");
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +30,8 @@ const TitleFormHandle = ({ title, col }) => {
         ...col,
         title: addFormTitle,
       };
-      addNewFormColumnName(newColumn)(dispatch);
+      console.log({ newColumn });
+      updateColumnTitleAction(newColumn._id, newColumn.title)(dispatch);
     }
   };
 
@@ -36,7 +39,7 @@ const TitleFormHandle = ({ title, col }) => {
     <>
       <Form.Control
         type="text"
-        size="sm"
+        size="lg"
         spellCheck="false"
         className={styles.titleFormChange}
         value={addFormTitle}

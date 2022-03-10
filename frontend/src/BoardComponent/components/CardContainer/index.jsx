@@ -1,24 +1,33 @@
 /** @format */
 import styles from "../../styles/Index.module.css";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import Column from "./Column";
 import AddColumn from "./AddColumn";
+import { useEffect, useState } from "react";
+import { getBoardDetails } from "../../../Redux/Actions";
 
 const CardContainer = () => {
   const { boards } = useSelector((state) => state.boards);
+  const dispatch = useDispatch();
+  const [board, setBoard] = useState([]);
 
-  console.log(boards, "state");
+  useEffect(() => {
+    getBoardDetails()(dispatch);
+  }, []);
 
-  if (!boards?.length) return <div>Board Not Found</div>;
+  useEffect(() => {
+    setBoard(boards);
+  }, [boards]);
+
+  if (!board?.length) return <div>loading............</div>;
   return (
     <>
       <div className={styles.cardContainer}>
-        {boards?.map(({ columns }, index) => (
+        {board?.map(({ columns }, index) => (
           <Column key={index} columns={columns} />
         ))}
-        {boards?.map((boards, index) => (
-          <AddColumn key={index} boards={boards} />
+        {board?.map((board, index) => (
+          <AddColumn key={index} board={board} />
         ))}
       </div>
     </>
