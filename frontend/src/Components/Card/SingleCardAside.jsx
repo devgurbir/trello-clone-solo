@@ -12,19 +12,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AddIcon from '@mui/icons-material/Add';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
 import FlexDiv from '../../Styled/FlexDiv'
+import ChecklistAsideOption from './ChecklistAsideOption'
+import CoverAsideOption from './CoverAsideOption'
+import LabelAsideOption from './LabelAsideOption'
 
 const SingleCardAside = () => {
   return (
-    <div style={{width:"23%"}}>
+    <div style={{width:"23%", marginTop: "-18px"}}>
         <div>
           <h5>Add to card</h5>
           {/* Options */}
           <div>
               <SingleCardAsideOption icon={faUser} text="Members" />
-              <SingleCardAsideOption icon={faTag} text="Labels" />
-              <SingleCardAsideOption icon={faCheckSquare} text="Checklist" />
+              <LabelAsideOption />
+              <ChecklistAsideOption />
               <SingleCardAsideOption icon={faClock} text="Dates" />
               <SingleCardAsideOption icon={faPaperclip} text="Attachments" />
+              <CoverAsideOption />
               <SingleCardAsideOption icon={faFolderOpen} text="Custom Fields" disabled = "disabled" />
           </div>
         </div>

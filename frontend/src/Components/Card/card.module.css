@@ -5,10 +5,9 @@
     overflow: hidden;
     position: relative;
     width: 768px;
-    z-index: 25;
+    z-index: 10;
     min-height: 600px;
-    padding: 2%
-
+    /* padding: 18px */
 }
 
 .cardHeader{
@@ -16,6 +15,13 @@
     justify-content: space-between;
     gap:15px
 }
+
+.cardClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
 
 .singleCardTextarea {
     background: #0000;
@@ -30,6 +36,11 @@
     resize: none;
     margin: -4px -8px;
     border: 0px;
+}
+
+.singleCardTextarea:focus {
+    background-color: #fff;
+    box-shadow: inset 0 0 0 2px #0079bf
 }
 
 .isEditing {
@@ -105,4 +116,79 @@
     margin-top:5px;
     margin-bottom: 0;
     border: none;
+}
+
+.descriptionBeingEdited {
+    overflow: scroll;
+    overflow-wrap: break-word;
+    resize: none;
+    min-height: 108px;
+    background: #fff;
+    box-shadow: none;
+    width:100%;
+}
+
+.descriptionBeingEdited:focus {
+    background-color: #fff;
+    box-shadow: inset 0 0 0 2px #0079bf;
+}
+
+.descriptionNotBeingEdited {
+    background-color: rgba(9,30,66,.04);
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    display: block;
+    min-height: 40px;
+    /* max-height: fit-content; */
+    padding: 8px 12px;
+    text-decoration: none;
+    width:100%;
+}
+
+.saveButton {
+    background-color: #0079bf;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    border-radius: 3px;
+    padding: 6px 12px;
+}
+
+.singleCardCover {
+    background-size: initial;
+    background-origin: content-box;
+    box-sizing: border-box;
+    background-position: left center;
+    height: 116px;
+    min-height: 116px;
+    padding: 0px;
+    width: 100%;
+}
+
+.singleCardLabelColorBox {
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    font-weight: 600;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 4px 4px 0;
+    min-width: 40px;
+    padding: 0 12px;
+    width: auto;
+}
+
+.headerThree {
+    color: #5e6c84;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    line-height: 20px;
+    margin: 0 8px 4px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
