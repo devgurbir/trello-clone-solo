@@ -4,9 +4,13 @@ import styles from "./label.module.css"
 import CreateLabelTitle from './CreateLabelTitle'
 import LabelSearch from './LabelSearch'
 import CreateLabelColorBox from './CreateLabelColorBox'
-
-
+import { useSelector } from 'react-redux'
+import CreateLabelInput from './CreateLabelInput'
+import { useDispatch } from 'react-redux'
+import { updateLabels } from '../../Redux/Card/actions'
+import { useParams } from 'react-router-dom'
 const CreateLabel = ({handleShowCreateLabel}) => {
+  const dispatch = useDispatch();
   const [defaultColors, setDefaultColors] = useState([
     {name: "green", color:"#61bd4f", selected:false},
     {name: "yellow", color:"#f2d600", selected:false},
@@ -20,21 +24,37 @@ const CreateLabel = ({handleShowCreateLabel}) => {
     {name: "black", color:"#344563", selected:false},
   ])
 
+  const [labelName, setLabelName] = useState("");
+  const labels = useSelector(state => state.singleCard.card.labels)
+  const {card_id} = useParams();
+
   const handleColorSelect = (name) => { 
       const temp = defaultColors.map( el => el.name == name ? {...el, selected: true} : {...el, selected: false})
-      setDefaultColors(temp)      
+      setDefaultColors(temp)
   }
+
+  const handleCreate = () => {
+      const selectedEl = defaultColors.filter( el => el.selected == true);
+      labels.push({...selectedEl[0]})
+      dispatch(updateLabels(card_id, labels))
+  }
+
+  const handleLabelName = val => {
+      setLabelName(val)
+  }
+
   return (
     <>
       <CreateLabelTitle handleShowCreateLabel={handleShowCreateLabel} />
       <div className ={styles.popOverContent}>
             <h4>Name</h4>
-            <LabelSearch placeholder="" />
+            <CreateLabelInput value={labelName} placeholder="" handleLabelName = {handleLabelName}/>
             <div className= {styles.labelSection} >
                 <h4>Select a color</h4>
                 <div style={{display:"flex", flexWrap:"wrap", marginTop:"8px" }}>
                 {defaultColors.map(el => <CreateLabelColorBox handleColorSelect={handleColorSelect} {...el} />)}
                 </div>
+                <button className={styles.createBtn} onClick = {() => handleCreate()} >Create</button>
             </div>
       </div>
     </> 

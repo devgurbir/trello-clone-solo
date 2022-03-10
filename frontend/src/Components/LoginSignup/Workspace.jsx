@@ -2,9 +2,13 @@ import React from 'react'
 import styles from './loginSignup.module.css'
 import { useState } from 'react'
 import getBearerToken from '../../Utils/GetBearerToken'
+import { createWorkspace } from '../../Redux/Workspace/actions'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 const Workspace = () => {
     const token = getBearerToken();
-        
+    const dispatch = useDispatch();
+    const workspace = useSelector(state => state.workspace.workspace);    
     const [val, setVal] = useState("Trello Workspace")
   return (
     <div className={styles.workspaceWrapper}>
@@ -21,14 +25,14 @@ const Workspace = () => {
                     </div>
                     <div className={styles.workspaceFormDiv}>
                         <label>Name your workspace</label>
-                        <input value={val} placeholder="Trello Workspace" maxLength="100" minLength="1" autoComplete="off" spellCheck="false" />
+                        <input onChange = {(e) => setVal(e.target.value)} value={val} placeholder="Trello Workspace" maxLength="100" minLength="1" autoComplete="off" spellCheck="false" />
                     </div>
                     <div style={{marginTop: "12px"}} className={styles.workspaceFormDiv}>
                         <label>Send email invites</label>
                         <input style={{backgroundColor: "#fafbfc"}} placeholder="Enter as many email addresses as you want" spellcheck="false" />
                         
                     </div>
-                    <button className={styles.continueBtn}>Continue</button>
+                    <button className={styles.continueBtn} onClick={ () => dispatch(createWorkspace(val, token))}>Continue</button>
                 </div>
             </div>
         </div>        

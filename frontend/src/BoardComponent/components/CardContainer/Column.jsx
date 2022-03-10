@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import { Button, Dropdown, Form } from "react-bootstrap";
 import styles from "../../styles/Column.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import ModalRemoveColumn from "./ModalRemove";
 import { useEffect } from "react";
 import TitleFormHandle from "./TitleFormHandler";

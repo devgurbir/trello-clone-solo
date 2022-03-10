@@ -8,8 +8,8 @@ const LabelsMain = () => {
   
   return (
     <div className={styles.labelsMain}  style={{width:"100%", marginTop:"8px"}}>
-        {labels.map( (el, ind) => ind < 4 ? <LabelColor key={ind} ind={ind} 
-         color={el.color} text={el.text} selected={el.selected} /> : null )}
+        {labels.map( (el, ind) => <LabelColor key={ind} ind={ind} 
+         color={el.color} text={el.text} selected={el.selected} />  )}
     </div>
   )
 }

@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { getUser } from "../Redux/User/actions";
 import getBearerToken from "../Utils/GetBearerToken"
 import Loading from "../Components/Loading";
+import SingleWorkspace from "../Components/Workspace/SingleWorkspace";
 function AllRoutes(){
     // let isLoading = useSelector(state => state.user.isLoading)
     let isAuthenticated = useSelector(state => state.user.isAuthenticated)
@@ -49,7 +50,9 @@ function AllRoutes(){
                 </Route>
                 <Route exact path="/card/:card_id">
                     <SingleCard />
-                    {/* <LabelWrapper /> */}
+                </Route>
+                <Route exact path="/workspace/:workspace_id">
+                    <SingleWorkspace />
                 </Route>
             </Switch>
         )
