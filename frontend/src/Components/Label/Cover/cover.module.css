@@ -1,0 +1,45 @@
+.popup {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+    overflow: hidden;
+    width: 304px;
+    z-index: 22270;
+    padding: 0 12px 12px;
+    position: absolute;
+    /* Remove transform later. */
+    transform: translateX(-50%); 
+}
+.popUpHeaderClose {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+}
+
+.popupHeaderTitle {
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(9,30,66,.13);
+    box-sizing: border-box;
+    color: #5e6c84;
+    display: block;
+    line-height: 40px;
+    overflow: hidden;
+    /* padding: 0 32px; */
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 1;
+    text-align: center;
+}
+
+.coverColorBox {
+        height: 32px;
+        margin: 0 8px 8px 0;
+        width: 48px;;
+        border-radius: 4px;
+}
+
+.labelSection {
+    margin-top: 12px;
+}

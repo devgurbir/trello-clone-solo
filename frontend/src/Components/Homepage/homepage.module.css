@@ -1,0 +1,90 @@
+.hero {
+    background: #eae6ff;
+    background: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#eae6ff));
+    background: linear-gradient(0deg, #fff, #eae6ff 100%);
+    overflow-x: hidden;
+    height:100vh
+}
+
+.hero header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.09375rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-decoration: none;
+}
+
+.bgPrimary {
+    background-color: #0065ff;
+    color: #fff
+}
+
+.textPrimary {
+    color: #0065ff
+}
+
+.container {
+    width: 80%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    gap:10%
+}
+
+.left {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 58.33333333%;
+    -ms-flex: 0 0 58.33333333%;
+    flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.right {
+    flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
+    padding: 1rem
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+    font-family: 'Charlie Display',sans-serif;
+    font-weight: 600;
+}
+
+.imgFluid {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    font-family: 'Charlie Text',sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #091e42;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
