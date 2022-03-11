@@ -2,9 +2,10 @@
 
 import { createNewRow, fetchBoardDetails, updateColumnTitle } from "../../Api";
 
-export const getBoardDetails = () => async (dispatch) => {
+export const getBoardDetails = (board_id) => async (dispatch) => {
   try {
-    const { results } = await fetchBoardDetails("622b33852e9f4b2670715a06");
+
+    const { results } = await fetchBoardDetails(board_id);
     return dispatch({
       type: "GET_BOARD_DETAILS",
       payload: results,

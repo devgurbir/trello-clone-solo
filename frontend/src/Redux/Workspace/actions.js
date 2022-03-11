@@ -9,7 +9,32 @@ export const actionConstants = {
     CREATE_WORKSPACE_FAILURE: "CREATE_WORKSPACE_FAILURE",
     GET_WORKSPACE_REQUEST: "GET_WORKSPACE_REQUEST",
     GET_WORKSPACE_SUCCESS: "GET_WORKSPACE_SUCCESS",
-    GET_WORKSPACE_FAILURE: "GET_WORKSPACE_FAILURE"
+    GET_WORKSPACE_FAILURE: "GET_WORKSPACE_FAILURE",
+    CREATE_BOARD_REQUEST: "CREATE_BOARD_REQUEST",
+    CREATE_BOARD_SUCCESS: "CREATE_BOARD_SUCCESS",
+    CREATE_BOARD_FAILURE: "CREATE_BOARD_FAILURE"
+}
+
+
+// create board
+const createBoardRequest = () => {
+    return {
+        type: actionConstants.CREATE_BOARD_REQUEST
+    }
+}
+
+const createBoardSuccess = (payload) => {
+    return {
+        type: actionConstants.CREATE_BOARD_SUCCESS,
+        payload: payload
+    }
+}
+
+const createBoardFailure = (err) => {
+    return {
+        type: actionConstants.CREATE_BOARD_FAILURE,
+        payload: err
+    }
 }
 
 // create workspace
@@ -84,5 +109,22 @@ export const getWorkspace = (workspace_id, token) => async (dispatch) => {
         dispatch(getWorkspaceSuccess(workspace.data.workspace));
     } catch (error) {
         dispatch(getWorkspaceFailure(error))
+    }
+}
+
+export const createBoard = (title, workspace, token) => async (dispatch) => {
+    try {
+        dispatch(createBoardRequest())
+    // replace with card_id
+        const board = await axios.post(`http://localhost:8000/board`, {title, workspace}, {
+            headers: {
+                'Authorization': "Bearer " + token
+            } 
+        }) 
+        console.log(board.data.board._id)
+        dispatch(createBoardSuccess(board.data.board));
+        window.location.href = `/board/${board.data.board._id}`
+    } catch (error) {
+        dispatch(createBoardFailure(error))
     }
 }

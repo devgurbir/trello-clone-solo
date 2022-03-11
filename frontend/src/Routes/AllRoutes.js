@@ -37,7 +37,7 @@ function AllRoutes() {
       <Route exact path="/appbar">
         <AppBar />
       </Route>
-      <Route exact path="/">
+      <Route exact path="/board/:board_id">
         <Board />
       </Route>
       <Route exact path="/home">

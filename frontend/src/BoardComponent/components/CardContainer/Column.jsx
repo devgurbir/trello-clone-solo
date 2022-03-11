@@ -7,13 +7,14 @@ import ModalRemoveColumn from "./ModalRemove";
 import TitleFormHandle from "./TitleFormHandler";
 import AddCardTitleField from "./AddCardTitleField";
 import { removeColumn } from "../../../Api";
+import { Link } from "react-router-dom";
 
 const Column = (props) => {
   const [column, setColumn] = useState(props.columns);
   const [dragingItem, setDragingitem] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [columnvalue, setColumnvalue] = useState();
-
+  console.log(column)
   const dragItem = useRef();
   const dragNode = useRef();
 
@@ -122,7 +123,8 @@ const Column = (props) => {
           </header>
           <ul className={styles.ul}>
             {row?.map((card, itemIndex) => (
-              <li
+              
+              <li name={card._id}
                 draggable
                 onDragStart={(e) =>
                   handleDragListStart(e, {
@@ -142,8 +144,10 @@ const Column = (props) => {
                 }
                 key={itemIndex}
               >
+                <Link to={`/card/${card._id}`}>
                 {card.cover && <img src={card.cover} alt="logo" />}
                 {card.title}
+                </Link>
               </li>
             ))}
           </ul>

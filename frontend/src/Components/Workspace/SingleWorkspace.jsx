@@ -27,7 +27,7 @@ const SingleWorkspace = () => {
             <div className={styles.right}>
                 <h2>Boards</h2>
                 <div className={styles.boardsList}>
-                    <BoardBox text="Create new board" />
+                    <BoardBox />
                 </div>
             </div>
         </div>

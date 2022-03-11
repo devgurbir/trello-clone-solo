@@ -2,17 +2,26 @@
 
 const Board = require("../Models/board.model");
 const { ObjectId } = require("mongoose");
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
+const Workspace = require("../Models/workspace.model")
 
 // Create
 const createBoard = async (req, res) => {
   try {
     const board = await Board.create({
       title: req.body.title,
+      workspace: req.body.workspace
     });
 
-    if (board) return res.status(201).send({ msg: "column created", board });
-    return res.status(404).json({ message: "column not found" });
+    const workspace = await Workspace.updateOne(
+      {_id: board.workspace},
+      {$push: {boards: board._id } }
+    )
+
+    if(!board) return res.status(404).json({ message: "column not found" });
+    
+    return res.status(201).send({ msg: "column created", board, workspace });
+    
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
