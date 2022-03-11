@@ -15,7 +15,7 @@ router.get('/google/callback',
     if(req.user.workspaces.length > 0){
       res.status(200).cookie('access_token', 'Bearer ' + token, {
         expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
-      }).redirect(301, 'http://localhost:3000')
+      }).redirect(301, `http://localhost:3000/workspace/${req.user.workspaces[0]}`)
     }
     else{
       res.status(200).cookie('access_token', 'Bearer ' + token, {

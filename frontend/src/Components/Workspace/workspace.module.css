@@ -27,6 +27,7 @@
 .right {
     background-color: #fff;
     width: 80%;
+    padding: 24px;
 }
 
 .boardBox {
@@ -34,13 +35,27 @@
     border: none;
     box-shadow: none;
     color: #172b4d;
-    display: table-cell;
     font-weight: 400;
     height: 80px;
+    width: 180px;
     text-align: center;
     transition-duration: 85ms;
     transition-property: background-color,border-color,box-shadow;
     transition-timing-function: ease;
-    vertical-align: middle;
-    width: inherit;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 18px;
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.boardsList {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
