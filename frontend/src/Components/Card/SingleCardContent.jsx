@@ -13,14 +13,17 @@ import SingleCardLabel from './SingleCardLabel'
 
 const SingleCardContent = () => {
   const card = useSelector(state => state.singleCard.card)
-  
+  let labels = useSelector( state => state.singleCard?.card?.labels);
+  if(labels){
+    labels = labels.filter( el => el.selected == true)
+  }
   const checklists = card.checklist;
   console.log(card)
   
   return (
     <FlexDiv style={{width:"74%"}} direction="column" gap="15px">
     {/* Description */}
-    <SingleCardLabel />
+    {labels?.length > 0 && <SingleCardLabel /> }
     <SingleCardContentDescription description={card.description} />
     {/* <AddChecklistPopup /> */}
     {checklists?.map(el => <ChecklistWrapper {...el} key={el.id} />)}

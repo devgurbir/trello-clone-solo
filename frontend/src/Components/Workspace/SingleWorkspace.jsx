@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./workspace.module.css"
-import BoardBox from './BoardBox'
+import CreateBoardBox from './CreateBoardBox'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import getBearerToken from '../../Utils/GetBearerToken'
@@ -27,7 +27,7 @@ const SingleWorkspace = () => {
             <div className={styles.right}>
                 <h2>Boards</h2>
                 <div className={styles.boardsList}>
-                    <BoardBox />
+                    <CreateBoardBox />
                 </div>
             </div>
         </div>

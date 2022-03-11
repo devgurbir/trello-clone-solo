@@ -11,15 +11,16 @@ const CardContainer = () => {
   const dispatch = useDispatch();
   const [board, setBoard] = useState([]);
   // console.log({ boards });
-  const y = useSelector((state) => state.singleCard.card.boardId);
 
-  const { board_id } = useParams();
-
-  const finalId = board_id || y;
-  // console.log("Board ID:", y, board_id, finalId)
+  const y = useSelector(state => state.singleCard?.card?.boardId)
+  
+  const {board_id} = useParams()
+  
+  const finalId = board_id || y
+  console.log("Board ID:", finalId)
   useEffect(() => {
-    getBoardDetails(board_id)(dispatch);
-  }, []);
+    getBoardDetails(finalId)(dispatch);
+  }, [finalId]);
 
   useEffect(() => {
     setBoard(boards);

@@ -37,7 +37,7 @@ useEffect( () => {
             <textarea className = {styles.singleCardTextarea} value={val} onChange={e =>setVal(e.target.value) } onBlur = {() => {
               if(val !== title) dispatch(updateTitle(card_id, val));
             }} onFocus = {(e) => e.currentTarget.select() } />
-            <span className = {styles.singleCardInList}>in list To Do</span>   
+            {/* <span className = {styles.singleCardInList}>in list To Do</span>    */}
         </div>
     </div>
     
