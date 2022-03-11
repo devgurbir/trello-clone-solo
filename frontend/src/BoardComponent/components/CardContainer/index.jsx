@@ -11,6 +11,7 @@ const CardContainer = () => {
   const dispatch = useDispatch();
   const [board, setBoard] = useState([]);
   // console.log({ boards });
+
   const y = useSelector(state => state.singleCard?.card?.boardId)
   
   const {board_id} = useParams()

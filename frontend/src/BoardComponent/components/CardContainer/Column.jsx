@@ -14,7 +14,7 @@ const Column = (props) => {
   const [dragingItem, setDragingitem] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [columnvalue, setColumnvalue] = useState();
-  console.log(column)
+  // console.log(column);
   const dragItem = useRef();
   const dragNode = useRef();
 
@@ -123,8 +123,8 @@ const Column = (props) => {
           </header>
           <ul className={styles.ul}>
             {row?.map((card, itemIndex) => (
-              
-              <li name={card._id}
+              <li
+                name={card._id}
                 draggable
                 onDragStart={(e) =>
                   handleDragListStart(e, {
@@ -145,8 +145,8 @@ const Column = (props) => {
                 key={itemIndex}
               >
                 <Link to={`/card/${card._id}`}>
-                {card.cover && <img src={card.cover} alt="logo" />}
-                {card.title}
+                  {card.cover && <img src={card.cover} alt="logo" />}
+                  {card.title}
                 </Link>
               </li>
             ))}

@@ -4,7 +4,6 @@ import { createNewRow, fetchBoardDetails, updateColumnTitle } from "../../Api";
 
 export const getBoardDetails = (board_id) => async (dispatch) => {
   try {
-
     const { results } = await fetchBoardDetails(board_id);
     return dispatch({
       type: "GET_BOARD_DETAILS",
@@ -15,29 +14,31 @@ export const getBoardDetails = (board_id) => async (dispatch) => {
   }
 };
 
-export const addNewColumnAction = (payload) => (dispatch) => {
+export const addNewColumnAction = (board_id, payload) => async (dispatch) => {
   try {
-    return dispatch({
+    await dispatch({
       type: "ADD_NEW_COLUMN",
       payload,
     });
+    await getBoardDetails(board_id)(dispatch);
   } catch (error) {
     console.log(error);
   }
 };
 
-export const addNewRowAction = (payload, token) => async (dispatch) => {
-  try {
-    const result = await createNewRow(payload, token);
-    getBoardDetails()(dispatch);
-    return dispatch({
-      type: "ADD_NEW_ROW",
-      payload: result,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+export const addNewRowAction =
+  (payload, board_id, token) => async (dispatch) => {
+    try {
+      const result = await createNewRow(payload, token);
+      getBoardDetails(board_id)(dispatch);
+      return dispatch({
+        type: "ADD_NEW_ROW",
+        payload: result,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 export const updateColumnTitleAction = (id, data) => async (dispatch) => {
   try {
     const result = await updateColumnTitle(id, data);

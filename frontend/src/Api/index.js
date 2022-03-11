@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { API_ROOT } from "../Utils/constents";
+import { API_ROOT } from "../utils/constents";
 
 export const fetchBoardDetails = async (id) => {
   const result = await axios.get(`${API_ROOT}/board/${id}`);
@@ -24,7 +24,7 @@ export const updateColumnTitle = async (id, data) => {
 // };
 
 export const createNewRow = async (data, token) => {
-  console.log(token);
+  // console.log(token);
   const result = await axios.post(`${API_ROOT}/card/create`, data, {
     headers: {
       Authorization: "Bearer " + token,
@@ -35,5 +35,5 @@ export const createNewRow = async (data, token) => {
 
 export const removeColumn = async (id) => {
   const result = await axios.delete(`${API_ROOT}/column/${id}`);
-  console.log(result);
+  // console.log(result);
 };

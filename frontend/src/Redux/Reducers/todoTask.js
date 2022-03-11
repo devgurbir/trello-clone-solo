@@ -12,10 +12,11 @@ export const boardsReducer = (state = initalData, action) => {
       return { ...state, boards: action.payload };
     }
     case "ADD_NEW_COLUMN": {
-      console.log(action.payload);
+      // console.log(action.payload);
       return { boards: [action.payload] };
     }
     case "ADD_NEW_ROW": {
+      console.log(action.payload, "reducer");
       return { boards: [action.payload] };
     }
     case "UPDATE_NEW_COLUMN_TITLE": {
