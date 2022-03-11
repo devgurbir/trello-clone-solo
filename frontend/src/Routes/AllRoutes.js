@@ -34,15 +34,16 @@ function AllRoutes() {
   }, []);
   return (
     <Switch>
+      <Route exact path="/">
+        <Homepage />
+      </Route>
       <Route exact path="/appbar">
         <AppBar />
       </Route>
       <Route exact path="/board/:board_id">
         <Board />
       </Route>
-      <Route exact path="/home">
-        <Homepage />
-      </Route>
+      
       <Route exact path="/login">
         <Layout>
           <Login />
@@ -61,7 +62,9 @@ function AllRoutes() {
         )}
       </Route>
       <Route exact path="/card/:card_id">
+        <Board />
         <SingleCard />
+        
       </Route>
       <Route exact path="/workspace/:workspace_id">
         <SingleWorkspace />
