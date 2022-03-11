@@ -14,13 +14,29 @@ const workspaceReducer = (state = initState, action) => {
                 isLoading: true
             }
         case actionConstants.CREATE_WORKSPACE_SUCCESS:
-            console.log("The payload is ", action.payload)
             return {
                 ...state,
                 isLoading: false,
                 workspace: {...action.payload}
             }
         case actionConstants.CREATE_WORKSPACE_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                isError: true
+            }
+        case actionConstants.GET_WORKSPACE_REQUEST:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case actionConstants.GET_WORKSPACE_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                workspace: action.payload
+            }
+        case actionConstants.GET_WORKSPACE_FAILURE:
             return {
                 ...state,
                 isLoading: false,
