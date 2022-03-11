@@ -4,10 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import {
-  addNewFormColumnName,
-  updateColumnTitleAction,
-} from "../../../Redux/Actions";
+import { updateColumnTitleAction } from "../../../Redux/Actions";
 import styles from "../../styles/Column.module.css";
 
 const TitleFormHandle = ({ title, col }) => {

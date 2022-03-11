@@ -1,16 +1,10 @@
 /** @format */
 
-import {
-  createNewColumn,
-  createNewRow,
-  fetchBoardDetails,
-  updateColumnTitle,
-} from "../../Api";
+import { createNewRow, fetchBoardDetails, updateColumnTitle } from "../../Api";
 
 export const getBoardDetails = () => async (dispatch) => {
   try {
-    const { results } = await fetchBoardDetails("622a3f7c073a6507ccef5dcf");
-    console.log(results);
+    const { results } = await fetchBoardDetails("622b33852e9f4b2670715a06");
     return dispatch({
       type: "GET_BOARD_DETAILS",
       payload: results,
@@ -20,23 +14,20 @@ export const getBoardDetails = () => async (dispatch) => {
   }
 };
 
-export const addNewColumnAction = (payload) => async (dispatch) => {
+export const addNewColumnAction = (payload) => (dispatch) => {
   try {
-    const result = await createNewColumn(payload);
-    getBoardDetails()(dispatch);
     return dispatch({
       type: "ADD_NEW_COLUMN",
-      payload: result,
+      payload,
     });
   } catch (error) {
     console.log(error);
   }
 };
 
-export const addNewRowAction = (payload) => async (dispatch) => {
+export const addNewRowAction = (payload, token) => async (dispatch) => {
   try {
-    const result = await createNewRow(payload);
-    console.log(result);
+    const result = await createNewRow(payload, token);
     getBoardDetails()(dispatch);
     return dispatch({
       type: "ADD_NEW_ROW",

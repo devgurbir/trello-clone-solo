@@ -33,7 +33,7 @@ const getAllBoard = async (req, res) => {
       },
       {
         $lookup: {
-          from: "rows",
+          from: "cards",
           localField: "_idTest",
           foreignField: "boardId",
           as: "row",

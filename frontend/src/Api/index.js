@@ -17,8 +17,19 @@ export const updateColumnTitle = async (id, data) => {
   return result.data;
 };
 
-export const createNewRow = async (data) => {
-  const result = await axios.post(`${API_ROOT}/row`, data);
+// export const createNewRow = async (data,token) => {
+//   // console.log(token);
+//   const result = await axios.post(`${API_ROOT}/row`, data);
+//   return result.data;
+// };
+
+export const createNewRow = async (data, token) => {
+  console.log(token);
+  const result = await axios.post(`${API_ROOT}/card/create`, data, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
   return result.data;
 };
 
