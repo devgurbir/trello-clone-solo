@@ -4,13 +4,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { updateColumnTitleAction } from "../../../Redux/Actions";
 import styles from "../../styles/Column.module.css";
 
 const TitleFormHandle = ({ title, col }) => {
   const [addFormTitle, setAddFormTitle] = useState("");
   const dispatch = useDispatch();
-
+  const {board_id} = useParams()
   useEffect(() => {
     setAddFormTitle(title);
   }, [title]);
@@ -28,7 +29,7 @@ const TitleFormHandle = ({ title, col }) => {
         title: addFormTitle,
       };
       console.log({ newColumn });
-      updateColumnTitleAction(newColumn._id, newColumn.title)(dispatch);
+      updateColumnTitleAction(newColumn._id, board_id, newColumn.title)(dispatch);
     }
   };
 

@@ -39,14 +39,15 @@ export const addNewRowAction =
       console.log(error);
     }
   };
-export const updateColumnTitleAction = (id, data) => async (dispatch) => {
+export const updateColumnTitleAction = (id,board_id, data) => async (dispatch) => {
   try {
     const result = await updateColumnTitle(id, data);
-    getBoardDetails()(dispatch);
-    return dispatch({
+    
+    dispatch({
       type: "UPDATE_NEW_COLUMN_TITLE",
       payload: result,
     });
+    getBoardDetails(board_id)(dispatch);
   } catch (error) {
     console.log(error);
   }
@@ -68,9 +69,10 @@ export const addNewFormTitle = (payload) => (dispatch) => {
   });
 };
 
-export const deletColumnAndUpdate = (payload) => (dispatch) => {
-  return dispatch({
+export const deletColumnAndUpdate = (payload, board_id) => (dispatch) => {
+  dispatch({
     type: "DEL_COLUMN_UPDATE",
     payload,
   });
+  getBoardDetails(board_id)(dispatch);
 };

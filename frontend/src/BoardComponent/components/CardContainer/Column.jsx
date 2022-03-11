@@ -1,8 +1,10 @@
 /** @format */
 import { useEffect, useRef, useState } from "react";
 import { Dropdown } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../styles/Column.module.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
+
+
 import ModalRemoveColumn from "./ModalRemove";
 import TitleFormHandle from "./TitleFormHandler";
 import AddCardTitleField from "./AddCardTitleField";

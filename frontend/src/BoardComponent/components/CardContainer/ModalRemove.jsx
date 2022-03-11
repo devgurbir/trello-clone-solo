@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const ModalRemoveColumn = (props) => {
   // console.log("pro", props);

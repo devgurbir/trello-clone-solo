@@ -16,9 +16,11 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTrello } from "@fortawesome/free-brands-svg-icons";
-
+import { useSelector } from "react-redux";
 import "../AppBar/appbar.scss";
 const AppBar = () => {
+  const board_title = useSelector( state => state.boards?.boards[0]?.title)
+  console.log(board_title)
   return (
     <div className="app">
       <header className="app-header">
@@ -62,7 +64,7 @@ const AppBar = () => {
           <div className="left">
             <div className="title">
               <FontAwesomeIcon icon={faCoffee} />
-              <span> MERN STACK</span>
+              <span>{board_title}</span>
             </div>
             <div className="btn">
               <FontAwesomeIcon icon={faStar} />
