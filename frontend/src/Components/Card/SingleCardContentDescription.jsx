@@ -31,7 +31,7 @@ const SingleCardContentDescription = ({description}) => {
 
   
   return (
-    <div style={{width:"100%"}}>
+    <div style={{width:"100%", marginTop:"14px"}}>
         <FlexDiv gap="15px">
           <ReorderOutlinedIcon fontSize="medium" />
             <h3>Description</h3>

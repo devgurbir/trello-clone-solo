@@ -5,16 +5,16 @@ import styles from './card.module.css'
 import SingleCardTitle from './SingleCardTitle'
 import { useSelector } from 'react-redux'
 import SingleCardCover from "./SingleCardCover"
-
+import {Link} from 'react-router-dom'
 const SingleCardHeader = () => {
   const cover = useSelector(state => state.singleCard.card.cover);
-  console.log("The cover is ", cover)
+  const y = useSelector(state => state.singleCard?.card?.boardId)
+
   return (
-    <div className={styles.cardHeader}>
-        
+    <div className={styles.cardHeader}>        
             <SingleCardTitle />
             <div className={styles.cardClose}>
-                <FontAwesomeIcon icon={faXmark} size="xl" />
+                <Link to={`/board/${y}`}><FontAwesomeIcon style={{color:"black"}} icon={faXmark} size="xl" /></Link>
             </div>
     </div>
   )

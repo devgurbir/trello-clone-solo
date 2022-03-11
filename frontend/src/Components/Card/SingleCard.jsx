@@ -21,8 +21,9 @@ const SingleCard = () => {
   }, [])
 
   return (
+    <div className={styles.backgroundFade}>
     <div className={styles.card}>
-        {cover && <SingleCardCover color={cover} /> }
+        {cover && <SingleCardCover color={cover} /> } 
         {/* Single Card Header */}
         <div style={{padding: "18px"}}>
         <SingleCardHeader />
@@ -33,6 +34,7 @@ const SingleCard = () => {
 
         {/* Single Card Widgets */}
         </div>
+    </div>
     </div>
   )
 }

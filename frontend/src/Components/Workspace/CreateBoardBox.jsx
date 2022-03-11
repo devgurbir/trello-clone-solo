@@ -6,14 +6,14 @@ import { useParams } from 'react-router-dom'
 import getBearerToken from '../../Utils/GetBearerToken'
 import { useState } from 'react'
 
-const BoardBox = () => {
+const CreateBoardBox = () => {
   const [title, setTitle] = useState('')
   const dispatch = useDispatch();
   const {workspace_id} = useParams();
   const token = getBearerToken();
   return (
     <>
-    <input value={title} onChange={ (e) => setTitle(e.target.value)} />
+    <input value={title} onChange={ (e) => setTitle(e.target.value)} placeholder="Enter board title" />
     <div onClick = {() => dispatch(createBoard(title, workspace_id, token))} className={styles.boardBox}>
         Create new board
     </div>
@@ -21,4 +21,4 @@ const BoardBox = () => {
   )
 }
 
-export default BoardBox
+export default CreateBoardBox
