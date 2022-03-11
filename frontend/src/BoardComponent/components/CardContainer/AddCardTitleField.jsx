@@ -8,13 +8,14 @@ import { createNewRow } from "../../../Api";
 import { addNewRowAction } from "../../../Redux/Actions";
 import styles from "../../styles/Column.module.css";
 import getBearerToken from "../../../Utils/GetBearerToken";
+import { useParams } from "react-router-dom";
 
 const AddCardTitleField = ({ cards, column, grpIndex }) => {
   const dispatch = useDispatch();
   const [addCardTitle, setAddCardTitle] = useState("");
   const [toggleNewCard, setToggleNewCard] = useState(false);
-
-  // const { boards } = useSelector((state) => state.boards);
+  const { board_id } = useParams();
+  const { boards } = useSelector((state) => state.boards);
 
   const addCardTitleField = async () => {
     if (!addCardTitle) {
@@ -27,12 +28,15 @@ const AddCardTitleField = ({ cards, column, grpIndex }) => {
       title: addCardTitle.trim(),
     };
 
-    // let newColumn = { ...column };
-    // newColumn[grpIndex].cardOrder.push(newAddCard.columnId);
-    // newColumn[grpIndex].row.push(newAddCard);
+    console.log("boards", boards);
+
+    // let newRow = boards;
+    // newRow[grpIndex].cardOrder.push(newAddCard.columnId);
+    // console.log("newrow", newRow[0].columns[grpIndex]);
+    // newColumn[grpIndex].row.push(newAddCard);.push("helo")
     // delete boards[0].columns;
     // boards[0].columns = [newColumn];
-    addNewRowAction(newAddCard, token)(dispatch);
+    addNewRowAction(newAddCard, board_id, token)(dispatch);
     // await createNewRow(newAddCard);
   };
 

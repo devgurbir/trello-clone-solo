@@ -10,9 +10,11 @@ import { addNewColumnAction } from "../../../Redux/Actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { createNewColumn } from "../../../Api";
+import { useParams } from "react-router-dom";
 
 const AddColumn = ({ board }) => {
   const dispatch = useDispatch();
+  const { board_id } = useParams();
 
   const formControlRef = useRef(null);
   const [boardData, setBoardData] = useState(board);
@@ -42,8 +44,8 @@ const AddColumn = ({ board }) => {
     let newColumn = { ...boardData };
     newColumn.columns.push(newColumnAdd);
     newColumn.columnOrder.push(newColumnAdd.boardId);
-    console.log(newColumn);
-    addNewColumnAction(newColumn)(dispatch);
+    // console.log(newColumn);
+    addNewColumnAction(board_id, newColumn)(dispatch);
     await createNewColumn(newColumnAdd);
   };
 
@@ -78,7 +80,7 @@ const AddColumn = ({ board }) => {
             <div style={{ marginTop: "10px" }}>
               <Button className={styles.buttonClass} onClick={addFormField}>
                 {" "}
-                Add Card
+                Add List
               </Button>{" "}
               <span className={styles.spanIconFrame}>
                 <FontAwesomeIcon onClick={toggleNewForm} icon={faXmark} />
