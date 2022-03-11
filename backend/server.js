@@ -20,14 +20,16 @@ const session = require('express-session')
 const MongoStore = require("connect-mongo")
 require("dotenv").config()
 
-app.use(session({
-    secret: 'keyboard cat',
+app.use(
+  session({
+    secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-      mongoUrl: process.env.DB_URL
-    })
-  }));
+      mongoUrl: process.env.DB_URL,
+    }),
+  })
+);
 
 var corsOptions = {
   origin: "*",
@@ -35,7 +37,6 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json());
-
 
 app.use("/card", cardRouter);
 app.use("/board", boardRouter);
@@ -48,19 +49,18 @@ app.use((req, res, next, error) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(function(user, cb) {
-    cb(null, user);
-  });
+passport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
 
-  passport.deserializeUser(function(obj, cb) {
-    cb(null, obj);
-  });
+passport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
+});
 
-
-app.use("/auth", authRouter)
-app.use("/card", cardRouter)
-app.use("/user", userRouter)
-app.use("/workspace", workspaceRouter)
+app.use("/auth", authRouter);
+app.use("/card", cardRouter);
+app.use("/user", userRouter);
+app.use("/workspace", workspaceRouter);
 
 const start = async () => {
   await connect();

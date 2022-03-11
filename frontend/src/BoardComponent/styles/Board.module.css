@@ -3,6 +3,5 @@
 .boardContainer {
   height: 100vh;
   display: grid;
-  grid-template-rows: 40px 50px 1fr;
-  background-color: #0079bf;
+  grid-template-rows: 120px 1fr;
 }

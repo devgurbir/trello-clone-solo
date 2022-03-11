@@ -41,10 +41,14 @@
 .titleFormChange {
   background: rgb(217, 220, 223) !important;
   border: rgb(217, 220, 223) !important;
+  height: 40px;
   cursor: pointer;
+  font-size: 16px;
   /* border: none !important; */
 }
-
+.titleFormChange:focus {
+  background: rgb(193, 193, 191) !important;
+}
 .headerText {
   flex: 90%;
   margin-top: 5px;
@@ -113,6 +117,7 @@
   background-color: white;
   border-radius: 4px;
   box-shadow: 3px 3px teal;
+  min-width: 264px;
   /* padding: 10px; */
   margin-bottom: 8px;
   /* margin-top: 14px; */
@@ -120,7 +125,7 @@
 .buttonClass {
   background-color: rgb(19, 121, 191);
   border: none;
-  /* width: 91px; */
+  width: 90px;
   color: white;
   margin-bottom: 10px;
 }

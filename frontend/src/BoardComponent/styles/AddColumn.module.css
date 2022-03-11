@@ -21,7 +21,7 @@
 }
 
 .formInputColumn {
-  max-width: 270px;
+  max-width: 280px;
   background-color: rgb(213, 215, 207);
   line-height: 36px;
   margin-left: 11px;
@@ -29,10 +29,15 @@
   border-radius: 5px;
 }
 .inputForm {
-  border: none;
+  background-color: rgb(193 193 191);
+  border: 0px solid;
   width: 240px;
+  height: 40px;
   margin-left: -5px;
   margin-top: 4px;
+}
+:focus {
+  outline: none;
 }
 
 .buttonClass {

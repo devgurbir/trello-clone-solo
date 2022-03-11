@@ -10,6 +10,7 @@ const CardContainer = () => {
   const { boards } = useSelector((state) => state.boards);
   const dispatch = useDispatch();
   const [board, setBoard] = useState([]);
+  // console.log({ boards });
 
   useEffect(() => {
     getBoardDetails()(dispatch);

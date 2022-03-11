@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addNewColumnAction } from "../../../Redux/Actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { createNewColumn } from "../../../Api";
 
 const AddColumn = ({ board }) => {
   const dispatch = useDispatch();
@@ -27,7 +30,7 @@ const AddColumn = ({ board }) => {
   }, [board]);
 
   const toggleNewForm = () => setToggleForm(!toggleForm);
-  const addFormField = () => {
+  const addFormField = async () => {
     if (!addFormTitle) {
       formControlRef.current.focus();
       return;
@@ -36,7 +39,12 @@ const AddColumn = ({ board }) => {
       title: addFormTitle.trim(),
       boardId: boardData._id,
     };
-    addNewColumnAction(newColumnAdd)(dispatch);
+    let newColumn = { ...boardData };
+    newColumn.columns.push(newColumnAdd);
+    newColumn.columnOrder.push(newColumnAdd.boardId);
+    console.log(newColumn);
+    addNewColumnAction(newColumn)(dispatch);
+    await createNewColumn(newColumnAdd);
   };
 
   return (
@@ -44,9 +52,10 @@ const AddColumn = ({ board }) => {
       {!toggleForm && (
         <Row>
           <Col className={styles.addIframeCol} onClick={toggleNewForm}>
-            <i
-              className="fa fa-plus"
+            <FontAwesomeIcon
               style={{ fontSize: "14px", marginRight: "10px" }}
+              onClick={toggleNewForm}
+              icon={faPlus}
             />
             Add another Column
           </Col>
@@ -72,7 +81,7 @@ const AddColumn = ({ board }) => {
                 Add Card
               </Button>{" "}
               <span className={styles.spanIconFrame}>
-                <i className="fa fa-times" onClick={toggleNewForm}></i>
+                <FontAwesomeIcon onClick={toggleNewForm} icon={faXmark} />
               </span>
             </div>
           </Col>

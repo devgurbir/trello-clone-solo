@@ -1,31 +1,39 @@
 /** @format */
+import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { createNewRow } from "../../../Api";
 import { addNewRowAction } from "../../../Redux/Actions";
 import styles from "../../styles/Column.module.css";
+import getBearerToken from "../../../Utils/GetBearerToken";
 
 const AddCardTitleField = ({ cards, column, grpIndex }) => {
   const dispatch = useDispatch();
   const [addCardTitle, setAddCardTitle] = useState("");
   const [toggleNewCard, setToggleNewCard] = useState(false);
-  const addCardTitleField = () => {
+
+  // const { boards } = useSelector((state) => state.boards);
+
+  const addCardTitleField = async () => {
     if (!addCardTitle) {
       return;
     }
-
+    const token = getBearerToken();
     const newAddCard = {
       boardId: column[grpIndex].boardId,
       columnId: column[grpIndex]._id,
       title: addCardTitle.trim(),
     };
-    addNewRowAction(newAddCard)(dispatch);
-    /** 
-    console.log("cards", column[grpIndex]);
-    let newColumn = { ...column };
-    newColumn[grpIndex].cardOrder.push(newAddCard._id);
-    newColumn[grpIndex].cards.push(newAddCard);
-    */
+
+    // let newColumn = { ...column };
+    // newColumn[grpIndex].cardOrder.push(newAddCard.columnId);
+    // newColumn[grpIndex].row.push(newAddCard);
+    // delete boards[0].columns;
+    // boards[0].columns = [newColumn];
+    addNewRowAction(newAddCard, token)(dispatch);
+    // await createNewRow(newAddCard);
   };
 
   const toggleNewColumnCard = () => setToggleNewCard(!toggleNewCard);
@@ -54,7 +62,7 @@ const AddCardTitleField = ({ cards, column, grpIndex }) => {
               onClick={toggleNewColumnCard}
               className={styles.spanIconFrame}
             >
-              <i className="fa fa-times"></i>
+              <FontAwesomeIcon icon={faXmark} />
             </span>
           </div>
         </div>
@@ -62,9 +70,9 @@ const AddCardTitleField = ({ cards, column, grpIndex }) => {
       {!toggleNewCard && (
         <footer onClick={toggleNewColumnCard} className={styles.footer}>
           <div className={styles.footerAction}>
-            <i
-              className="fa fa-plus"
+            <FontAwesomeIcon
               style={{ fontSize: "14px", marginRight: "10px" }}
+              icon={faPlus}
             />
             Add another Card
           </div>
