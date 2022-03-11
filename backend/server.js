@@ -12,13 +12,13 @@ const cardRouter = require("./Routes/card.routes");
 const boardRouter = require("./Routes/board.routes");
 const columnRouter = require("./Routes/column.routes");
 const rowRouter = require("./Routes/row.routes");
-const passport = require("./Utils/passport");
-const authRouter = require("./Routes/auth.routes");
-const userRouter = require("./Routes/user.routes");
-const workspaceRouter = require("./Routes/workspace.routes");
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
-require("dotenv").config();
+const passport = require('./Utils/passport');
+const authRouter = require("./Routes/auth.routes")
+const userRouter = require("./Routes/user.routes")
+const workspaceRouter = require('./Routes/workspace.routes')
+const session = require('express-session')
+const MongoStore = require("connect-mongo")
+require("dotenv").config()
 
 app.use(
   session({

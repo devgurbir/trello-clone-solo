@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { API_ROOT } from "../utils/constents";
+import { API_ROOT } from "../Utils/constents";
 
 export const fetchBoardDetails = async (id) => {
   const result = await axios.get(`${API_ROOT}/board/${id}`);

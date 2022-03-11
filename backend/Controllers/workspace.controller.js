@@ -22,4 +22,21 @@ const createWorkspace = async (req, res) => {
     }
 }
 
-module.exports = {createWorkspace}
+const getWorkspaceById = async (req, res) => {
+    try {
+        const id = req.params.workspace_id;
+        console.log(id)
+        const workspace = await Workspace.findOne({_id: id});
+
+        if(!workspace){
+            return res.status(404).send({msg:"Workspace not found", workspace: {} })
+        }
+
+        res.status(200).send({msg:"Workspace found", workspace  })
+    } catch (error) {
+        res.status(500).send({msg:"Something went wrong", error})
+    }
+}
+
+
+module.exports = {createWorkspace, getWorkspaceById}
