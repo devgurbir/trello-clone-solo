@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import API_ROOT from "../../Utils/constents"
 
 // action constants
 
@@ -84,7 +85,7 @@ export const createWorkspace = (title, token) => async (dispatch) => {
     try {
         dispatch(createWorkspaceRequest())
     // replace with card_id
-        const workspace = await axios.post(`http://localhost:8000/workspace/create`, {title}, {
+        const workspace = await axios.post(`${API_ROOT}/workspace/create`, {title}, {
             headers: {
                 'Authorization': "Bearer " + token
             } 
@@ -101,7 +102,7 @@ export const getWorkspace = (workspace_id, token) => async (dispatch) => {
     try {
         dispatch(getWorkspaceRequest())
     // replace with card_id
-        const workspace = await axios.get(`http://localhost:8000/workspace/${workspace_id}`, {
+        const workspace = await axios.get(`${API_ROOT}/workspace/${workspace_id}`, {
             headers: {
                 'Authorization': "Bearer " + token
             } 
@@ -116,7 +117,7 @@ export const createBoard = (title, workspace, token) => async (dispatch) => {
     try {
         dispatch(createBoardRequest())
     // replace with card_id
-        const board = await axios.post(`http://localhost:8000/board`, {title, workspace}, {
+        const board = await axios.post(`${API_ROOT}/board`, {title, workspace}, {
             headers: {
                 'Authorization': "Bearer " + token
             } 

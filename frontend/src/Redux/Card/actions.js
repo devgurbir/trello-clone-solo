@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import API_ROOT from "../../Utils/constents"
 // action constants
 
 export const actionConstants = {
@@ -181,7 +181,7 @@ export const getCard = (card_id, token) => async (dispatch) => {
     try {
         dispatch(getCardRequest())
     // replace with card_id
-        const card = await axios.get(`http://localhost:8000/card/${card_id}`, {
+        const card = await axios.get(`${API_ROOT}/card/${card_id}`, {
             headers: {
                 'Authorization': "Bearer " + token
             } 
@@ -196,7 +196,7 @@ export const getCard = (card_id, token) => async (dispatch) => {
 export const updateDesc = (card_id, description) => async (dispatch) => {
     try {
         dispatch(updateCardDescRequest());
-        const desc = await axios.patch(`http://localhost:8000/card/${card_id}/description`,
+        const desc = await axios.patch(`${API_ROOT}/card/${card_id}/description`,
         {description})
         dispatch(updateCardDescSuccess(desc))
     } catch (error) {
@@ -207,7 +207,7 @@ export const updateDesc = (card_id, description) => async (dispatch) => {
 export const updateTitle = (card_id, title) => async (dispatch) => {
     try {
         dispatch(updateCardTitleRequest());
-        const res = await axios.patch(`http://localhost:8000/card/${card_id}/title`,
+        const res = await axios.patch(`${API_ROOT}/card/${card_id}/title`,
         {title})
         dispatch(updateCardTitleSuccess(res))
     } catch (error) {
@@ -218,7 +218,7 @@ export const updateTitle = (card_id, title) => async (dispatch) => {
 export const updateCover = (card_id, cover) => async (dispatch) => {
     try {
         dispatch(updateCardCoverRequest());
-        const res = await axios.patch(`http://localhost:8000/card/${card_id}/cover`,
+        const res = await axios.patch(`${API_ROOT}/card/${card_id}/cover`,
         {cover})
         dispatch(updateCardCoverSuccess(res))
     } catch (error) {
@@ -229,7 +229,7 @@ export const updateCover = (card_id, cover) => async (dispatch) => {
 export const updateLabels = (card_id, labels) => async (dispatch) => {
     try {
         dispatch(updateCardLabelsRequest());
-        const res = await axios.patch(`http://localhost:8000/card/${card_id}/labels`,
+        const res = await axios.patch(`${API_ROOT}/card/${card_id}/labels`,
         {labels})
         dispatch(updateCardLabelsSuccess(res))
     } catch (error) {
@@ -240,7 +240,7 @@ export const updateLabels = (card_id, labels) => async (dispatch) => {
 export const addChecklist = (card_id, title) => async (dispatch) => {
     try {
         dispatch(addChecklistRequest());
-        const data = await axios.post(`http://localhost:8000/card/${card_id}/add-checklist`,
+        const data = await axios.post(`${API_ROOT}/card/${card_id}/add-checklist`,
         {title})
         dispatch(addChecklistSuccess(data))
         // dispatch(getCard(card_id))
@@ -252,7 +252,7 @@ export const addChecklist = (card_id, title) => async (dispatch) => {
 export const addItemChecklist = (card_id, id, title) => async (dispatch) => {
     try {
         dispatch(addItemChecklistRequest());
-        const data = await axios.post(`http://localhost:8000/card/${card_id}/checklist/addItem`,
+        const data = await axios.post(`${API_ROOT}/card/${card_id}/checklist/addItem`,
         {id, title})
         dispatch(addItemChecklistSuccess(data))
         dispatch(getCard(card_id))

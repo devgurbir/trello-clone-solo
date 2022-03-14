@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const passport = require("passport")
 const {generateToken} = require("../Utils/token")
+require("dotenv").config()
 
 router.get('/google',
   passport.authenticate('google', { scope: ['profile', 'email'] }));
@@ -15,12 +16,12 @@ router.get('/google/callback',
     if(req.user.workspaces.length > 0){
       res.status(200).cookie('access_token', 'Bearer ' + token, {
         expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
-      }).redirect(301, `http://localhost:3000/workspace/${req.user.workspaces[0]}`)
+      }).redirect(301, `${process.env.FRONTEND_ROOT}/workspace/${req.user.workspaces[0]}`)
     }
     else{
       res.status(200).cookie('access_token', 'Bearer ' + token, {
         expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
-      }).redirect(301, 'http://localhost:3000/create-first-workspace')
+      }).redirect(301, `${process.env.FRONTEND_ROOT}/create-first-workspace`)
     }
     
     

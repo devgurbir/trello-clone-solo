@@ -3,11 +3,13 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const User = require("../Models/user.model")
 require("dotenv").config()
+// API_ROOT => 
+// FRONTEND_ROOT => xyz.heroku.app
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8000/auth/google/callback"
+    callbackURL: `${process.env.API_ROOT}/auth/google/callback`
   },
   async function(accessToken, refreshToken, profile, cb) {
     const userEmail = profile?._json?.email;

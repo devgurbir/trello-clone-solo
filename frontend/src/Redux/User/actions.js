@@ -1,4 +1,5 @@
 import axios from 'axios'
+import API_ROOT from "../../Utils/constents"
 
 // action constants
 
@@ -36,7 +37,7 @@ const getUserFailure = (err) => {
 export const getUser = (token) => async (dispatch) => {
     try {
         dispatch(getUserRequest());
-        const user = await axios.get("http://localhost:8000/user", {
+        const user = await axios.get(`${API_ROOT}/user`, {
                 headers: {
                 'Authorization': "Bearer " + token
                 }        

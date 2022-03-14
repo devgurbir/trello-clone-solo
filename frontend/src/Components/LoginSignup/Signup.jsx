@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './loginSignup.module.css'
 import OAuthButton from './OAuthButton'
 import { useState } from 'react'
+import { API_ROOT } from '../../Utils/constents'
+
 const Signup = () => {
     const [val, setVal] = useState("")
 
@@ -22,7 +24,7 @@ const Signup = () => {
                         OR
                     </div>
                     <div className={styles.loginMethodContainer}>
-                        <OAuthButton loginUrl="http://localhost:8000/auth/google" label="Google" url="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg" />
+                        <OAuthButton loginUrl={`${API_ROOT}/auth/google`} label="Google" url="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg" />
                         <OAuthButton label="Microsoft" url="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/72ece804e5285ab6507e2406157cda3c/microsoft-logo.svg" />
                     </div>
                 </div>  
