@@ -18,20 +18,22 @@ import {
 import { faTrello } from "@fortawesome/free-brands-svg-icons";
 import { useSelector } from "react-redux";
 import "../AppBar/appbar.scss";
+import styles from "../AppBar/appbar.module.css";
+
 const AppBar = () => {
-  const board_title = useSelector( state => state.boards?.boards[0]?.title)
-  console.log(board_title)
+  const board_title = useSelector((state) => state.boards?.boards[0]?.title);
+  console.log(board_title);
   return (
     <div className="app">
       <header className="app-header">
         <div className="left">
-          <div className="btn">
+          <div className={styles.btn}>
             <FontAwesomeIcon icon={faHouse} />
           </div>
-          <div className="btn btn-text">
+          <div className={styles.btn}>
             <FontAwesomeIcon icon={faTrello} /> Boards
           </div>
-          <div className="btn search">
+          <div className={styles.btnSearch}>
             <FontAwesomeIcon icon={faSearch} />
           </div>
         </div>
@@ -41,19 +43,19 @@ const AppBar = () => {
           </div>
         </div>
         <div className="right">
-          <div className="btn">
+          <div className={styles.onlyBtn}>
             <FontAwesomeIcon icon={faPlus} />
           </div>
-          <div className="btn">
+          <div className={styles.onlyBtn}>
             <FontAwesomeIcon icon={faCircleInfo} />
           </div>
-          <div className="btn">
+          <div className={styles.onlyBtn}>
             <FontAwesomeIcon icon={faBell} />
           </div>
-          <div className="btn">
+          <div className={styles.onlyBtn}>
             <FontAwesomeIcon icon={faCog} />
           </div>
-          <div className="btn">
+          <div className={styles.onlyBtn}>
             <FontAwesomeIcon icon={faUserTie} />
           </div>
         </div>
@@ -63,22 +65,22 @@ const AppBar = () => {
         <header className="board-header">
           <div className="left">
             <div className="title">
-              <FontAwesomeIcon icon={faCoffee} />
+              <FontAwesomeIcon icon={faStar} />
               <span>{board_title}</span>
             </div>
-            <div className="btn">
+            <div className={styles.onlyBtn}>
               <FontAwesomeIcon icon={faStar} />
             </div>
-            <div className="btn">Personal</div>
-            <div className="btn btn-text">
+            <div className={styles.onlyBtn}>Personal</div>
+            <div className={styles.btn}>
               <FontAwesomeIcon icon={faLock} /> Private
             </div>
           </div>
           <div className="right">
-            <div className="btn btn-text">
+            <div className={styles.btn}>
               <FontAwesomeIcon icon={faMale} /> Butler
             </div>
-            <div className="btn btn-text">
+            <div className={styles.btn}>
               <FontAwesomeIcon icon={faEllipsisH} /> Menu
             </div>
           </div>

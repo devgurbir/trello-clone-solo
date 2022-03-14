@@ -16,15 +16,7 @@ export const updateColumnTitle = async (id, data) => {
   const result = await axios.put(`${API_ROOT}/column/${id}`, { title: data });
   return result.data;
 };
-
-// export const createNewRow = async (data,token) => {
-//   // console.log(token);
-//   const result = await axios.post(`${API_ROOT}/row`, data);
-//   return result.data;
-// };
-
 export const createNewRow = async (data, token) => {
-  // console.log(token);
   const result = await axios.post(`${API_ROOT}/card/create`, data, {
     headers: {
       Authorization: "Bearer " + token,
@@ -34,6 +26,5 @@ export const createNewRow = async (data, token) => {
 };
 
 export const removeColumn = async (id) => {
-  const result = await axios.delete(`${API_ROOT}/column/${id}`);
-  // console.log(result);
+  await axios.delete(`${API_ROOT}/column/${id}`);
 };

@@ -1,0 +1,45 @@
+/** @format */
+
+.btn {
+  padding: 0.5rem;
+  color: #fff;
+  background: #e1dede70;
+  border-radius: 4px;
+  margin-right: 0.25rem;
+}
+.onlyBtn {
+  padding: 0.5rem;
+  color: #fff;
+  background: #e1dede70;
+  border-radius: 4px;
+}
+.btntext {
+  margin-right: 0.25rem;
+}
+.app {
+  --app-col: #1976d2;
+}
+.btnSearch {
+  padding: 0.5rem;
+  color: #fff;
+  background: #e1dede70;
+  border-radius: 4px;
+  margin-right: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  min-width: 200px;
+}
+.appboard {
+  display: grid;
+  grid-template-rows: max-content auto;
+  background: #e1dede70;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  padding: 0.5rem;
+  display: grid;
+  align-items: center;
+  color: var(--app-col);
+  justify-content: end;
+  font-weight: 700;
+  font-size: 1.25em;
+}

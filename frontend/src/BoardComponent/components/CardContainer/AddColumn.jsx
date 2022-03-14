@@ -44,7 +44,6 @@ const AddColumn = ({ board }) => {
     let newColumn = { ...boardData };
     newColumn.columns.push(newColumnAdd);
     newColumn.columnOrder.push(newColumnAdd.boardId);
-    // console.log(newColumn);
     addNewColumnAction(board_id, newColumn)(dispatch);
     await createNewColumn(newColumnAdd);
   };
