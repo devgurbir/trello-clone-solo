@@ -1,25 +1,134 @@
 .listHeader {
-    min-height: 20px;
-    padding: 10px 8px;
+  min-height: 20px;
+  padding: 10px 8px;
 }
 
 .listTitle {
-    overflow: hidden;
-    overflow-wrap: break-word;
-    height: 28px;
-    background: #0000;
-    border: 0px;
-    border-radius: 3px;
-    box-shadow: none;
-    font-weight: 600;
-    max-height: 256px;
-    min-height: 20px;
-    /* padding: 4px 8px; */
-    resize: none;
-    width: 100%;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  height: 28px;
+  background: #0000;
+  border: 0px;
+  border-radius: 3px;
+  box-shadow: none;
+  font-weight: 600;
+  max-height: 256px;
+  min-height: 20px;
+  /* padding: 4px 8px; */
+  resize: none;
+  width: 100%;
 }
 
 .isEditing {
-    background-color: #fff;
-    box-shadow: inset 0 0 0 2px #0079bf;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 2px #0079bf;
+}
+
+.addCard {
+  border-radius: 3px;
+  color: #5e6c84;
+  display: block;
+  flex: 1 0 auto;
+  /* margin: 2px 0 8px 8px; */
+  padding: 4px 0px 8px 0px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.addCardTextarea {
+  background: #fff;
+  border: none;
+  box-shadow: none;
+  height: auto;
+  margin-bottom: 8px;
+  max-height: 162px;
+  min-height: 54px;
+  overflow-y: auto;
+  padding: 8px 4px;
+  resize: vertical;
+  width: 100%;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: block;
+  line-height: 20px;
+  outline: none;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+}
+
+.addCardOpen {
+  margin-bottom: 8px;
+  /* box-sizing: border-box; */
+}
+
+.addCardOpen > div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.addCardOpen button {
+  background-color: #0079bf;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 20px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  text-decoration: none;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  white-space: normal;
+  align-items: center;
+}
+
+.addList {
+  width: 272px;
+  margin: 0 4px;
+  vertical-align: top;
+  box-sizing: border-box;
+  /* padding: 18px; */
+}
+
+.addListTextarea {
+  background-color: #fff;
+  box-shadow: inset 0 0 0 2px #0079bf;
+  display: block;
+  margin-bottom: 8px;
+  transition: margin 85ms ease-in, 85ms ease-in;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  /* line-height: 20px; */
+  outline: none;
+  padding: 8px 12px;
+}
+
+.addListClose {
+  background-color: rgba(235, 236, 240, 0.5);
+  color: black;
+  /* color: white; */
+  padding: 9px 12px;
+  transition: color 85ms ease-in;
+  border-radius: 3px;
+  height: auto;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }

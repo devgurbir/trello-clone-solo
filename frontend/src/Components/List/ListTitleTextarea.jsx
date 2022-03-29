@@ -1,15 +1,35 @@
-import React from 'react'
-import styles from './list.module.css'
-import { useState } from 'react'
+import React from "react";
+import styles from "./list.module.css";
+import { useState, useRef } from "react";
 
-const ListTitleTextarea = () => {
-const [isEditing, setIsEditing] = useState(false)
-  if(isEditing){
-      return <textarea spellcheck="false" onBlur = { () => setIsEditing(false)} className={styles.listTitle + " " + styles.isEditing} value="Editing List Title Textarea" />
-  }
-  else{
-      return <textarea spellcheck="false" onFocus = { () => setIsEditing(true)} className={styles.listTitle} value="List Title Textarea" />
-  }
-}
+const ListTitleTextarea = ({ title }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const inputRef = useRef(null);
+  const handleEdit = () => {
+    setIsEditing(true);
+    // inputRef.current.focus();
+  };
+  return (
+    <>
+      {isEditing ? (
+        <textarea
+          ref={inputRef}
+          spellcheck="false"
+          onBlur={() => setIsEditing(false)}
+          className={styles.listTitle + " " + styles.isEditing}
+          value={title}
+        />
+      ) : (
+        <textarea
+          ref={inputRef}
+          spellcheck="false"
+          onClick={handleEdit}
+          className={styles.listTitle}
+          value={title}
+        />
+      )}
+    </>
+  );
+};
 
-export default ListTitleTextarea
+export default ListTitleTextarea;

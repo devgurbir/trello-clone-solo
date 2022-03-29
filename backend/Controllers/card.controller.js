@@ -3,24 +3,27 @@
 const Card = require("../Models/card.model");
 const mongoose = require("mongoose");
 const Column = require("../Models/column.model");
+const List = require("../Models/list.model");
 
 // Create
 const createCard = async (req, res) => {
   try {
-    console.log(req.body);
-    const row = await Card.create({
+    const card = await Card.create({
       ...req.body,
-      author: "xcv",
+      author: req.user._id,
     });
-    console.log(row);
-    const result = await Column.findByIdAndUpdate(
-      row.columnId,
-      { $push: { cardOrder: row._id } },
+
+    console.log(card);
+    const list = await List.findByIdAndUpdate(
+      req.body.list,
+      {
+        $push: { cards: { _id: card._id, title: card.title } },
+      },
       { returnOriginal: false }
     );
 
-    if (row) return res.status(201).send({ msg: "column created", result });
-    return res.status(404).json({ message: "column not found" });
+    if (!card) return res.status(401).send({ msg: "Card not created" });
+    return res.status(201).json({ message: "Card created", card, list });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }

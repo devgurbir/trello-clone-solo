@@ -1,13 +1,19 @@
-import React from 'react'
-import SingleListCard from '../Card/SingleListCard'
-import StyledListCardWrapper from './Styled/StyledListCardWrapper'
+import React from "react";
+import SingleListCard from "../Card/SingleListCard";
+import AddCard from "./AddCard";
 
-const ListCards = ({cards}) => {
+import StyledListCardWrapper from "./Styled/StyledListCardWrapper";
+
+const ListCards = ({ cards, id }) => {
   return (
     <StyledListCardWrapper>
-        {cards?.map(el => <SingleListCard info = {el} />)}
+      {cards?.map((el) => (
+        <SingleListCard key={el._id} id={el._id} title={el.title} />
+      ))}
+      {/* <AddCard /> */}
+      <AddCard id={id} />
     </StyledListCardWrapper>
-  )
-}
+  );
+};
 
-export default ListCards
+export default ListCards;

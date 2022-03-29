@@ -1,25 +1,23 @@
-import React from 'react'
-import ListHeader from './ListHeader.jsx'
-import StyledListContent from './Styled/StyledListContent.jsx'
-import StyledListWrapper from './Styled/StyledListWrapper.jsx'
-import ListCards from './ListCards.jsx'
+import React from "react";
+import ListHeader from "./ListHeader.jsx";
+import StyledListContent from "./Styled/StyledListContent.jsx";
+import StyledListWrapper from "./Styled/StyledListWrapper.jsx";
+import ListCards from "./ListCards.jsx";
 
-const cardArr = ["Card #1", "Card #2", "Card #3"]
-
-const List = () => {
+const List = ({ cards, title, id }) => {
   return (
     <StyledListWrapper>
-        <StyledListContent>
-          {/* List Header */}
-          <ListHeader />
-          
-          {/* List Cards */}
-          <ListCards cards = {cardArr} />                
-          
-        {/* <div>Add Card</div> */}
-        </StyledListContent>
-    </StyledListWrapper>
-  )
-}
+      <StyledListContent>
+        {/* List Header */}
+        <ListHeader title={title} />
 
-export default List
+        {/* List Cards */}
+        <ListCards cards={cards} id={id} />
+
+        {/* <div>Add Card</div> */}
+      </StyledListContent>
+    </StyledListWrapper>
+  );
+};
+
+export default List;

@@ -19,11 +19,9 @@ const cardSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
-    boardId: { type: String, required: true },
-    columnId: { type: String, required: true },
+    list: { type: String, required: true },
     isPrivate: { type: Boolean, default: true },
     members: { type: Array, default: [] },
-    lists: { type: String }, // needs to be required
     board: { type: String }, // needs to be required
     description: { type: String, default: "" },
     activity: { type: Array, default: [] },

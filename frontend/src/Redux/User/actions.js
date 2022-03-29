@@ -1,5 +1,5 @@
 import axios from 'axios'
-import API_ROOT from "../../Utils/constents"
+import {API_ROOT} from "../../Utils/constents"
 
 // action constants
 

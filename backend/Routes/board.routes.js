@@ -1,10 +1,14 @@
 /** @format */
 
 const express = require("express");
-const { createBoard, getAllBoard } = require("../Controllers/board.controller");
+const {
+  createBoard,
+  getBoardById,
+} = require("../Controllers/board.controller");
 const router = express.Router();
+const checkAuthenticated = require("../Middlewares/checkAuthenticated");
 
-router.post("/", createBoard);
-router.get("/:id", getAllBoard);
+router.post("/create", checkAuthenticated, createBoard);
+router.get("/:id", getBoardById);
 
 module.exports = router;

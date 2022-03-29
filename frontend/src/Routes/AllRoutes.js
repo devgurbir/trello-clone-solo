@@ -1,7 +1,5 @@
-/** @format */
-
 import { Route, Switch } from "react-router-dom";
-import Board from "../BoardComponent/index";
+// import Board from "../BoardComponent/index";
 import SingleCard from "../Components/Card/SingleCard";
 import LabelWrapper from "../Components/Label/LabelWrapper";
 import Homepage from "../Components/Homepage/Homepage";
@@ -17,7 +15,9 @@ import { getUser } from "../Redux/User/actions";
 import getBearerToken from "../Utils/GetBearerToken";
 import Loading from "../Components/Loading";
 import SingleWorkspace from "../Components/Workspace/SingleWorkspace";
-import AppBar from "../BoardComponent/components/AppBar";
+import List from "../Components/List/List";
+import Board from "../Components/Board/Board";
+// import AppBar from "../BoardComponent/components/AppBar";
 function AllRoutes() {
   // let isLoading = useSelector(state => state.user.isLoading)
   let isAuthenticated = useSelector((state) => state.user.isAuthenticated);
@@ -36,14 +36,17 @@ function AllRoutes() {
     <Switch>
       <Route exact path="/">
         <Homepage />
+        {/* <List />
+        <List />
+        <List /> */}
       </Route>
-      <Route exact path="/appbar">
+      {/* <Route exact path="/appbar">
         <AppBar />
-      </Route>
+      </Route> */}
       <Route exact path="/board/:board_id">
         <Board />
       </Route>
-      
+
       <Route exact path="/login">
         <Layout>
           <Login />
@@ -62,9 +65,8 @@ function AllRoutes() {
         )}
       </Route>
       <Route exact path="/card/:card_id">
-        <Board />
+        {/* <Board /> */}
         <SingleCard />
-        
       </Route>
       <Route exact path="/workspace/:workspace_id">
         <SingleWorkspace />

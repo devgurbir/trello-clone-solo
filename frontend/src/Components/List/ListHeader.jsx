@@ -1,13 +1,13 @@
-import React from 'react'
-import styles from './list.module.css'
-import ListTitleTextarea from './ListTitleTextarea'
+import React from "react";
+import styles from "./list.module.css";
+import ListTitleTextarea from "./ListTitleTextarea";
 
-const ListHeader = () => {
+const ListHeader = ({ title }) => {
   return (
     <div className={styles.listHeader}>
-        <ListTitleTextarea />
+      <ListTitleTextarea title={title} />
     </div>
-  )
-}
+  );
+};
 
-export default ListHeader
+export default ListHeader;

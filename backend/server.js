@@ -16,6 +16,7 @@ const passport = require("./Utils/passport");
 const authRouter = require("./Routes/auth.routes");
 const userRouter = require("./Routes/user.routes");
 const workspaceRouter = require("./Routes/workspace.routes");
+const listRouter = require("./Routes/list.routes");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 require("dotenv").config();
@@ -42,10 +43,10 @@ app.use("/card", cardRouter);
 app.use("/board", boardRouter);
 app.use("/column", columnRouter);
 app.use("/row", rowRouter);
-app.use((req, res, next, error) => {
-  console.log(error);
-  res.send(error);
-});
+// app.use((req, res, next, error) => {
+//   console.log(error);
+//   res.send(error);
+// });
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -61,6 +62,7 @@ app.use("/auth", authRouter);
 app.use("/card", cardRouter);
 app.use("/user", userRouter);
 app.use("/workspace", workspaceRouter);
+app.use("/list", listRouter);
 
 const start = async () => {
   await connect();
