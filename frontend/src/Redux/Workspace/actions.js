@@ -116,23 +116,24 @@ export const getWorkspace = (workspace_id, token) => async (dispatch) => {
   }
 };
 
-export const createBoard = (title, workspace, token) => async (dispatch) => {
-  try {
-    dispatch(createBoardRequest());
-    // replace with card_id
-    const board = await axios.post(
-      `http://localhost:8000/board/create`,
-      { title, workspace },
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
-    console.log(board.data.board._id);
-    dispatch(createBoardSuccess(board.data.board));
-    window.location.href = `/board/${board.data.board._id}`;
-  } catch (error) {
-    dispatch(createBoardFailure(error));
-  }
-};
+export const createBoard =
+  (title, workspace, background, token) => async (dispatch) => {
+    try {
+      dispatch(createBoardRequest());
+      // replace with card_id
+      const board = await axios.post(
+        `http://localhost:8000/board/create`,
+        { title, workspace, background },
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log(board.data.board._id);
+      dispatch(createBoardSuccess(board.data.board));
+      window.location.href = `/board/${board.data.board._id}`;
+    } catch (error) {
+      dispatch(createBoardFailure(error));
+    }
+  };

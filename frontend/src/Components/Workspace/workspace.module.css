@@ -1,61 +1,63 @@
 .header {
-    background-color: #f4f5f7;
-    padding: 42px;
-    border-bottom: 1px solid #dfe1e6;
+  background-color: #f4f5f7;
+  padding: 42px;
+  border-bottom: 1px solid #dfe1e6;
 }
 
 .header > h1 {
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 28px;
-    color: #172b4d;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #172b4d;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .wrapper {
-    height: 100vh;
-    display: flex;
+  height: 100vh;
+  display: flex;
 }
 
 .left {
-    background-color: #fafbfc;
-    width: 20%;
-    border-right: 1px solid #dfe1e6;
+  background-color: #fafbfc;
+  width: 20%;
+  border-right: 1px solid #dfe1e6;
 }
 
 .right {
-    background-color: #fff;
-    width: 80%;
-    padding: 24px;
+  background-color: #fff;
+  width: 80%;
+  padding: 24px;
 }
 
 .boardBox {
-    background-color: #091e420a;
-    border: none;
-    box-shadow: none;
-    color: #172b4d;
-    font-weight: 400;
-    height: 80px;
-    width: 180px;
-    text-align: center;
-    transition-duration: 85ms;
-    transition-property: background-color,border-color,box-shadow;
-    transition-timing-function: ease;
-    box-sizing: border-box;
-    border-radius: 3px;
-    padding: 18px;
-    position: relative;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  background-color: #091e420a;
+  border: none;
+  box-shadow: none;
+  color: #172b4d;
+  font-weight: 400;
+  height: 80px;
+  /* width: 180px; */
+  width: 25%;
+  text-align: center;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 18px;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .boardsList {
-    margin-top: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }

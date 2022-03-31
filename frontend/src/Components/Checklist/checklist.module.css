@@ -1,224 +1,223 @@
 .checklist {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .checklistHeader {
-    display: flex;
-    align-items: center;
-    gap:15px
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .checklistTitle {
-    width:100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .checklistButton {
-    align-items: center;
-    background-color: #091e420a;
-    border: none;
-    border-radius: 3px;
-    box-shadow: none;
-    box-sizing: border-box;
-    color: #172b4d;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    justify-content: center;
-    line-height: 20px;
-    padding: 6px 12px;
-    text-decoration: none;
-    transition-duration: 85ms;
-    transition-property: background-color,border-color,box-shadow;
-    transition-timing-function: ease;
-    white-space: normal;
+  align-items: center;
+  background-color: #091e420a;
+  border: none;
+  border-radius: 3px;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #172b4d;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 20px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  white-space: normal;
 }
 
 .checkListItemsList {
-    min-height: 8px;
+  min-height: 8px;
 }
 
 .checkListItem {
-    display:flex;
-    align-items: center;
-    gap:15px;
-    padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 6px 0;
 }
 
 .checkListAddItem {
-    overflow: hidden;
-    overflow-wrap: break-word;
-    height: 56px;
-    background-color: #fff;
-    box-shadow: inset 0 0 0 2px #0079bf;
-    color: #172b4d;
-    cursor: text;
-    float: none;
-    resize: vertical;
-    width: 100%;
-    webkit-appearance: none;
-    border: none;
-    border-radius: 3px;
-    box-sizing: border-box;
-    display: block;
-    line-height: 20px;
-    outline: none;
-    padding: 8px 12px;
-    transition-duration: 85ms;
-    transition-property: background-color,border-color,box-shadow;
-    transition-timing-function: ease;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  height: 56px;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 2px #0079bf;
+  color: #172b4d;
+  cursor: text;
+  float: none;
+  resize: vertical;
+  width: 100%;
+  webkit-appearance: none;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: block;
+  line-height: 20px;
+  outline: none;
+  padding: 8px 12px;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
 }
 
 .addButtonBlue {
-    background-color: #0079bf;
-    border: none;
-    box-shadow: none;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 400;
-    justify-content: center;
-    line-height: 20px;
-    padding: 6px 12px;
-    text-decoration: none;
-    transition-duration: 85ms;
-    transition-property: background-color,border-color,box-shadow;
-    transition-timing-function: ease;
-    white-space: normal;
-    border-radius: 3px;
-    cursor: pointer;
+  background-color: #0079bf;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 20px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  white-space: normal;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .checklistAddItemsControl {
-    border-color: #0000;
-    border-radius: 3px;
-    color: #5e6c84;
-    display: block;
-    margin: 0 2px;
-    max-width: 160px;
-    overflow: hidden;
-    padding: 6px 8px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    background-color: initial;
-    font-size: 14px
+  border-color: #0000;
+  border-radius: 3px;
+  color: #5e6c84;
+  display: block;
+  margin: 0 2px;
+  max-width: 160px;
+  overflow: hidden;
+  padding: 6px 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: initial;
+  font-size: 14px;
 }
 
 .checkListProgress {
-    margin-top:12px;
-    margin-bottom: 6px;
-    position: relative;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  position: relative;
 }
 
 .checklistProgressPercentage {
-    color: #5e6c84;
-    font-size: 11px;
-    left: 0;
-    line-height: 10px;
-    position: absolute;
-    text-align: center;
-    top: -1px;
-    width: 32px;
+  color: #5e6c84;
+  font-size: 11px;
+  left: 0;
+  line-height: 10px;
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  width: 32px;
 }
 
 .checkListProgressBar {
-    background: #091e4214;
-    border-radius: 4px;
-    clear: both;
-    height: 8px;
-    margin: 0 0 0 40px;
-    overflow: hidden;
-    position: relative;
+  background: #091e4214;
+  border-radius: 4px;
+  clear: both;
+  height: 8px;
+  margin: 0 0 0 40px;
+  overflow: hidden;
+  position: relative;
 }
 
 .checklistProgresBarCurrent {
-    background: #5ba4cf;
-    
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transition-duration: .14s;
-    transition-property: width,background;
-    transition-timing-function: ease-in;
+  background: #5ba4cf;
+
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition-duration: 0.14s;
+  transition-property: width, background;
+  transition-timing-function: ease-in;
 }
 
 .popup {
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
-    overflow: hidden;
-    width: 304px;
-    z-index: 1170;
-    padding: 0 12px 12px;
-    position: absolute;
-    /* Remove transform later. */
-    transform: translateX(-50%); 
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+  overflow: hidden;
+  width: 304px;
+  z-index: 1170;
+  padding: 0 12px 12px;
+  position: absolute;
+  /* Remove transform later. */
+  transform: translateX(-50%);
 }
 
 .popUpHeader {
-    height: 40px;
-    margin-bottom: 8px;
-    position: relative;
-    text-align: center;
+  height: 40px;
+  margin-bottom: 8px;
+  position: relative;
+  text-align: center;
 }
 
 .popupHeaderTitle {
-    margin-bottom: 8px;
-    border-bottom: 1px solid rgba(9,30,66,.13);
-    box-sizing: border-box;
-    color: #5e6c84;
-    display: block;
-    line-height: 40px;
-    overflow: hidden;
-    /* padding: 0 32px; */
-    position: relative;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    z-index: 1;
-    text-align: center;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+  box-sizing: border-box;
+  color: #5e6c84;
+  display: block;
+  line-height: 40px;
+  overflow: hidden;
+  /* padding: 0 32px; */
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 1;
+  text-align: center;
 }
 
 .popUpHeaderClose {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(-50%, -50%);
-    
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
 }
 
 .popUpInput {
-    margin: 4px 0 12px;
-    width: 100%;
+  margin: 4px 0 12px;
+  width: 100%;
 }
 
 .input {
-    -webkit-appearance: none;
-    background-color: #fafbfc;
-    border: none;
-    border-radius: 3px;
-    box-shadow: inset 0 0 0 2px #dfe1e6;
-    box-sizing: border-box;
-    display: block;
-    line-height: 20px;
-    margin-bottom: 12px;
-    outline: none;
-    padding: 8px 12px;
-    transition-duration: 85ms;
-    transition-property: background-color,border-color,box-shadow;
-    transition-timing-function: ease;
+  -webkit-appearance: none;
+  background-color: #fafbfc;
+  border: none;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px #dfe1e6;
+  box-sizing: border-box;
+  display: block;
+  line-height: 20px;
+  margin-bottom: 12px;
+  outline: none;
+  padding: 8px 12px;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
 }
 
 .popOverContent {
-    overflow-x: hidden;
-    overflow-y: auto;
-    
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .popUpInput:focus {
-    background-color: #fff;
-    box-shadow: inset 0 0 0 2px #0079bf;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 2px #0079bf;
 }

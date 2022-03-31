@@ -4,7 +4,7 @@ import styles from "./list.module.css";
 import AddListOpen from "./AddListOpen";
 import AddListClose from "./AddListClose";
 const AddList = () => {
-  const [isAdding, setIsAdding] = useState(true);
+  const [isAdding, setIsAdding] = useState(false);
   const handleSetAdd = () => {
     setIsAdding(!isAdding);
   };

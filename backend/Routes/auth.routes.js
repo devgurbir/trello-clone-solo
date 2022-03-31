@@ -24,7 +24,7 @@ router.get(
         })
         .redirect(
           301,
-          `http://localhost:3001/workspace/${req.user.workspaces[0]}`
+          `http://localhost:3000/workspace/${req.user.workspaces[0]}`
         );
     } else {
       res
@@ -32,7 +32,7 @@ router.get(
         .cookie("access_token", "Bearer " + token, {
           expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
         })
-        .redirect(301, `http://localhost:3001/create-first-workspace`);
+        .redirect(301, `http://localhost:3000/create-first-workspace`);
     }
   }
 );

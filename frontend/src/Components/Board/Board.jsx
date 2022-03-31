@@ -16,7 +16,7 @@ const Board = () => {
     dispatch(getBoard(board_id));
   }, []);
   return (
-    <StyledBoardLayout>
+    <StyledBoardLayout bgColor={boardData.background}>
       <nav className={styles.nav}></nav>
       <div className={styles.container}>
         <aside className={styles.aside}></aside>

@@ -1,6 +1,21 @@
 .listHeader {
   min-height: 20px;
   padding: 10px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.threeDots {
+  color: #6b778c;
+  cursor: pointer;
+}
+
+.threeDots:hover {
+  background-color: hsla(0, 0%, 0%, 0.16);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
 }
 
 .listTitle {
@@ -16,7 +31,7 @@
   min-height: 20px;
   /* padding: 4px 8px; */
   resize: none;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .isEditing {
@@ -101,6 +116,7 @@
   margin: 0 4px;
   vertical-align: top;
   box-sizing: border-box;
+  color: #fff;
   /* padding: 18px; */
 }
 
@@ -120,9 +136,10 @@
 }
 
 .addListClose {
-  background-color: rgba(235, 236, 240, 0.5);
-  color: black;
-  /* color: white; */
+  background-color: #ffffff3d;
+  cursor: pointer;
+  /* color: black; */
+  color: white;
   padding: 9px 12px;
   transition: color 85ms ease-in;
   border-radius: 3px;
@@ -131,4 +148,48 @@
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.popUp {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+  overflow: hidden;
+  width: 304px;
+  z-index: 1170;
+  padding: 0 12px 12px;
+  position: absolute;
+  /* left: 20em; */
+  /* Remove transform later. */
+  transform: translate(70%);
+}
+
+.popUpHeader {
+  height: 40px;
+  margin-bottom: 8px;
+  position: relative;
+  text-align: center;
+}
+
+.popupHeaderTitle {
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+  box-sizing: border-box;
+  color: #5e6c84;
+  display: block;
+  line-height: 40px;
+  overflow: hidden;
+  /* padding: 0 32px; */
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 1;
+  text-align: center;
+}
+
+.popUpHeaderClose {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
 }

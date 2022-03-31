@@ -1,31 +1,205 @@
 .nav {
   height: 60px;
   width: 100%;
-  border-bottom: 1px solid #ccc;
+
+  background-color: hsla(0, 0%, 0%, 0.16);
 }
 
 .container {
   display: flex;
-  height: 100%;
+  height: calc(100vh - 60px);
 }
 
 .aside {
-  width: 260px;
+  min-width: 260px;
   height: 100%;
-  background-color: inherit;
-  border-right: 1px solid #ccc;
+  background-color: hsla(0, 0%, 0%, 0.16);
+
   transition: background-color 600ms;
 }
 
 .main {
+  min-width: calc(100% - 260px);
   height: 100%;
   background-color: inherit;
   padding: 16px;
   overflow-x: auto;
+  border-top: 2px solid #ccc;
+  border-left: 3px solid #ccc;
 }
 
 .boardLists {
   display: inline-flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+}
+
+.boardBoxTile {
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  justify-content: space-between;
+  position: relative;
+  color: #fff;
+  line-height: 20px;
+  padding: 8px;
+  position: relative;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.popUp {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+  overflow: hidden;
+  width: 304px;
+  z-index: 1170;
+  padding: 0 12px 12px;
+  position: absolute;
+  left: 20em;
+  /* Remove transform later. */
+  transform: translateX(-50%);
+}
+
+.popUpHeader {
+  height: 40px;
+  margin-bottom: 8px;
+  position: relative;
+  text-align: center;
+}
+
+.popupHeaderTitle {
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+  box-sizing: border-box;
+  color: #5e6c84;
+  display: block;
+  line-height: 40px;
+  overflow: hidden;
+  /* padding: 0 32px; */
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 1;
+  text-align: center;
+}
+
+.popUpHeaderClose {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
+.skeleton {
+  max-width: 60%;
+  padding: 1em;
+  margin: 1em auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.label {
+  color: #5e6c84;
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  margin-bottom: 4px px;
+  margin-top: 12px;
+}
+
+.colorBoxesDiv {
+  display: flex;
+  gap: 0.5em;
+}
+
+.colorBoxes {
+  width: 40px;
+  height: 32px;
+  outline: 0;
+  border: 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.required {
+  color: #eb5a46;
+  margin-left: 2px;
+}
+
+.boardTitle {
+  margin-top: 2px;
+  box-shadow: inset 0 0 0 2px #eb5a46;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  color: #172b4d;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 85ms;
+  transition-timing-function: ease;
+  border-radius: 3px;
+  padding: 8px 12px;
+  background-color: #fafbfc;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.boardTitleReqired {
+  display: flex;
+  flex-direction: row;
+}
+
+.boardTitleReqired > span {
+  margin-right: 8px;
+}
+
+.boardTitleReqired > p {
+  color: #172b4d;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.createButton {
+  background-color: #0079bf;
+  box-shadow: none;
+  border: none;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif !important;
+  width: 100%;
+  margin-top: 0.5em;
+
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.createButton:disabled {
+  background-color: rgba(9, 30, 66, 0.04);
+  box-shadow: none;
+  border: none;
+  color: #a5adba;
+  cursor: not-allowed;
 }

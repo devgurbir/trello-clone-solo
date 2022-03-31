@@ -12,6 +12,7 @@ const createBoard = async (req, res) => {
     const board = await Board.create({
       title: req.body.title,
       workspace: req.body.workspace,
+      background: req.body.background,
       owner: req.user._id,
     });
 
@@ -19,7 +20,15 @@ const createBoard = async (req, res) => {
 
     const workspace = await Workspace.updateOne(
       { _id: board.workspace },
-      { $push: { boards: board._id } }
+      {
+        $push: {
+          boards: {
+            _id: board._id,
+            title: board.title,
+            background: board.background,
+          },
+        },
+      }
     );
 
     return res.status(201).send({ msg: "Board created", board, workspace });
