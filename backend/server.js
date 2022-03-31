@@ -66,7 +66,7 @@ app.use("/list", listRouter);
 const start = async () => {
   await connect();
 
-  app.listen(process.env.PORT, () => {
+  app.listen(process.env.$PORT, () => {
     console.log("listening");
   });
 };
