@@ -6,7 +6,6 @@ const connect = require("./config/db");
 const app = express();
 
 const User = require("./Models/user.model");
-const PORT = process.env.PORT || "8000";
 const mongoose = require("mongoose");
 const cardRouter = require("./Routes/card.routes");
 const boardRouter = require("./Routes/board.routes");
@@ -67,8 +66,8 @@ app.use("/list", listRouter);
 const start = async () => {
   await connect();
 
-  app.listen(PORT, () => {
-    console.log("listening on port 8000");
+  app.listen(process.env.PORT, () => {
+    console.log("listening");
   });
 };
 
