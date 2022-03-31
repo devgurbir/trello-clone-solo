@@ -27,7 +27,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-      mongoUrl: process.env.DB_URL,
+      mongoUrl: process.env.DATABASE_URL,
     }),
   })
 );
