@@ -78,7 +78,7 @@ const createListFailure = () => {
 export const getBoard = (board_id) => async (dispatch) => {
   try {
     dispatch(getBoardRequest());
-    const board = await axios.get(`http://localhost:8000/board/${board_id}`);
+    const board = await axios.get(`http://localhost:5000/board/${board_id}`);
 
     // console.log(board.data);
 

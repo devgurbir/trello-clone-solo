@@ -49,7 +49,10 @@ const CreateBoardPopup = ({ handleShowPopup }) => {
         style={{ backgroundColor: selectedColor[0]?.color || "grey" }}
       >
         {/* Board Skeleton */}
-        <img src="/board-preview-skeleton.svg" alt="board-skeleton" />
+        <img
+          src={process.env.PUBLIC_URL + "/board-preview-skeleton.svg"}
+          alt="board-skeleton"
+        />
       </div>
 
       <div>
