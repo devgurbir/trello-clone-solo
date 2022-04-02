@@ -1,53 +1,52 @@
-import axios from 'axios'
-import {API_ROOT} from "../../Utils/constents"
+import axios from "axios";
+import { API_ROOT } from "../../Utils/constents";
 
 // action constants
 
 export const actionConstants = {
-    GET_USER_REQUEST: "GET_USER_REQUEST",
-    GET_USER_SUCCESS: "GET_USER_SUCCESS",
-    GET_USER_FAILURE: "GET_USER_FAILURE",
-}
+  GET_USER_REQUEST: "GET_USER_REQUEST",
+  GET_USER_SUCCESS: "GET_USER_SUCCESS",
+  GET_USER_FAILURE: "GET_USER_FAILURE",
+};
 
 // action creators
 
 // get single card
 const getUserRequest = () => {
-    return {
-        type: actionConstants.GET_USER_REQUEST
-    }
-}
+  return {
+    type: actionConstants.GET_USER_REQUEST,
+  };
+};
 
 const getUserSuccess = (payload) => {
-    return {
-        type: actionConstants.GET_USER_SUCCESS,
-        payload: payload
-    }
-}
+  return {
+    type: actionConstants.GET_USER_SUCCESS,
+    payload: payload,
+  };
+};
 
 const getUserFailure = (err) => {
-    return {
-        type: actionConstants.GET_USER_FAILURE,
-        payload: err
-    }
-}
+  return {
+    type: actionConstants.GET_USER_FAILURE,
+    payload: err,
+  };
+};
 
 // thunks
 
 export const getUser = (token) => async (dispatch) => {
-    try {
-        dispatch(getUserRequest());
-        const user = await axios.get(`${API_ROOT}/user`, {
-                headers: {
-                'Authorization': "Bearer " + token
-                }        
-            })
-        dispatch(getUserSuccess(user))
-        
-        }
-    catch (error) {
-        dispatch(getUserFailure(error))
-    }
-}
-
-
+  try {
+    dispatch(getUserRequest());
+    const user = await axios.get(
+      `https://trello-clone-gurbir.herokuapp.com/user`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    dispatch(getUserSuccess(user));
+  } catch (error) {
+    dispatch(getUserFailure(error));
+  }
+};

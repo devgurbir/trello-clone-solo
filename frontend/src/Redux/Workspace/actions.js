@@ -85,7 +85,7 @@ export const createWorkspace = (title, token) => async (dispatch) => {
     dispatch(createWorkspaceRequest());
     // replace with card_id
     const workspace = await axios.post(
-      `${API_ROOT}/workspace/create`,
+      `https://trello-clone-gurbir.herokuapp.com/workspace/create`,
       { title },
       {
         headers: {
@@ -105,11 +105,14 @@ export const getWorkspace = (workspace_id, token) => async (dispatch) => {
   try {
     dispatch(getWorkspaceRequest());
     // replace with card_id
-    const workspace = await axios.get(`${API_ROOT}/workspace/${workspace_id}`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const workspace = await axios.get(
+      `https://trello-clone-gurbir.herokuapp.com/workspace/${workspace_id}`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
     dispatch(getWorkspaceSuccess(workspace.data.workspace));
   } catch (error) {
     dispatch(getWorkspaceFailure(error));
@@ -122,7 +125,7 @@ export const createBoard =
       dispatch(createBoardRequest());
       // replace with card_id
       const board = await axios.post(
-        `http://localhost:8000/board/create`,
+        `https://trello-clone-gurbir.herokuapp.com/board/create`,
         { title, workspace, background },
         {
           headers: {

@@ -78,7 +78,9 @@ const createListFailure = () => {
 export const getBoard = (board_id) => async (dispatch) => {
   try {
     dispatch(getBoardRequest());
-    const board = await axios.get(`http://localhost:5000/board/${board_id}`);
+    const board = await axios.get(
+      `https://trello-clone-gurbir.herokuapp.com/${board_id}`
+    );
 
     // console.log(board.data);
 
@@ -92,7 +94,7 @@ export const createList = (title, board, token) => async (dispatch) => {
   try {
     dispatch(createListRequest());
     const list = await axios.post(
-      `http://localhost:8000/list/create`,
+      `https://trello-clone-gurbir.herokuapp.com/list/create`,
       {
         title,
         board,
@@ -114,7 +116,7 @@ export const createCard = (title, list, token) => async (dispatch) => {
     dispatch(createCardRequest());
 
     const card = await axios.post(
-      "http://localhost:8000/card/create",
+      "https://trello-clone-gurbir.herokuapp.com/card/create",
       {
         title,
         list,

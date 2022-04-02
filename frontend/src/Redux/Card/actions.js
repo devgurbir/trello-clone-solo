@@ -180,7 +180,9 @@ export const getCard = (card_id) => async (dispatch) => {
   try {
     dispatch(getCardRequest());
     // replace with card_id
-    const card = await axios.get(`http://localhost:8000/card/${card_id}`);
+    const card = await axios.get(
+      `https://trello-clone-gurbir.herokuapp.com/card/${card_id}`
+    );
     console.log(card);
     dispatch(getCardSuccess(card.data.card));
   } catch (error) {
@@ -192,7 +194,7 @@ export const updateDesc = (card_id, description) => async (dispatch) => {
   try {
     dispatch(updateCardDescRequest());
     const desc = await axios.patch(
-      `http://localhost:8000/card/${card_id}/description`,
+      `https://trello-clone-gurbir.herokuapp.com/card/${card_id}/description`,
       {
         description,
       }
@@ -207,7 +209,7 @@ export const updateTitle = (card_id, title) => async (dispatch) => {
   try {
     dispatch(updateCardTitleRequest());
     const res = await axios.patch(
-      `http://localhost:8000/card/${card_id}/title`,
+      `https://trello-clone-gurbir.herokuapp.com/card/${card_id}/title`,
       {
         title,
       }
@@ -222,7 +224,7 @@ export const updateCover = (card_id, cover) => async (dispatch) => {
   try {
     dispatch(updateCardCoverRequest());
     const res = await axios.patch(
-      `http://localhost:8000/card/${card_id}/cover`,
+      `https://trello-clone-gurbir.herokuapp.com/card/${card_id}/cover`,
       {
         cover,
       }
@@ -237,7 +239,7 @@ export const updateLabels = (card_id, labels) => async (dispatch) => {
   try {
     dispatch(updateCardLabelsRequest());
     const res = await axios.patch(
-      `http://localhost:8000/card/${card_id}/labels`,
+      `https://trello-clone-gurbir.herokuapp.com/card/${card_id}/labels`,
       {
         labels,
       }
@@ -252,7 +254,7 @@ export const addChecklist = (card_id, title) => async (dispatch) => {
   try {
     dispatch(addChecklistRequest());
     const data = await axios.post(
-      `http://localhost:8000/card/${card_id}/add-checklist`,
+      `https://trello-clone-gurbir.herokuapp.com/card/${card_id}/add-checklist`,
       {
         title,
       }
@@ -268,7 +270,7 @@ export const addItemChecklist = (card_id, id, title) => async (dispatch) => {
   try {
     dispatch(addItemChecklistRequest());
     const data = await axios.post(
-      `http://localhost:8000/card/${card_id}/checklist/addItem`,
+      `https://trello-clone-gurbir.herokuapp.com/card/${card_id}/checklist/addItem`,
       { id, title }
     );
     dispatch(addItemChecklistSuccess(data));
