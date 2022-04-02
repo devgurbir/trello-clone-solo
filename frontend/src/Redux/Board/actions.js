@@ -79,7 +79,8 @@ export const getBoard = (board_id) => async (dispatch) => {
   try {
     dispatch(getBoardRequest());
     const board = await axios.get(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/board/${board_id}`
+      // `${process.env.REACT_APP_FRONTEND_ROOT}/board/${board_id}`
+      "https://www.google.com"
     );
 
     // console.log(board.data);
