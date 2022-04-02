@@ -65,8 +65,10 @@ export const createUser = (email, password) => async (dispatch) => {
       `${process.env.REACT_APP_BACKEND_ROOT}/user/create`,
       { email, password }
     );
-    console.log(user.data);
-    dispatch(createUserSuccess(user));
+    const token = user.data.token;
+    document.cookie = `access_token=Bearer ${token};max-age=604800;`;
+
+    dispatch(createUserSuccess(user.data.user));
   } catch (error) {
     dispatch(createUserFailure(error));
   }
