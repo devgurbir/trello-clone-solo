@@ -34,14 +34,21 @@ const getUserFailure = (err) => {
 
 // thunks
 
+const instance = axios.create({
+  withCredentials: true,
+});
+
 export const getUser = (token) => async (dispatch) => {
   try {
     dispatch(getUserRequest());
-    const user = await axios.get(`${process.env.REACT_APP_BACKEND_ROOT}/user`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const user = await instance.get(
+      `${process.env.REACT_APP_BACKEND_ROOT}/user`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
     dispatch(getUserSuccess(user));
   } catch (error) {
     dispatch(getUserFailure(error));
