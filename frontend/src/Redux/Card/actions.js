@@ -181,7 +181,7 @@ export const getCard = (card_id) => async (dispatch) => {
     dispatch(getCardRequest());
     // replace with card_id
     const card = await axios.get(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/card/${card_id}`
+      `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}`
     );
     console.log(card);
     dispatch(getCardSuccess(card.data.card));
@@ -194,7 +194,7 @@ export const updateDesc = (card_id, description) => async (dispatch) => {
   try {
     dispatch(updateCardDescRequest());
     const desc = await axios.patch(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/card/${card_id}/description`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/description`,
       {
         description,
       }
@@ -209,7 +209,7 @@ export const updateTitle = (card_id, title) => async (dispatch) => {
   try {
     dispatch(updateCardTitleRequest());
     const res = await axios.patch(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/card/${card_id}/title`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/title`,
       {
         title,
       }
@@ -224,7 +224,7 @@ export const updateCover = (card_id, cover) => async (dispatch) => {
   try {
     dispatch(updateCardCoverRequest());
     const res = await axios.patch(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/card/${card_id}/cover`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/cover`,
       {
         cover,
       }
@@ -239,7 +239,7 @@ export const updateLabels = (card_id, labels) => async (dispatch) => {
   try {
     dispatch(updateCardLabelsRequest());
     const res = await axios.patch(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/card/${card_id}/labels`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/labels`,
       {
         labels,
       }
@@ -254,7 +254,7 @@ export const addChecklist = (card_id, title) => async (dispatch) => {
   try {
     dispatch(addChecklistRequest());
     const data = await axios.post(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/card/${card_id}/add-checklist`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/add-checklist`,
       {
         title,
       }
@@ -270,7 +270,7 @@ export const addItemChecklist = (card_id, id, title) => async (dispatch) => {
   try {
     dispatch(addItemChecklistRequest());
     const data = await axios.post(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/card/${card_id}/checklist/addItem`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/checklist/addItem`,
       { id, title }
     );
     dispatch(addItemChecklistSuccess(data));

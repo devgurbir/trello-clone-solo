@@ -85,7 +85,7 @@ export const createWorkspace = (title, token) => async (dispatch) => {
     dispatch(createWorkspaceRequest());
     // replace with card_id
     const workspace = await axios.post(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/workspace/create`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/workspace/create`,
       { title },
       {
         headers: {
@@ -106,7 +106,7 @@ export const getWorkspace = (workspace_id, token) => async (dispatch) => {
     dispatch(getWorkspaceRequest());
     // replace with card_id
     const workspace = await axios.get(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/workspace/${workspace_id}`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/workspace/${workspace_id}`,
       {
         headers: {
           Authorization: "Bearer " + token,
@@ -125,7 +125,7 @@ export const createBoard =
       dispatch(createBoardRequest());
       // replace with card_id
       const board = await axios.post(
-        `${process.env.REACT_APP_FRONTEND_ROOT}/api/board/create`,
+        `${process.env.REACT_APP_BACKEND_ROOT}/board/create`,
         { title, workspace, background },
         {
           headers: {

@@ -79,7 +79,7 @@ export const getBoard = (board_id) => async (dispatch) => {
   try {
     dispatch(getBoardRequest());
     const board = await axios.get(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/board/${board_id}`
+      `${process.env.REACT_APP_BACKEND_ROOT}/board/${board_id}`
     );
 
     // console.log(board.data);
@@ -94,7 +94,7 @@ export const createList = (title, board, token) => async (dispatch) => {
   try {
     dispatch(createListRequest());
     const list = await axios.post(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/list/create`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/list/create`,
       {
         title,
         board,
@@ -116,7 +116,7 @@ export const createCard = (title, list, token) => async (dispatch) => {
     dispatch(createCardRequest());
 
     const card = await axios.post(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/card/create`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/card/create`,
       {
         title,
         list,
