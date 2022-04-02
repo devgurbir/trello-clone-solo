@@ -34,24 +34,8 @@ app.use(
 
 app.use(cookieParser());
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    callback(null, true);
-  },
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: [
-    "Access-Control-Allow-Origin",
-    "Origin",
-    "X-Requested-With",
-    "Content-Type",
-    "Accept",
-    "Authorization",
-  ],
-  credentials: true,
-};
-
 // app.options("*", cors(corsOptions));
-app.use(cors({ origin: "https://trello-clone-gurbir.netlify.app" }));
+app.use(cors());
 
 app.use(express.json());
 
