@@ -38,7 +38,7 @@ export const getUser = (token) => async (dispatch) => {
   try {
     dispatch(getUserRequest());
     const user = await axios.get(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/user`
+      `${process.env.REACT_APP_BACKEND_ROOT}/user`
       // {
       //   headers: {
       //     Authorization: "Bearer " + token,
