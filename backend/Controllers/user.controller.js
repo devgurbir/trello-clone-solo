@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const User = require("../Models/user.model");
 const { generateToken } = require("../Utils/token");
 const cookieParser = require("cookie-parser");
+const bcrypt = require("bcrypt");
 
 const createUser = async (req, res) => {
   let user;
