@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const cors = require("cors");
 const checkAuthenticated = require("../Middlewares/checkAuthenticated");
 const {
   createUser,
@@ -9,5 +10,5 @@ const {
 
 router.post("/create", createUser);
 router.get("/", getUserData);
-router.post("/signin", signIn);
+router.post("/signin", cors(), signIn);
 module.exports = router;
