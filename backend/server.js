@@ -62,11 +62,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function (user, cb) {
-  cb(null, user);
+  process.nextTick(function () {
+    cb(null, { id: user._id });
+  });
 });
 
-passport.deserializeUser(function (obj, cb) {
-  cb(null, obj);
+passport.deserializeUser(function (user, cb) {
+  process.nextTick(function () {
+    return cb(null, user);
+  });
 });
 
 app.use("/auth", authRouter);

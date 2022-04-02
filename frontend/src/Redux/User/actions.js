@@ -7,6 +7,9 @@ export const actionConstants = {
   GET_USER_REQUEST: "GET_USER_REQUEST",
   GET_USER_SUCCESS: "GET_USER_SUCCESS",
   GET_USER_FAILURE: "GET_USER_FAILURE",
+  CREATE_USER_REQUEST: "CREATE_USER_REQUEST",
+  CREATE_USER_SUCCESS: "CREATE_USER_SUCCESS",
+  CREATE_USER_FAILURE: "CREATE_USER_FAILURE",
 };
 
 // action creators
@@ -32,21 +35,51 @@ const getUserFailure = (err) => {
   };
 };
 
+// create user
+const createUserRequest = () => {
+  return {
+    type: actionConstants.GET_USER_REQUEST,
+  };
+};
+
+const createUserSuccess = (payload) => {
+  return {
+    type: actionConstants.GET_USER_SUCCESS,
+    payload: payload,
+  };
+};
+
+const createUserFailure = (err) => {
+  return {
+    type: actionConstants.GET_USER_FAILURE,
+    payload: err,
+  };
+};
+
 // thunks
+
+export const createUser = (email, password) => async (dispatch) => {
+  try {
+    dispatch(createUserRequest());
+    const user = await axios.post(
+      `${process.env.REACT_APP_BACKEND_ROOT}/user/create`,
+      { email, password }
+    );
+    console.log(user.data);
+    dispatch(createUserSuccess(user));
+  } catch (error) {
+    dispatch(createUserFailure(error));
+  }
+};
 
 export const getUser = (token) => async (dispatch) => {
   try {
     dispatch(getUserRequest());
-    const user = await axios.get(
-      `${process.env.REACT_APP_BACKEND_ROOT}/user`
-      // {
-      //   headers: {
-      //     Authorization: "Bearer " + token,
-      //   },
-      //   withCredentials: true,
-      // }
-    );
-    console.log("User from frontend", user);
+    const user = await axios.get(`${process.env.REACT_APP_BACKEND_ROOT}/user`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
     dispatch(getUserSuccess(user));
   } catch (error) {
     dispatch(getUserFailure(error));

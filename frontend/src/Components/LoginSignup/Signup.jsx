@@ -3,10 +3,13 @@ import styles from "./loginSignup.module.css";
 import OAuthButton from "./OAuthButton";
 import { useState } from "react";
 import { API_ROOT } from "../../Utils/constents";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../Redux/User/actions";
 
 const Signup = () => {
   const [val, setVal] = useState("");
-
+  const [pass, setPass] = useState("");
+  const dispatch = useDispatch();
   return (
     <div className={styles.sectionWrapper}>
       <div className={styles.accountForm}>
@@ -17,8 +20,18 @@ const Signup = () => {
               onChange={(e) => setVal(e.target.value)}
               type="text"
               className={styles.formField}
+              value={val}
               name="user"
               placeholder="Enter email"
+              style={{ marginBottom: 0 }}
+            />
+            <input
+              onChange={(e) => setPass(e.target.value)}
+              type="password"
+              className={styles.formField}
+              value={pass}
+              name="password"
+              placeholder="Enter password"
               style={{ marginBottom: 0 }}
             />
             <p className={styles.tos}>
@@ -27,7 +40,12 @@ const Signup = () => {
               <a href="#">Privacy Policy</a>
             </p>
             {val.includes("@") ? (
-              <button className={styles.loginBtn}>Continue</button>
+              <button
+                onClick={() => dispatch(createUser(val, pass))}
+                className={styles.loginBtn}
+              >
+                Continue
+              </button>
             ) : (
               <button className={styles.loginBtn} disabled>
                 Continue

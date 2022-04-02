@@ -21,7 +21,9 @@ const createUser = async (req, res) => {
       password: req.body.password,
     });
 
-    return res.status(201).send({ msg: "Signup successful", user });
+    const token = generateToken(user);
+
+    return res.status(201).send({ msg: "Signup successful", user, token });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
