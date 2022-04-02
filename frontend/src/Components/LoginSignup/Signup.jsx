@@ -38,7 +38,7 @@ const Signup = () => {
             <div className={styles.loginMethodOr}>OR</div>
             <div className={styles.loginMethodContainer}>
               <OAuthButton
-                loginUrl={`https://trello-clone-gurbir.herokuapp.com/auth/google`}
+                loginUrl={`${process.env.REACT_APP_BACKEND_ROOT}/auth/google`}
                 label="Google"
                 url="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
               />

@@ -21,7 +21,7 @@ const Board = () => {
       <div className={styles.container}>
         <aside className={styles.aside}></aside>
         <main className={styles.main}>
-          <div>
+          <div style={{ marginBottom: "1em" }}>
             <h2>{boardData.title}</h2>
           </div>
           {/* Lists */}

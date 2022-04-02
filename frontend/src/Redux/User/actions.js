@@ -37,14 +37,11 @@ const getUserFailure = (err) => {
 export const getUser = (token) => async (dispatch) => {
   try {
     dispatch(getUserRequest());
-    const user = await axios.get(
-      `https://trello-clone-gurbir.herokuapp.com/user`,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
+    const user = await axios.get(`${process.env.REACT_APP_BACKEND_ROOT}/user`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
     dispatch(getUserSuccess(user));
   } catch (error) {
     dispatch(getUserFailure(error));
