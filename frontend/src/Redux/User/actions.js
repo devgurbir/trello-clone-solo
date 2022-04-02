@@ -38,14 +38,15 @@ export const getUser = (token) => async (dispatch) => {
   try {
     dispatch(getUserRequest());
     const user = await axios.get(
-      `${process.env.REACT_APP_FRONTEND_ROOT}/api/user`,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-        withCredentials: true,
-      }
+      `${process.env.REACT_APP_FRONTEND_ROOT}/api/user`
+      // {
+      //   headers: {
+      //     Authorization: "Bearer " + token,
+      //   },
+      //   withCredentials: true,
+      // }
     );
+    console.log("User from frontend", user);
     dispatch(getUserSuccess(user));
   } catch (error) {
     dispatch(getUserFailure(error));
