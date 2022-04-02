@@ -24,9 +24,30 @@ const userReducer = (state = initState, action) => {
         isLoading: false,
         isError: false,
         isAuthenticated: true,
-        user: action.payload.data.user,
+        user: action.payload,
       };
     case actionConstants.GET_USER_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isAuthenticated: false,
+      };
+    case actionConstants.CREATE_USER_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actionConstants.CREATE_USER_SUCCESS:
+      // console.log(action.payload.data.user)
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isAuthenticated: true,
+        user: { ...action.payload },
+      };
+    case actionConstants.CREATE_USER_FAILURE:
       return {
         ...state,
         isLoading: false,
