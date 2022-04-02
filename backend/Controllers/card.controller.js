@@ -2,7 +2,6 @@
 
 const Card = require("../Models/card.model");
 const mongoose = require("mongoose");
-const Column = require("../Models/column.model");
 const List = require("../Models/list.model");
 
 // Create
