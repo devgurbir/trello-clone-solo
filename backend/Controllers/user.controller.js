@@ -29,6 +29,38 @@ const createUser = async (req, res) => {
   }
 };
 
+const signIn = async (req, res) => {
+  let user;
+
+  try {
+    user = await User.find({ email: req.body.email });
+    if (!user) return res.status(401).send({ msg: "User not found" });
+  } catch (error) {
+    res.status(500).send({ msg: "Something went wrong", error });
+  }
+
+  // If it does, check if passwords match - Use the method checkPass set on userSchema, which
+  //  -- utilizes bcrypt.compare
+  try {
+    const isMatch = await user.checkPassword(req.body.password);
+    console.log("isMatch: ", isMatch);
+    // if passwords don't match, return error.
+    if (!isMatch) {
+      return res
+        .status(400)
+        .send({ status: "failed", msg: "Invalid email/password" });
+    }
+  } catch (error) {
+    return res
+      .status(500)
+      .send({ status: "failed", msg: "something went wrong: " + err });
+  }
+
+  // generate token and send it as response
+  const token = generateToken(user);
+  res.status(200).send({ status: "success", user: user, token: token });
+};
+
 const getUserData = async (req, res) => {
   let token = req.session.token;
   res.status(200).send({ token: req.cookies, rand: "1", msg: "token aaya?" });
@@ -42,4 +74,4 @@ const getUserData = async (req, res) => {
 
 // const loginUser
 
-module.exports = { createUser, getUserData };
+module.exports = { createUser, signIn, getUserData };
