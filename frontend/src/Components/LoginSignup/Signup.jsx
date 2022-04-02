@@ -3,6 +3,7 @@ import styles from "./loginSignup.module.css";
 import OAuthButton from "./OAuthButton";
 import { useState } from "react";
 import { API_ROOT } from "../../Utils/constents";
+import GoogleLogin from "react-google-login";
 
 const Signup = () => {
   const [val, setVal] = useState("");
@@ -37,6 +38,14 @@ const Signup = () => {
           <div className={styles.loginMethods}>
             <div className={styles.loginMethodOr}>OR</div>
             <div className={styles.loginMethodContainer}>
+              <GoogleLogin
+                clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={"single_host_origin"}
+              />
+              ,
               <OAuthButton
                 loginUrl={`${process.env.REACT_APP_BACKEND_ROOT}/auth/google`}
                 label="Google"
