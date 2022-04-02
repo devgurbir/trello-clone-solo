@@ -42,7 +42,7 @@ const signIn = async (req, res) => {
   // If it does, check if passwords match - Use the method checkPass set on userSchema, which
   //  -- utilizes bcrypt.compare
   try {
-    const isMatch = await user.checkPassword(req.body.password);
+    const isMatch = bcrypt.compareSync(req.body.password, user.password);
     console.log("isMatch: ", isMatch);
     // if passwords don't match, return error.
     if (!isMatch) {
