@@ -21,17 +21,17 @@ userSchema.pre("save", function (next) {
   });
 });
 
-// userSchema.methods.checkPassword = function (password) {
-//   const hashedPassword = this.password;
+userSchema.methods.checkPassword = function (password) {
+  const hashedPassword = this.password;
 
-//   return new Promise((resolve, reject) => {
-//     bcrypt.compare(password, hashedPassword, (err, same) => {
-//       if (err) return reject(err);
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(password, hashedPassword, (err, same) => {
+      if (err) return reject(err);
 
-//       resolve(same);
-//     });
-//   });
-// };
+      resolve(same);
+    });
+  });
+};
 
 const User = mongoose.model("User", userSchema);
 
