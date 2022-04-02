@@ -30,6 +30,8 @@ const createUser = async (req, res) => {
 };
 
 const signIn = async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
   let user;
   console.log("...checking user");
   try {
