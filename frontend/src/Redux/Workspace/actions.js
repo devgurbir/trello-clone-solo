@@ -106,7 +106,7 @@ export const getWorkspace = (workspace_id, token) => async (dispatch) => {
     dispatch(getWorkspaceRequest());
     // replace with card_id
     const workspace = await axios.get(
-      `${process.env.REACT_APP_BACKEND_ROOT}/workspace/${workspace_id}`,
+      `${process.env.REACT_APP_FRONTEND_ROOT}/api/workspace/${workspace_id}`,
       {
         headers: {
           Authorization: "Bearer " + token,
