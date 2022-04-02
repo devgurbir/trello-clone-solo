@@ -85,7 +85,7 @@ export const createWorkspace = (title, token) => async (dispatch) => {
     dispatch(createWorkspaceRequest());
     // replace with card_id
     const workspace = await axios.post(
-      `${process.env.REACT_APP_BACKEND_ROOT}/workspace/create`,
+      `${process.env.REACT_APP_FRONTEND_ROOT}/api/workspace/create`,
       { title },
       {
         headers: {
@@ -125,7 +125,7 @@ export const createBoard =
       dispatch(createBoardRequest());
       // replace with card_id
       const board = await axios.post(
-        `${process.env.REACT_APP_BACKEND_ROOT}/board/create`,
+        `${process.env.REACT_APP_FRONTEND_ROOT}/api/board/create`,
         { title, workspace, background },
         {
           headers: {
