@@ -67,7 +67,7 @@ export const createUser = (email, password) => async (dispatch) => {
       { email, password }
     );
     const token = user.data.token;
-    document.cookie = `access_token=Bearer ${token};max-age=604800;`;
+    document.cookie = `access_token=Bearer%20${token};max-age=604800;`;
 
     dispatch(createUserSuccess(user.data.user));
   } catch (error) {
