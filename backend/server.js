@@ -26,11 +26,6 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      maxAge: 1000 * 60 * 60,
-      sameSite: "none",
-      secure: true,
-    },
     store: new MongoStore({
       mongoUrl: process.env.DATABASE_URL,
     }),
@@ -43,13 +38,11 @@ var corsOptions = {
   origin: "*",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-app.use(
-  cors({ origin: "https://trello-clone-gurbir.netlify.app", credentials: true })
-);
+app.use(cors());
 
 app.use(express.json());
 
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 
 app.use("/card", cardRouter);
 app.use("/board", boardRouter);
