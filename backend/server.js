@@ -50,8 +50,8 @@ const corsOptions = {
   credentials: true,
 };
 
-app.options("*", cors(corsOptions));
-app.use(cors(corsOptions));
+// app.options("*", cors(corsOptions));
+app.use(cors({ origin: "https://trello-clone-gurbir.netlify.app" }));
 
 app.use(express.json());
 
