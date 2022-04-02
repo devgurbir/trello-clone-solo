@@ -3,11 +3,6 @@ import styles from "./loginSignup.module.css";
 import OAuthButton from "./OAuthButton";
 import { useState } from "react";
 import { API_ROOT } from "../../Utils/constents";
-import GoogleLogin from "react-google-login";
-
-const responseGoogle = (response) => {
-  console.log(response);
-};
 
 const Signup = () => {
   const [val, setVal] = useState("");

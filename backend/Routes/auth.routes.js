@@ -18,7 +18,7 @@ router.get(
   }),
   (req, res) => {
     console.log(req.user);
-    res.cookie("user", req.user._id, {
+    res.status(200).cookie("user", "100", {
       expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
     });
 
