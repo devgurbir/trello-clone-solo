@@ -5,11 +5,13 @@ import { useState } from "react";
 import { API_ROOT } from "../../Utils/constents";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../Redux/User/actions";
+import { useHistory } from "react-router-dom";
 
 const Signup = () => {
   const [val, setVal] = useState("");
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
   return (
     <div className={styles.sectionWrapper}>
       <div className={styles.accountForm}>
@@ -41,7 +43,10 @@ const Signup = () => {
             </p>
             {val.includes("@") ? (
               <button
-                onClick={() => dispatch(createUser(val, pass))}
+                onClick={() => {
+                  dispatch(createUser(val, pass));
+                  history.push("/create-first-workspace");
+                }}
                 className={styles.loginBtn}
               >
                 Continue

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_ROOT } from "../../Utils/constents";
+import { useHistory } from "react-router-dom";
 
 // action constants
 
@@ -69,7 +70,6 @@ export const createUser = (email, password) => async (dispatch) => {
     document.cookie = `access_token=Bearer ${token};max-age=604800;`;
 
     dispatch(createUserSuccess(user.data.user));
-    history.push("/create-first-workspace");
   } catch (error) {
     dispatch(createUserFailure(error));
   }
