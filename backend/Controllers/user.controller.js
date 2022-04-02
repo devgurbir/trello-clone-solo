@@ -30,12 +30,11 @@ const createUser = async (req, res) => {
 };
 
 const signIn = async (req, res) => {
-  let user;
   console.log("...checking user");
   try {
-    user = await User.find({ email: req.body.email });
+    const user = await User.find({ email: req.body.email });
     if (!user) return res.status(401).send({ msg: "User not found" });
-    res.status(200).send({ status: "success", user: user, token: token });
+    res.status(200).send({ status: "success", user: user });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
