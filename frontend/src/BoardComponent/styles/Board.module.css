@@ -1,7 +1,0 @@
-/** @format */
-
-.boardContainer {
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 120px 1fr;
-}
