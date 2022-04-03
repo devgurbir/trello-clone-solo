@@ -10,5 +10,5 @@ const {
 
 router.post("/create", createUser);
 router.get("/", getUserData);
-router.post("/signin", cors(), signIn);
+router.post("/signin", signIn);
 module.exports = router;

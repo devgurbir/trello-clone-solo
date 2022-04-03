@@ -38,7 +38,7 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use(express.json());
-app.options("*", cors());
+
 // app.set("trust proxy", 1);
 
 app.use("/card", cardRouter);

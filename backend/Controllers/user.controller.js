@@ -70,7 +70,7 @@ const signIn = async (req, res) => {
     const token = generateToken(user);
     return res.status(200).send({ status: "success", user, token });
   } else {
-    return res.status(401).send({ status: "login failed" });
+    return res.status(401).send({ status: "login failed", user });
   }
 };
 
