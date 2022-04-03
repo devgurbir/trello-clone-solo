@@ -62,8 +62,13 @@ const signIn = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email: email });
-  const isMatch = await bcrypt.compare(password, user.password);
-  res.status(200).send({ status: "success", isMatch });
+  const isMatch = user.password == password;
+  if (isMatch) {
+    const token = generateToken(user);
+    return res.status(200).send({ status: "success", user, token });
+  } else {
+    return res.status(401).send({ status: "login failed" });
+  }
 };
 
 const getUserData = async (req, res) => {
