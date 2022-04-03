@@ -95,7 +95,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     document.cookie = `access_token=Bearer%20${token};max-age=604800;`;
 
     dispatch(loginUserSuccess(user.data.user));
-    window.location.href = `/workspace/${user.workspace[0]}`;
+    window.location.href = `/workspaces/${user.workspace[0]}`;
   } catch (error) {
     dispatch(loginUserFailure(error));
   }
