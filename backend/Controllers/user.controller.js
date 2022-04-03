@@ -59,8 +59,10 @@ const signIn = async (req, res) => {
   // console.log("...all good");
   // // generate token and send it as response
   // const token = await generateToken(user);
-  const user = await User.find({ email: req.body.email });
-  const isMatch = bcrypt.compareSync(req.body.password, user.password);
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email: email });
+  const isMatch = await bcrypt.compare(password, user.password);
   res.status(200).send({ status: "success", isMatch });
 };
 
