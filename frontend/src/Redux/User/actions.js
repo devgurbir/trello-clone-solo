@@ -90,10 +90,12 @@ export const loginUser = (email, password) => async (dispatch) => {
       `${process.env.REACT_APP_BACKEND_ROOT}/user/signin`,
       { email, password }
     );
-    // const token = user.data.token;
-    // document.cookie = `access_token=Bearer%20${token};max-age=604800;`;
+
+    const token = user.data.token;
+    document.cookie = `access_token=Bearer%20${token};max-age=604800;`;
 
     dispatch(loginUserSuccess(user.data.user));
+    window.location.href = `/workspace/${user.workspace[0]}`;
   } catch (error) {
     dispatch(loginUserFailure(error));
   }
