@@ -63,6 +63,8 @@ const signIn = async (req, res) => {
 
   const user = await User.findOne({ email: email });
   const isMatch = user.password == password;
+  console.log(user);
+  console.log(user.password, password);
   console.log(isMatch);
   if (isMatch) {
     const token = generateToken(user);
