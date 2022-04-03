@@ -54,6 +54,27 @@ const userReducer = (state = initState, action) => {
         isError: true,
         isAuthenticated: false,
       };
+    case actionConstants.LOGIN_USER_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actionConstants.LOGIN_USER_SUCCESS:
+      // console.log(action.payload.data.user)
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isAuthenticated: true,
+        user: { ...action.payload },
+      };
+    case actionConstants.LOGIN_USER_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isAuthenticated: false,
+      };
     default:
       return state;
   }
