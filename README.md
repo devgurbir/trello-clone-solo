@@ -1,4 +1,4 @@
-# trello-clone-solo
+# Trello Clone
 A clone of the popular task management, collaboration web app, Trello. Developed using the MERN stack. Includes features such as creating boards, list, cards, adding labels, &amp; Google OAuth.
 
 If you would like to play around this project, follow the steps below:
