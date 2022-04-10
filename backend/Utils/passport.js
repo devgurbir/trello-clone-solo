@@ -16,28 +16,31 @@ passport.use(
     async function (accessToken, refreshToken, profile, cb) {
       const userEmail = profile?._json?.email;
 
-      const user = User.findOne({ email: userEmail }, function (err, user) {
-        if (err) {
-          return cb(err);
-        }
+      const user = await User.findOne(
+        { email: userEmail },
+        function (err, user) {
+          if (err) {
+            return cb(err);
+          }
 
-        if (!user) {
-          User.create(
-            {
-              _id: new mongoose.Types.ObjectId(),
-              googleId: profile.id,
-              name: profile?._json?.name,
-              email: profile?._json?.email,
-              isGoogle: true,
-            },
-            function (err, user) {
-              return cb(err, user);
-            }
-          );
-        } else {
-          return cb(err, user);
+          if (!user) {
+            User.create(
+              {
+                _id: new mongoose.Types.ObjectId(),
+                googleId: profile.id,
+                name: profile?._json?.name,
+                email: profile?._json?.email,
+                isGoogle: true,
+              },
+              function (err, user) {
+                return cb(err, user);
+              }
+            );
+          } else {
+            return cb(err, user);
+          }
         }
-      });
+      );
     }
   )
 );
