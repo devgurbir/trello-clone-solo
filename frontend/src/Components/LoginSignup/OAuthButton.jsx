@@ -11,12 +11,10 @@ const OAuthButton = ({ url, label, loginUrl = "#" }) => {
     <div style={{ marginBottom: "12px" }}>
       {/* <div className={styles.oauthBtn} onClick={() => redirectTo(loginUrl)}> */}
       <div className={styles.oauthBtn}>
-        <a href="https://trello-clone-gurbir.herokuapp.com/auth/google">
-          <span className={styles.oauthIcon}>
-            <img src={url} />
-          </span>
-          <span className={styles.oauthLabel}>Continue with {label}</span>
-        </a>
+        <span className={styles.oauthIcon}>
+          <img src={url} />
+        </span>
+        <span className={styles.oauthLabel}>Continue with {label}</span>
       </div>
     </div>
   );
