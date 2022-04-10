@@ -6,12 +6,21 @@ import { API_ROOT } from "../../Utils/constents";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../Redux/User/actions";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const [val, setVal] = useState("");
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const xyz = async () => {
+    const data = await axios(
+      "https://trello-clone-gurbir.herokuapp.com/auth/google"
+    );
+    return data;
+  };
+
   return (
     <div className={styles.sectionWrapper}>
       <div className={styles.accountForm}>
@@ -61,6 +70,7 @@ const Signup = () => {
             <div className={styles.loginMethodOr}>OR</div>
             <div className={styles.loginMethodContainer}>
               <OAuthButton
+                onClick={() => xyz()}
                 loginUrl={`${process.env.REACT_APP_BACKEND_ROOT}/auth/google`}
                 label="Google"
                 url="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
