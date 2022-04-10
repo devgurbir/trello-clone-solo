@@ -6,14 +6,16 @@ require("dotenv").config();
 
 router.get(
   "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    passReqToCallback: true,
+  })
 );
 
 router.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/login",
-    passReqToCallback: true,
   }),
   function (req, res) {
     // Successful authentication, redirect home.
