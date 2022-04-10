@@ -16,7 +16,8 @@ const Signup = () => {
 
   const xyz = async () => {
     const data = await axios(
-      "https://trello-clone-gurbir.herokuapp.com/auth/google"
+      "https://trello-clone-gurbir.herokuapp.com/auth/google",
+      { headers: { "Access-Control-Allow-Origin": "*" } }
     );
     return data;
   };
