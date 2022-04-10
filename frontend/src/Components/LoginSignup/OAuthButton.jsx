@@ -10,7 +10,7 @@ const OAuthButton = ({ url, label, loginUrl = "#" }) => {
     <div style={{ marginBottom: "12px" }}>
       {/* <div className={styles.oauthBtn} onClick={() => redirectTo(loginUrl)}> */}
       <div className={styles.oauthBtn}>
-        <Link to={`${process.env.REACT_APP_BACKEND_ROOT}/auth/google`}>
+        <Link to="https://trello-clone-gurbir.herokuapp.com/auth/google">
           <span className={styles.oauthIcon}>
             <img src={url} />
           </span>
