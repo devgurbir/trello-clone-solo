@@ -1,6 +1,7 @@
 /** @format */
 
 const Card = require("../Models/card.model");
+const Checklist = require("../Models/checklist.model");
 const mongoose = require("mongoose");
 const List = require("../Models/list.model");
 
@@ -39,7 +40,9 @@ const getById = async (req, res) => {
       return res.status(404).send({ msg: "Card not found", card: {} });
     }
 
-    res.status(200).send({ msg: "Card found", card });
+    const checklists = await Checklist.find({ card_id: card._id });
+
+    res.status(200).send({ msg: "Card found", card, checklists });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
@@ -125,23 +128,34 @@ const updateLabels = async (req, res) => {
 const addChecklist = async (req, res) => {
   // needs card_id, title of checklist
   // req.params.card_id, req.body.title
-  let checklist = {
-    id: new mongoose.Types.ObjectId(),
-    title: req.body.title,
-    items: [],
-  };
+  // let checklist = {
+  //   card_id: req.params.card_id,
+  //   title: req.body.title,
+  //   items: [],
+  // };
   try {
-    const data = await Card.findByIdAndUpdate(
-      req.params.card_id,
-      { $push: { checklist: checklist } },
-      { returnDocument: "after" }
-    );
+    const checklist = await Checklist.create({
+      card_id: req.params.card_id,
+      title: req.body.title,
+    });
 
-    if (!data) {
+    if (!checklist) {
       return res.status(400).send({ msg: "Something went wrong, try again" });
     }
 
-    res.status(201).send({ msg: "Checklist added successfully", card: data });
+    const card = await Card.findByIdAndUpdate(
+      req.params.card_id,
+      {
+        $push: { checklist: checklist._id },
+      },
+      { returnDocument: "after" }
+    );
+
+    res.status(201).send({
+      msg: "Checklist added successfully",
+      checklist: checklist,
+      card: card,
+    });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
@@ -149,26 +163,34 @@ const addChecklist = async (req, res) => {
 
 const addItemInChecklist = async (req, res) => {
   // need: card_id, Array index of checklist being updated (checklist is an array of objects)
-  const item = {
-    _id: new mongoose.Types.ObjectId(),
-    title: req.body.title,
-    complete: false,
-  };
+  // const item = {
+  //   _id: new mongoose.Types.ObjectId(),
+  //   title: req.body.title,
+  //   complete: false,
+  // };
 
   try {
-    console.log(req.body.id);
-    let id = new mongoose.Types.ObjectId(req.body.id);
-
-    const data = await Card.updateOne(
-      { "checklist.id": id },
-      { $push: { "checklist.$.items": item } }
+    const updatedChecklist = await Checklist.findByIdAndUpdate(
+      req.body.checklist_id,
+      {
+        $push: {
+          items: {
+            _id: new mongoose.Types.ObjectId(),
+            title: req.body.title,
+            complete: false,
+          },
+        },
+      },
+      { returnDocument: "after" }
     );
 
-    if (!data) {
+    if (!updatedChecklist) {
       return res.status(400).send({ msg: "Something went wrong, try again" });
     }
 
-    res.status(201).send({ msg: "Wut is going on", card: data });
+    res
+      .status(201)
+      .send({ msg: "Wut is going on", checklist: updatedChecklist });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
@@ -176,13 +198,30 @@ const addItemInChecklist = async (req, res) => {
 
 const toggleChecklistItemStatus = async (req, res) => {
   try {
-    let id = new mongoose.Types.ObjectId(req.body.id);
-    const data = await Card.updateOne(
-      { "checklist.items._id": id },
-      { $set: { "checklist.$.items.$.complete": req.body.complete } }
+    const checklistWithItemToggled = await Checklist.findOneAndUpdate(
+      {
+        _id: req.body.checklist_id,
+        items: {
+          $elemMatch: { _id: new mongoose.Types.ObjectId(req.body.item_id) },
+        },
+      },
+      {
+        $set: { "items.$.complete": req.body.complete },
+      },
+      { new: "true" }
     );
 
-    res.status(201).send({ msg: "Wut is going on", card: data });
+    // const checklistWithItemToggled = await Checklist.aggregate([
+    //   { $match: { _id: new mongoose.Types.ObjectId(req.body.checklist_id) } },
+    //   {
+    //     $match: { "items._id": new mongoose.Types.ObjectId(req.body.item_id) },
+    //   },
+    //   { $set: { "items.$.complete": req.body.complete } },
+    // ]);
+
+    res
+      .status(201)
+      .send({ msg: "Wut is going on", newChecklist: checklistWithItemToggled });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
@@ -193,17 +232,19 @@ const getChecklist = async (req, res) => {
   // need: card_id, Array index of checklist being updated (checklist is an array of objects)
 
   try {
-    const data = await Card.findOne(
-      // {_id: req.params.card_id, "checklist._id": req.body.checklistId},
-      // {$push: {"checklist.$.items": item} }
-      { _id: req.params.card_id, "checklist.title": "A new checkliszzzzt" }
-    );
+    // const data = await Card.findOne(
+    //   // {_id: req.params.card_id, "checklist._id": req.body.checklistId},
+    //   // {$push: {"checklist.$.items": item} }
+    //   { _id: req.params.card_id, "checklist.title": "A new checkliszzzzt" }
+    // );
 
-    if (!data) {
+    const checklists = await Checklist.find({ card_id: req.params.card_id });
+
+    if (!checklists) {
       return res.status(400).send({ msg: "Something went wrong, try again" });
     }
 
-    res.status(201).send({ msg: "Item added successfully", card: data });
+    res.status(201).send({ msg: "Checklists found", checklists: checklists });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
@@ -225,6 +266,29 @@ const deleteChecklist = async (req, res) => {
   }
 };
 
+const updateChecklistItem = async (req, res) => {
+  try {
+    let id = mongoose.Types.ObjectId(req.body.id);
+    let checklist_id = mongoose.Types.ObjectId(req.body.checklist_id);
+    const updated = await Card.findOneAndUpdate(
+      {
+        _id: req.params.card_id,
+        checklist: { $elemMatch: { id: checklist_id } },
+        "checklist.items": { $elemMatch: { _id: id } },
+      },
+      { $set: { "checklist.items.$.complete": req.body.complete } }
+    );
+
+    if (!updated) {
+      return res.status(400).send({ msg: "Something went wrong, try again" });
+    }
+
+    res.status(201).send({ msg: "updated", card: updated });
+  } catch (error) {
+    res.status(500).send({ msg: "Something went wrong", error: error });
+  }
+};
+
 module.exports = {
   updateLabels,
   toggleChecklistItemStatus,
@@ -237,4 +301,5 @@ module.exports = {
   addItemInChecklist,
   getChecklist,
   deleteChecklist,
+  updateChecklistItem,
 };

@@ -23,6 +23,9 @@ export const actionConstants = {
   ADD_ITEM_CHECKLIST_REQUEST: "ADD_CHECKLIST_REQUEST",
   ADD_ITEM_CHECKLIST_SUCCESS: "ADD_ITEM_CHECKLIST_SUCCESS",
   ADD_ITEM_CHECKLIST_FAILURE: "ADD_ITEM_CHECKLIST_FAILURE",
+  UPDATE_CHECKLIST_ITEM_REQUEST: "UPDATE_CHECKLIST_ITEM_REQUEST",
+  UPDATE_CHECKLIST_ITEM_SUCCESS: "UPDATE_CHECKLIST_ITEM_SUCCESS",
+  UPDATE_CHECKLIST_ITEM_FAILURE: "UPDATE_CHECKLIST_ITEM_FAILURE",
 };
 
 // action creators
@@ -174,6 +177,27 @@ const addItemChecklistFailure = (err) => {
   };
 };
 
+// add checklist
+const updateChecklistItemRequest = () => {
+  return {
+    type: actionConstants.UPDATE_CHECKLIST_ITEM_REQUEST,
+  };
+};
+
+const updateChecklistItemSuccess = (payload) => {
+  return {
+    type: actionConstants.UPDATE_CHECKLIST_ITEM_SUCCESS,
+    payload: payload,
+  };
+};
+
+const updateChecklistItemFailure = (err) => {
+  return {
+    type: actionConstants.UPDATE_CHECKLIST_ITEM_FAILURE,
+    payload: err,
+  };
+};
+
 // thunks
 
 export const getCard = (card_id) => async (dispatch) => {
@@ -184,7 +208,7 @@ export const getCard = (card_id) => async (dispatch) => {
       `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}`
     );
     console.log(card);
-    dispatch(getCardSuccess(card.data.card));
+    dispatch(getCardSuccess(card.data));
   } catch (error) {
     dispatch(getCardFailure(error));
   }
@@ -259,23 +283,43 @@ export const addChecklist = (card_id, title) => async (dispatch) => {
         title,
       }
     );
-    dispatch(addChecklistSuccess(data));
+    console.log("Data from add checklist", data);
+    dispatch(addChecklistSuccess(data.data));
     // dispatch(getCard(card_id))
   } catch (error) {
     dispatch(addChecklistFailure(error));
   }
 };
 
-export const addItemChecklist = (card_id, id, title) => async (dispatch) => {
-  try {
-    dispatch(addItemChecklistRequest());
-    const data = await axios.post(
-      `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/checklist/addItem`,
-      { id, title }
-    );
-    dispatch(addItemChecklistSuccess(data));
-    dispatch(getCard(card_id));
-  } catch (error) {
-    dispatch(addItemChecklistFailure(error));
-  }
-};
+export const addItemChecklist =
+  (card_id, checklist_id, title) => async (dispatch) => {
+    try {
+      dispatch(addItemChecklistRequest());
+      const data = await axios.post(
+        `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/checklist/addItem`,
+        { checklist_id, title }
+      );
+      console.log("Data from add checklist", data);
+
+      dispatch(addItemChecklistSuccess(data.data));
+      // dispatch(getCard(card_id));
+    } catch (error) {
+      dispatch(addItemChecklistFailure(error));
+    }
+  };
+
+export const updateChecklistItem =
+  (card_id, checklist_id, item_id, complete) => async (dispatch) => {
+    try {
+      dispatch(updateChecklistItemRequest());
+      const data = await axios.patch(
+        `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/toggleItem`,
+        { checklist_id, item_id, complete }
+      );
+      console.log(data.data);
+      dispatch(updateChecklistItemSuccess(data.data.newChecklist));
+      // dispatch(getCard(card_id));
+    } catch (error) {
+      dispatch(updateChecklistItemFailure(error));
+    }
+  };

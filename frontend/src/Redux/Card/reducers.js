@@ -4,6 +4,7 @@ const initState = {
   isLoading: false,
   isError: false,
   card: {},
+  checklists: [],
 };
 
 const singleCardReducer = (state = initState, action) => {
@@ -17,7 +18,8 @@ const singleCardReducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: false,
-        card: action.payload,
+        card: action.payload.card,
+        checklists: action.payload.checklists,
       };
     case actionConstants.GET_CARD_FAILURE:
       return {
@@ -89,9 +91,50 @@ const singleCardReducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: false,
-        card: action.payload.data.card,
+        card: action.payload.card,
+        checklists: [...state.checklists, action.payload.checklist],
       };
     case actionConstants.ADD_CHECKLIST_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    // add item to checklist
+    case actionConstants.ADD_ITEM_CHECKLIST_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actionConstants.ADD_ITEM_CHECKLIST_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        checklists: state.checklists.map((el) =>
+          el._id == action.payload.checklist._id ? action.payload.checklist : el
+        ),
+      };
+    case actionConstants.ADD_ITEM_CHECKLIST_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    // toggle item in checklist
+    case actionConstants.UPDATE_CHECKLIST_ITEM_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actionConstants.UPDATE_CHECKLIST_ITEM_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        checklists: state.checklists.map((el) =>
+          el._id == action.payload._id ? action.payload : el
+        ),
+      };
+    case actionConstants.UPDATE_CHECKLIST_ITEM_FAILURE:
       return {
         ...state,
         isLoading: false,

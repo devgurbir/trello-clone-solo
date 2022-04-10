@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 const SingleCardHeader = () => {
   const cover = useSelector((state) => state.singleCard.card.cover);
   const y = useSelector((state) => state.board?.board?._id);
-  console.log("BOARD ID", y);
 
   return (
     <div className={styles.cardHeader}>

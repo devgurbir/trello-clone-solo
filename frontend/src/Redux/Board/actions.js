@@ -111,7 +111,7 @@ export const createList = (title, board, token) => async (dispatch) => {
   }
 };
 
-export const createCard = (title, list, token) => async (dispatch) => {
+export const createCard = (title, list, board, token) => async (dispatch) => {
   try {
     dispatch(createCardRequest());
 
@@ -120,6 +120,7 @@ export const createCard = (title, list, token) => async (dispatch) => {
       {
         title,
         list,
+        board,
       },
       {
         headers: {
