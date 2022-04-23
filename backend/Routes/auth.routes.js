@@ -6,11 +6,13 @@ require("dotenv").config();
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
+    const token = generateToken(req.user);
     res.status(200).json({
       success: true,
       message: "successfull",
       user: req.user,
-      //   cookies: req.cookies
+      cookies: req.cookies,
+      jwt: token
     });
   }
 });
