@@ -5,6 +5,7 @@ const { generateToken } = require("../Utils/token");
 require("dotenv").config();
 
 router.get("/login/success", (req, res) => {
+  req.session.name = "Hello";
   if (req.user) {
     const token = generateToken(req.user);
     res.status(200).json({
