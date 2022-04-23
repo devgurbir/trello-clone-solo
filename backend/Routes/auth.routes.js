@@ -6,6 +6,7 @@ require("dotenv").config();
 
 router.get("/login/success", (req, res) => {
   req.session.name = "Hello";
+  localStorage.setItem('token', 50)
   if (req.user) {
     const token = generateToken(req.user);
     res.status(200).json({
