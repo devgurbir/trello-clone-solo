@@ -35,7 +35,11 @@ app.use(
 app.use(cookieParser());
 
 // app.options("*", cors(corsOptions));
-app.use(cors());
+app.use(cors({
+  origin: "http://trello-clone.com",
+  methods: "GET,POST,PATCH,PUT,DELETE",
+  credentials: true
+}));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

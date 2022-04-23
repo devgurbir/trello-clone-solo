@@ -4,11 +4,28 @@ const passport = require("passport");
 const { generateToken } = require("../Utils/token");
 require("dotenv").config();
 
+router.get("/login/success", (req, res) => {
+  if (req.user) {
+    res.status(200).json({
+      success: true,
+      message: "successfull",
+      user: req.user,
+      //   cookies: req.cookies
+    });
+  }
+});
+
+router.get("/login/failed", (req, res) => {
+  res.status(401).json({
+    success: false,
+    message: "failure",
+  });
+});
+
 router.get(
   "/google",
   passport.authenticate("google", {
-    scope: ["profile", "email"],
-    passReqToCallback: true,
+    scope: ["profile", "email"]
   })
 );
 
