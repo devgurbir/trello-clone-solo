@@ -58,7 +58,7 @@ app.use(function (req, res, next) {
 
 app.use(express.json());
 
-// app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 
 app.use("/card", cardRouter);
 app.use("/board", boardRouter);
