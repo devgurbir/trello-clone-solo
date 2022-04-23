@@ -15,11 +15,7 @@ const Signup = () => {
   const history = useHistory();
 
   const xyz = async () => {
-    const data = await axios(
-      "https://cors-anywhere.herokuapp.com/https://trello-clone-gurbir.herokuapp.com/auth/google",
-      { headers: { "Access-Control-Allow-Origin": "*" } }
-    );
-    return data;
+    window.open(`${REACT_APP_BACKEND_ROOT}/auth/google`, "_self");
   };
 
   return (
