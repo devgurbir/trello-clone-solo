@@ -15,7 +15,7 @@ const Signup = () => {
   const history = useHistory();
 
   const xyz = async () => {
-    window.open(`${REACT_APP_BACKEND_ROOT}/auth/google`, "_self");
+    window.open(`${process.env.REACT_APP_BACKEND_ROOT}/auth/google`, "_self");
   };
 
   return (
