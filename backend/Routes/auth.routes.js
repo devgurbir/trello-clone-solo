@@ -40,13 +40,15 @@ router.get(
   function (req, res) {
     // Successful authentication, redirect home.
     const token = generateToken(req.user);
-
+    req.session.token = token;
     if (req.user.workspaces.length > 0) {
+
       res
         .status(200)
-        .cookie("access_token", "Bearer " + token, {
-          expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
-        })
+        .send({msg:"Successful"})
+        // .cookie("access_token", "Bearer " + token, {
+        //   expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
+        // })
         // .json({ msg: req.session });
         // .redirect(
         //   301,
@@ -55,9 +57,10 @@ router.get(
     } else {
       res
         .status(200)
-        .cookie("access_token", "Bearer " + token, {
-          expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
-        })
+        .send({msg:"Successful"})
+        // .cookie("access_token", "Bearer " + token, {
+        //   expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
+        // })
         // .json({ msg: req.session });
         // .redirect(301, process.env.FRONTEND_ROOT + `/create-first-workspace`);
     }
