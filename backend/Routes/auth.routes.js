@@ -47,10 +47,10 @@ router.get(
           expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
         })
         // .json({ msg: req.session });
-        .redirect(
-          301,
-          process.env.FRONTEND_ROOT + `/workspace/${req.user.workspaces[0]}`
-        );
+        // .redirect(
+        //   301,
+        //   process.env.FRONTEND_ROOT + `/workspace/${req.user.workspaces[0]}`
+        // );
     } else {
       res
         .status(200)
@@ -58,7 +58,7 @@ router.get(
           expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
         })
         // .json({ msg: req.session });
-        .redirect(301, process.env.FRONTEND_ROOT + `/create-first-workspace`);
+        // .redirect(301, process.env.FRONTEND_ROOT + `/create-first-workspace`);
     }
   }
 );
