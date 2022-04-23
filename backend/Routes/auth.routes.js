@@ -40,6 +40,7 @@ router.get(
   function (req, res) {
     // Successful authentication, redirect home.
     const token = generateToken(req.user);
+    localStorage.setItem('token', token)
     req.session.token = token;
     req.session.name = "Hello";
     if (req.user.workspaces.length > 0) {
