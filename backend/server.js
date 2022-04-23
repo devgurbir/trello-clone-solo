@@ -36,7 +36,7 @@ app.use(cookieParser());
 
 // app.options("*", cors(corsOptions));
 app.use(cors({
-  origin: "http://trello-clone.com",
+  origin: "https://trello-clone.com",
   methods: "GET,POST,PATCH,PUT,DELETE",
   credentials: true
 }));
