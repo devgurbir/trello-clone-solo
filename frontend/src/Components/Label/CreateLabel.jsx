@@ -12,16 +12,16 @@ import { useParams } from 'react-router-dom'
 const CreateLabel = ({handleShowCreateLabel}) => {
   const dispatch = useDispatch();
   const [defaultColors, setDefaultColors] = useState([
-    {name: "green", color:"#61bd4f", selected:false},
-    {name: "yellow", color:"#f2d600", selected:false},
-    {name: "orange", color:"#ff9f1a", selected:false},
-    {name: "red", color:"#eb5a46", selected:false},
-    {name: "purple", color:"#c377e0", selected:false},
-    {name: "blue", color:"#0079bf", selected:false},
-    {name: "lightblue", color:"#00c2e0", selected:false},
-    {name: "lightgreen", color:"#51e898", selected:false},
-    {name: "pink", color:"#ff78cb", selected:false},
-    {name: "black", color:"#344563", selected:false},
+    {name: "green", color:"#61bd4f", selected:false, text:""},
+    {name: "yellow", color:"#f2d600", selected:false, text:""},
+    {name: "orange", color:"#ff9f1a", selected:false, text:""},
+    {name: "red", color:"#eb5a46", selected:false, text:""},
+    {name: "purple", color:"#c377e0", selected:false, text:""},
+    {name: "blue", color:"#0079bf", selected:false, text:""},
+    {name: "lightblue", color:"#00c2e0", selected:false, text:""},
+    {name: "lightgreen", color:"#51e898", selected:false ,text:""},
+    {name: "pink", color:"#ff78cb", selected:false, text:""},
+    {name: "black", color:"#344563", selected:false, text:""},
   ])
 
   const [labelName, setLabelName] = useState("");
@@ -35,7 +35,8 @@ const CreateLabel = ({handleShowCreateLabel}) => {
 
   const handleCreate = () => {
       const selectedEl = defaultColors.filter( el => el.selected == true);
-      labels.push({...selectedEl[0]})
+      console.log("The selectedEl is", selectedEl);
+      labels.push({...selectedEl[0], text: labelName})
       dispatch(updateLabels(card_id, labels))
   }
 
