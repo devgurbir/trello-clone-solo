@@ -10,7 +10,7 @@ const defaultColors = [
   { name: "purple", color: "#c377e0", selected: false },
   { name: "blue", color: "#0079bf", selected: false },
   { name: "lightblue", color: "#00c2e0", selected: false },
-  { name: "lightgreen", color: "#51e898", selected: false },
+  { name: "lime", color: "#51e898", selected: false },
   { name: "pink", color: "#ff78cb", selected: false },
   { name: "black", color: "#344563", selected: false },
 ];

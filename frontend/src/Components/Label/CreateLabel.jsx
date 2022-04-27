@@ -19,7 +19,7 @@ const CreateLabel = ({handleShowCreateLabel}) => {
     {name: "purple", color:"#c377e0", selected:false, text:""},
     {name: "blue", color:"#0079bf", selected:false, text:""},
     {name: "lightblue", color:"#00c2e0", selected:false, text:""},
-    {name: "lightgreen", color:"#51e898", selected:false ,text:""},
+    {name: "lime", color:"#51e898", selected:false ,text:""},
     {name: "pink", color:"#ff78cb", selected:false, text:""},
     {name: "black", color:"#344563", selected:false, text:""},
   ])

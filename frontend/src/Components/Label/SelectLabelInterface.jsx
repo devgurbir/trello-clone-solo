@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from "./label.module.css"
 import LabelSearch from './LabelSearch'
 import LabelsMain from './LabelsMain'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { ColorBlindContext } from '../../Contexts/ColorBlindContextProvider';
 
 const SelectLabelInterface = ({handleShowPopup, handleShowCreateLabel}) => {
+    const {colorBlindMode, setColorBlindMode} = useContext(ColorBlindContext);
   return (
       <>
         <div className={styles.popupHeaderTitle}>
@@ -21,7 +23,11 @@ const SelectLabelInterface = ({handleShowPopup, handleShowCreateLabel}) => {
             <div style={{marginBottom:"8px"}}>
                 <button onClick = { () => handleShowCreateLabel(true) } style={{width:"100%", backgroundColor: "#091e420a"}} className="button">Create a new label</button>
                 <hr />
-                <button style={{width:"100%", backgroundColor: "#091e420a"}} className="button">Enable color blind friendly mode</button>
+                <button onClick={() => {
+                    
+                    setColorBlindMode(!colorBlindMode)
+                    console.log("Updated", colorBlindMode)
+                }} style={{width:"100%", backgroundColor: "#091e420a"}} className="button">Enable color blind friendly mode</button>
             </div>
         </div>
         </>
