@@ -6,7 +6,7 @@ import { ColorBlindContext } from '../../Contexts/ColorBlindContextProvider'
 
 const LabelsMain = () => {
   const labels = useSelector(state => state.singleCard.card.labels);
-  const {colorBlindMode, setColorBlindMode} = useContext(ColorBlindContext)
+  const [colorBlindMode, setColorBlindMode] = useContext(ColorBlindContext)
   console.log("colorBlindMode", colorBlindMode)
   
   return (

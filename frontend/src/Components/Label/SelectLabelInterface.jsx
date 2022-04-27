@@ -6,7 +6,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { ColorBlindContext } from '../../Contexts/ColorBlindContextProvider';
 
 const SelectLabelInterface = ({handleShowPopup, handleShowCreateLabel}) => {
-    const {colorBlindMode, setColorBlindMode} = useContext(ColorBlindContext);
+    const [colorBlindMode, setColorBlindMode] = useContext(ColorBlindContext);
   return (
       <>
         <div className={styles.popupHeaderTitle}>
