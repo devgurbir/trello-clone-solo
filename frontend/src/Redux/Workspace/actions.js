@@ -128,9 +128,7 @@ export const createBoard =
         `${process.env.REACT_APP_BACKEND_ROOT}/board/create`,
         { title, workspace, background },
         {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
+          withCredentials: true
         }
       );
       console.log(board.data.board._id);
