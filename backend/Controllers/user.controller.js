@@ -76,8 +76,14 @@ const signIn = async (req, res) => {
 };
 
 const getUserData = async (req, res) => {
-  console.log("l79, getUserData", req.session.passport, req.isAuthenticated(), req.user);
-  res.status(200).send({ rand: "1", msg: "token aaya?", user: req.user });
+  // console.log("l79, getUserData", req.session.passport, req.isAuthenticated(), req.user);
+  if(req.user){
+
+    res.status(200).send({ rand: "1", msg: "req user"});
+  }
+  else{
+    res.status(200).send({ rand: "12", msg: "no req user"});
+  }
   // if(req.user){
   //     return res.status(200).send({user: req.user})
   // }
