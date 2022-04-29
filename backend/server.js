@@ -27,17 +27,17 @@ app.enable('trust proxy');
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
-    proxy: true,
-    store: new MongoStore({
-      mongoUrl: process.env.DATABASE_URL,
-    }),
-    // cookie: {
-    //   maxAge: 1000 * 60 * 60,
-    //   sameSite: "none",
-    //   // secure: true,
-    // }
+    resave: true,
+    saveUninitialized: true,
+    proxy: true,    
+    cookie: {
+      maxAge: 1000 * 60 * 60,
+      // sameSite: "none",
+      secure: true,
+      store: new MongoStore({
+        mongoUrl: process.env.DATABASE_URL,
+      })
+    }
   })
 );
 
