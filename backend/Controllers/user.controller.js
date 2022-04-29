@@ -23,7 +23,7 @@ const createUser = async (req, res) => {
     });
 
     const token = generateToken(user);
-    req.session.token = token;
+    // req.session.token = token;
 
     return res.status(201).send({ msg: "Signup successful", user, token });
   } catch (error) {
