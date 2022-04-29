@@ -79,8 +79,9 @@ const getUserData = async (req, res) => {
   // console.log("l79, getUserData", req.session.passport, req.isAuthenticated(), req.user);
 
     // res.status(200).send({ rand: "1", msg: "req user",isAuth, session: req.session});
+    let isAuth = req.isAuthenticated();
   if(req.user){
-      return res.status(200).send({user: req.user})
+      return res.status(200).send({user: req.user, isAuth})
   }
   else{
       res.status(403).send({msg: "Didnt detect user"})
