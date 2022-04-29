@@ -77,7 +77,7 @@ const signIn = async (req, res) => {
 
 const getUserData = async (req, res) => {
   console.log("l79, getUserData", req.session.passport, req.isAuthenticated(), req.user);
-  res.status(200).send({ token: req.cookies, rand: "1", msg: "token aaya?", user: req.user });
+  res.status(200).send({ rand: "1", msg: "token aaya?", user: req.user });
   // if(req.user){
   //     return res.status(200).send({user: req.user})
   // }
