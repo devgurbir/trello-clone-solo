@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import axios_wc from "../../Utils/axios_wc_instance";
 import { API_ROOT } from "../../Utils/constents";
 
 // action constants
@@ -84,14 +85,14 @@ export const createWorkspace = (title, token) => async (dispatch) => {
   try {
     dispatch(createWorkspaceRequest());
     // replace with card_id
-    const workspace = await axios.post(
+    const workspace = await axios_wc.post(
       `${process.env.REACT_APP_BACKEND_ROOT}/workspace/create`,
       { title },
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
+      // {
+      //   headers: {
+      //     Authorization: "Bearer " + token,
+      //   },
+      // }
     );
     console.log(workspace.data);
     dispatch(createWorkspaceSuccess(workspace.data.workspace));
@@ -105,13 +106,13 @@ export const getWorkspace = (workspace_id, token) => async (dispatch) => {
   try {
     dispatch(getWorkspaceRequest());
     // replace with card_id
-    const workspace = await axios.get(
+    const workspace = await axios_wc.get(
       `${process.env.REACT_APP_BACKEND_ROOT}/workspace/${workspace_id}`,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
+      // {
+      //   headers: {
+      //     Authorization: "Bearer " + token,
+      //   },
+      // }
     );
     dispatch(getWorkspaceSuccess(workspace.data.workspace));
   } catch (error) {

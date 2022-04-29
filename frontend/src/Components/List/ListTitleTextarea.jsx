@@ -14,7 +14,7 @@ const ListTitleTextarea = ({ title }) => {
       {isEditing ? (
         <textarea
           ref={inputRef}
-          spellcheck="false"
+          spellCheck="false"
           onBlur={() => setIsEditing(false)}
           className={styles.listTitle + " " + styles.isEditing}
           value={title}
@@ -22,7 +22,7 @@ const ListTitleTextarea = ({ title }) => {
       ) : (
         <textarea
           ref={inputRef}
-          spellcheck="false"
+          spellCheck="false"
           onClick={handleEdit}
           className={styles.listTitle}
           value={title}

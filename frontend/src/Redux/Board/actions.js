@@ -1,4 +1,5 @@
 import axios from "axios";
+import axios_wc from "../../Utils/axios_wc_instance";
 
 // action constants
 export const actionConstants = {
@@ -93,17 +94,17 @@ export const getBoard = (board_id) => async (dispatch) => {
 export const createList = (title, board, token) => async (dispatch) => {
   try {
     dispatch(createListRequest());
-    const list = await axios.post(
+    const list = await axios_wc.post(
       `${process.env.REACT_APP_BACKEND_ROOT}/list/create`,
       {
         title,
         board,
       },
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
+      // {
+      //   headers: {
+      //     Authorization: "Bearer " + token,
+      //   },
+      // }
     );
     dispatch(createListSuccess(list.data));
   } catch (error) {
@@ -115,21 +116,21 @@ export const createCard = (title, list, board, token) => async (dispatch) => {
   try {
     dispatch(createCardRequest());
 
-    const card = await axios.post(
+    const card = await axios_wc.post(
       `${process.env.REACT_APP_BACKEND_ROOT}/card/create`,
       {
         title,
         list,
         board,
       },
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
+      // {
+      //   headers: {
+      //     Authorization: "Bearer " + token,
+      //   },
+      // }
     );
-    console.log("Card: ", card.data);
     dispatch(createCardSuccess(card.data.list));
+    
   } catch (error) {
     dispatch(createCardFailure());
   }

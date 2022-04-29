@@ -29,7 +29,7 @@ const Workspace = () => {
                     </div>
                     <div style={{marginTop: "12px"}} className={styles.workspaceFormDiv}>
                         <label>Send email invites</label>
-                        <input style={{backgroundColor: "#fafbfc"}} placeholder="Enter as many email addresses as you want" spellcheck="false" />
+                        <input style={{backgroundColor: "#fafbfc"}} placeholder="Enter as many email addresses as you want" spellCheck="false" />
                         
                     </div>
                     <button className={styles.continueBtn} onClick={ () => dispatch(createWorkspace(val, token))}>Continue</button>

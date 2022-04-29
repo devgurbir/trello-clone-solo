@@ -223,7 +223,7 @@ export const updateDesc = (card_id, description) => async (dispatch) => {
         description,
       }
     );
-    dispatch(updateCardDescSuccess(desc));
+    setTimeout( () => dispatch(updateCardDescSuccess(desc)), 1000);
   } catch (error) {
     dispatch(updateCardDescFailure(error));
   }

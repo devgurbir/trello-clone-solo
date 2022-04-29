@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_ROOT } from "../../Utils/constents";
 import { useHistory } from "react-router-dom";
-
+import axios_wc from "../../Utils/axios_wc_instance";
 // action constants
 
 export const actionConstants = {
@@ -117,16 +117,16 @@ export const createUser = (email, password) => async (dispatch) => {
   }
 };
 
-export const getUser = (token) => async (dispatch) => {
+export const getUser = () => async (dispatch) => {
   try {
     dispatch(getUserRequest());
-    const user = await axios.get(`${process.env.REACT_APP_BACKEND_ROOT}/user`, {
+    const user = await axios_wc.get(`${process.env.REACT_APP_BACKEND_ROOT}/user`, {
       // headers: {
       //   Authorization: "Bearer " + token,
       // },
-      withCredentials: true
+      // withCredentials: true
     });
-    dispatch(getUserSuccess(user));
+    dispatch(getUserSuccess(user.data.user));
   } catch (error) {
     dispatch(getUserFailure(error));
   }

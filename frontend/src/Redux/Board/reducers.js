@@ -15,9 +15,9 @@ const boardReducer = (state = initState, action) => {
         isLoading: true,
       };
     case actionConstants.CREATE_CARD_SUCCESS:
-      console.log("Line 18", action.payload);
       return {
         ...state,
+        isLoading: false,
         lists: state.lists.map((list) =>
           list._id == action.payload._id ? action.payload : { ...list }
         ),
@@ -45,7 +45,8 @@ const boardReducer = (state = initState, action) => {
     case actionConstants.GET_BOARD_FAILURE:
       return {
         ...state,
-        isError: false,
+        isLoading: false,
+        isError: true,
       };
     case actionConstants.CREATE_LIST_REQUEST:
       return {

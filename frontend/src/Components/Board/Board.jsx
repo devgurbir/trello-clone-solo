@@ -6,17 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getBoard } from "../../Redux/Board/actions";
 import BoardLists from "./BoardLists";
-
+import Loading from "../Loading"
 const Board = () => {
   const dispatch = useDispatch();
   const { board_id } = useParams();
   const boardData = useSelector((state) => state.board.board);
+  const boardIdFromCard = useSelector(state => state.singleCard?.card?.board)
+  const isLoading = useSelector(state => state.board.isLoading)
   useEffect(() => {
-    console.log(board_id);
-    dispatch(getBoard(board_id));
+    const finalBoardId = board_id || boardIdFromCard
+    dispatch(getBoard(finalBoardId));
   }, []);
+  
   return (
     <StyledBoardLayout bgColor={boardData.background}>
+      {isLoading && <Loading /> }
       <nav className={styles.nav}></nav>
       <div className={styles.container}>
         <aside className={styles.aside}></aside>

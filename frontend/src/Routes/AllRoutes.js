@@ -22,6 +22,9 @@ function AllRoutes() {
   // let isLoading = useSelector(state => state.user.isLoading)
   let isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   let isLoading = useSelector((state) => state.user.isLoading);
+  let workspaces = useSelector(state => state.user?.user?.workspaces)
+  
+  console.log("Is loading", isLoading)
   const dispatch = useDispatch();
 
   const getUserData = async () => {
@@ -32,17 +35,29 @@ function AllRoutes() {
   useEffect(() => {
     getUserData();
   }, []);
+
+  if(isLoading){
+    return <Loading />
+  }
+  else{
+
+  
   return (
     <Switch>
       <Route exact path="/">
-        <Homepage />
-        {/* <List />
-        <List />
-        <List /> */}
+        {/* {isAuthenticated ? <Homepage /> : <Redirect to={`/workspace/${workspaceID}`} /> } */}
+        {isLoading || isAuthenticated == null ? null : isAuthenticated ? (
+          <Redirect to={`/workspace/${workspaces[0]}`} />
+        ) : (
+          <Homepage />
+        )}
+        // {/* <List />
+        // <List />
+        // <List /> */}
       </Route>
-      {/* <Route exact path="/appbar">
-        <AppBar />
-      </Route> */}
+      // {/* <Route exact path="/appbar">
+      //   <AppBar />
+      // </Route> */}
       <Route exact path="/board/:board_id">
         <Board />
       </Route>
@@ -65,14 +80,20 @@ function AllRoutes() {
         )}
       </Route>
       <Route exact path="/card/:card_id">
-        {/* <Board /> */}
+        <Board />
         <SingleCard />
       </Route>
       <Route exact path="/workspace/:workspace_id">
-        <SingleWorkspace />
+        {isLoading || isAuthenticated == null ? null : isAuthenticated ? (
+          <SingleWorkspace />
+        ) : (
+            <Redirect to="/login" />
+        )}
+        
       </Route>
     </Switch>
   );
+        }
 }
 
 export default AllRoutes;
