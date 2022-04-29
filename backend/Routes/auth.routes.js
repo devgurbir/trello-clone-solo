@@ -4,31 +4,11 @@ const passport = require("passport");
 const { generateToken } = require("../Utils/token");
 require("dotenv").config();
 
-router.get("/login/success", (req, res) => {
-  
-  if (req.user) {
-    const token = generateToken(req.user);
-    res.status(200).json({
-      success: true,
-      message: "successfull",
-      user: req.user,
-      cookies: req.cookies,
-      jwt: token
-    });
-  }
-});
-
-router.get("/login/failed", (req, res) => {
-  res.status(401).json({
-    success: false,
-    message: "failure",
-  });
-});
-
 router.get(
   "/google",
   passport.authenticate("google", {
-    scope: ["profile", "email"]
+    scope: ["profile", "email"],
+    'session': true
   })
 );
 
@@ -37,13 +17,11 @@ router.get(
   passport.authenticate("google", {
     successRedirect: `${process.env.FRONTEND_ROOT}`,
     failureRedirect: "/login",
+    'session': true
   }),
   function (req, res) {
     // Successful authentication, redirect home.
-    const token = generateToken(req.user);
-    localStorage.setItem('token', token)
-    req.session.token = token;
-    req.session.name = "Hello";
+    console.log("REQ SESSION line 26 auth route", req.session)
     if (req.user.workspaces.length > 0) {
 
       res
@@ -58,6 +36,7 @@ router.get(
         //   process.env.FRONTEND_ROOT + `/workspace/${req.user.workspaces[0]}`
         // );
     } else {
+      console.log("REQ SESSION line 41 auth route")
       res
         .status(200)
         .send({msg:"Successful"})

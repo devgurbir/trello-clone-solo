@@ -11,7 +11,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.BACKEND_ROOT + `/auth/google/callback`,
+      callbackURL: process.env.BACKEND_ROOT + `/auth/google/callback`
     },
     async function (accessToken, refreshToken, profile, cb) {
       const userEmail = profile?._json?.email;
@@ -31,10 +31,12 @@ passport.use(
               isGoogle: true,
             },
             function (err, user) {
+              console.log("user", user)
               return cb(err, user);
             }
           );
         } else {
+          
           return cb(err, user);
         }
       });

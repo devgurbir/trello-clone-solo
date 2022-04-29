@@ -121,9 +121,10 @@ export const getUser = (token) => async (dispatch) => {
   try {
     dispatch(getUserRequest());
     const user = await axios.get(`${process.env.REACT_APP_BACKEND_ROOT}/user`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
+      // headers: {
+      //   Authorization: "Bearer " + token,
+      // },
+      withCredentials: true
     });
     dispatch(getUserSuccess(user));
   } catch (error) {

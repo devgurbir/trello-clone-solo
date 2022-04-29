@@ -16,50 +16,56 @@ const userRouter = require("./Routes/user.routes");
 const workspaceRouter = require("./Routes/workspace.routes");
 const listRouter = require("./Routes/list.routes");
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo")
 const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
+
+app.use(cookieParser('keyboard cat'));
+// app.use(express.bodyParser());
 
 app.use(
   session({
     secret: "keyboard cat",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: new MongoStore({
       mongoUrl: process.env.DATABASE_URL,
     }),
-    cookie: {
-      maxAge: 1000 * 60 * 60,
-      sameSite: "none",
-      secure: true
-    }
+    // cookie: {
+    //   maxAge: 1000 * 60 * 60,
+    //   sameSite: "none",
+    //   // secure: true,
+    // }
   })
 );
 
-app.use(cookieParser());
+
 
 // app.options("*", cors(corsOptions));
 app.use(cors({
   // origin: "https://trello-clone.com",
-  origin: "*",
+  origin: "http://localhost:3000",
   methods: "GET,POST,PATCH,PUT,DELETE",
   credentials: true
 }));
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 app.use(express.json());
 
 app.set("trust proxy", 1);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/card", cardRouter);
 app.use("/board", boardRouter);
@@ -68,19 +74,20 @@ app.use("/board", boardRouter);
 //   console.log(error);
 //   res.send(error);
 // });
-app.use(passport.initialize());
-app.use(passport.session());
 
-passport.serializeUser(function (user, cb) {
-  process.nextTick(function () {
-    cb(null, { id: user._id });
-  });
+
+passport.serializeUser((user, done) => {
+  done(null, user._id);
 });
 
-passport.deserializeUser(function (user, cb) {
-  process.nextTick(function () {
-    return cb(null, user);
-  });
+passport.deserializeUser((_id, done) => {
+User.findById( _id, (err, user) => {
+  if(err){
+      done(null, false, {error:err});
+  } else {
+      done(null, user);
+  }
+});
 });
 
 app.use("/auth", authRouter);
