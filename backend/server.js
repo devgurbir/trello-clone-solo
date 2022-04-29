@@ -23,7 +23,7 @@ require("dotenv").config();
 
 app.use(cookieParser('keyboard cat'));
 // app.use(express.bodyParser());
-
+app.enable('trust proxy');
 app.use(
   session({
     secret: "keyboard cat",
