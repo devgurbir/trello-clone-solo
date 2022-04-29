@@ -29,6 +29,7 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     store: new MongoStore({
       mongoUrl: process.env.DATABASE_URL,
     }),
