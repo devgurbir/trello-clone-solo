@@ -8,7 +8,7 @@ const {
 const router = express.Router();
 const checkAuthenticated = require("../Middlewares/checkAuthenticated");
 
-router.post("/create", checkAuthenticated, createBoard);
+router.post("/create", createBoard);
 router.get("/:id", getBoardById);
 
 module.exports = router;
