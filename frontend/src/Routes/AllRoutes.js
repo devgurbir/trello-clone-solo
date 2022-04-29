@@ -25,8 +25,8 @@ function AllRoutes() {
   const dispatch = useDispatch();
 
   const getUserData = async () => {
-    let token = await getBearerToken();
-    dispatch(getUser(token));
+    // let token = await getBearerToken();
+    dispatch(getUser());
   };
 
   useEffect(() => {
