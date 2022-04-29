@@ -28,7 +28,7 @@ app.use(
   session({
     secret: "keyboard cat",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new MongoStore({
       mongoUrl: process.env.DATABASE_URL,
     }),
