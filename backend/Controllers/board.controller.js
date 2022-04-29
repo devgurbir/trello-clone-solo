@@ -8,7 +8,7 @@ const List = require("../Models/list.model");
 
 // Create
 const createBoard = async (req, res) => {
-  if(!req.isAuthenticated){
+  if(!req.isAuthenticated()){
     return res.status(401).send({"msg": "Not authorized" })
   }
   try {
