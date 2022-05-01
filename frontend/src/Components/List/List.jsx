@@ -4,8 +4,12 @@ import StyledListContent from "./Styled/StyledListContent.jsx";
 import StyledListWrapper from "./Styled/StyledListWrapper.jsx";
 import ListCards from "./ListCards.jsx";
 
+
+
+
 const List = ({ cards, title, id }) => {
   return (
+
     <StyledListWrapper>
       <StyledListContent>
         {/* List Header */}

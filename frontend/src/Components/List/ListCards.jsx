@@ -1,7 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import SingleListCard from "../Card/SingleListCard";
 import AddCard from "./AddCard";
-
 import StyledListCardWrapper from "./Styled/StyledListCardWrapper";
 
 const ListCards = ({ cards, id }) => {

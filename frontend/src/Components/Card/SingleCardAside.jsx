@@ -15,6 +15,7 @@ import FlexDiv from '../../Styled/FlexDiv'
 import ChecklistAsideOption from './ChecklistAsideOption'
 import CoverAsideOption from './CoverAsideOption'
 import LabelAsideOption from './LabelAsideOption'
+import AttachmentsAsideOption from './AttachmentsAsideOption'
 
 const SingleCardAside = () => {
   return (
@@ -23,11 +24,11 @@ const SingleCardAside = () => {
           <h5>Add to card</h5>
           {/* Options */}
           <div>
-              <SingleCardAsideOption icon={faUser} text="Members" />
+              <SingleCardAsideOption icon={faUser} text="Members" disabled = "disabled" />
               <LabelAsideOption />
               <ChecklistAsideOption />
-              <SingleCardAsideOption icon={faClock} text="Dates" />
-              <SingleCardAsideOption icon={faPaperclip} text="Attachments" />
+              <SingleCardAsideOption icon={faClock} text="Dates" disabled = "disabled"/>
+              <AttachmentsAsideOption />
               <CoverAsideOption />
               <SingleCardAsideOption icon={faFolderOpen} text="Custom Fields" disabled = "disabled" />
           </div>

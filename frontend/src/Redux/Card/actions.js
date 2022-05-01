@@ -1,5 +1,5 @@
 import axios from "axios";
-// action constants
+
 
 export const actionConstants = {
   GET_CARD_REQUEST: "GET_CARD_REQUEST",
@@ -26,6 +26,9 @@ export const actionConstants = {
   UPDATE_CHECKLIST_ITEM_REQUEST: "UPDATE_CHECKLIST_ITEM_REQUEST",
   UPDATE_CHECKLIST_ITEM_SUCCESS: "UPDATE_CHECKLIST_ITEM_SUCCESS",
   UPDATE_CHECKLIST_ITEM_FAILURE: "UPDATE_CHECKLIST_ITEM_FAILURE",
+  FILE_UPLOAD_REQUEST: "FILE_UPLOAD_REQUEST",
+  FILE_UPLOAD_SUCCESS: "FILE_UPLOAD_SUCCESS",
+  FILE_UPLOAD_FAILURE: "FILE_UPLOAD_FAILURE"
 };
 
 // action creators
@@ -198,11 +201,50 @@ const updateChecklistItemFailure = (err) => {
   };
 };
 
+const fileUploadRequest = () => {
+  return {
+    type: actionConstants.FILE_UPLOAD_REQUEST,
+  };
+};
+
+const fileUploadSuccess = (payload) => {
+  return {
+    type: actionConstants.FILE_UPLOAD_SUCCESS,
+    
+  };
+};
+
+const fileUploadFailure = (err) => {
+  return {
+    type: actionConstants.FILE_UPLOAD_FAILURE,
+    payload: err,
+  };
+};
+
 // thunks
+
+// export const fileUploadThunk = (file) => async (dispatch) => {
+//   try {
+//     dispatch(fileUploadRequest())
+//   // upload file to s3
+      
+//     ReactS3Client
+//     .uploadFile(file, "newFileName")
+//     .then(data => console.log(data))
+//     .catch(err => console.error(err))
+
+//     dispatch(fileUploadSuccess())
+//   } catch (error) {
+//     dispatch(fileUploadFailure(error))
+//   }
+// }
 
 export const getCard = (card_id) => async (dispatch) => {
   try {
     dispatch(getCardRequest());
+
+    
+
     // replace with card_id
     const card = await axios.get(
       `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}`

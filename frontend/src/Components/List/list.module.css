@@ -136,10 +136,10 @@
 }
 
 .addListClose {
-  background-color: #ffffff3d;
+  background-color: rgb(235, 236, 240);
   cursor: pointer;
-  /* color: black; */
-  color: white;
+  color: black;
+  /* color: white; */
   padding: 9px 12px;
   transition: color 85ms ease-in;
   border-radius: 3px;
