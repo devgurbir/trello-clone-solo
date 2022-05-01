@@ -29,7 +29,7 @@ const config = {
 
 
 const Attachments = ({handleShowPopup}) => {
-    console.log(process.env.BUCKET_NAME)
+    console.log(process.env.ACCESS_KEY_ID)
     const dispatch= useDispatch();
     const [selectedFile, setSelectedFile] = useState(false);
     const handleFileInput = (e) => {
