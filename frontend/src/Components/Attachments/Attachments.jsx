@@ -15,10 +15,10 @@ global.Buffer = global.Buffer || require('buffer').Buffer
 
 
 const config = {
-    bucketName: process.env.BUCKET_NAME,
+    bucketName: process.env.REACT_APP_BUCKET_NAME,
     region: 'ap-south-1',
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY
+    accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
 ,
     // s3Url: 'https:/your-custom-s3-url.com/', /* optional */
   } 
@@ -29,7 +29,7 @@ const config = {
 
 
 const Attachments = ({handleShowPopup}) => {
-    console.log(process.env.ACCESS_KEY_ID)
+    console.log(process.env.REACT_APP_ACCESS_KEY_ID)
     const dispatch= useDispatch();
     const [selectedFile, setSelectedFile] = useState(false);
     const handleFileInput = (e) => {
