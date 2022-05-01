@@ -4,7 +4,8 @@ const Card = require("../Models/card.model");
 const Checklist = require("../Models/checklist.model");
 const mongoose = require("mongoose");
 const List = require("../Models/list.model");
-
+const AWS = require('aws-sdk');
+const s3 = new AWS.S3();
 // Create
 const createCard = async (req, res) => {
   try {
@@ -289,6 +290,30 @@ const updateChecklistItem = async (req, res) => {
   }
 };
 
+
+
+const fileUpload = async (req, res) => {
+  const {file} = req.body;
+  console.log("File", file)
+  try {
+    const s3res = await s3.putObject({
+      Body: file,
+      Bucket: "trellobucket94",
+      Key: file.name
+    })
+    .promise();
+
+    if(!s3res){
+      res.status(403).send({ msg: "Something went wrong 403", error: error });
+    }
+
+    res.status(201).send({ msg: "File uploaded", s3res });
+  } catch (error) {
+    res.status(500).send({ msg: "Something went wrong", error: error });
+  }
+
+}
+
 module.exports = {
   updateLabels,
   toggleChecklistItemStatus,
@@ -302,4 +327,5 @@ module.exports = {
   getChecklist,
   deleteChecklist,
   updateChecklistItem,
+  fileUpload
 };

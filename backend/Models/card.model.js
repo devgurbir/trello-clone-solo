@@ -28,7 +28,7 @@ const cardSchema = new mongoose.Schema(
     labels: { type: Array, default: defaultColors },
     checklist: { type: Array, default: [] },
     dueDate: { type: Date, default: null },
-    attachments: { type: String, default: null },
+    attachments: { type: [String], default: null },
     cover: { type: String, default: null },
   },
   { timestamps: true }

@@ -80,7 +80,12 @@ const getUserData = async (req, res) => {
 
     // res.status(200).send({ rand: "1", msg: "req user",isAuth, session: req.session});
     let isAuth = req.isAuthenticated();
+    
+    
+    // console.log(isAuth)
   if(req.user){
+    
+    
       return res.status(200).send({user: req.user, isAuth})
   }
   else{

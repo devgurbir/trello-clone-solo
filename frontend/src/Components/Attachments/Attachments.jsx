@@ -29,6 +29,7 @@ const config = {
 
 
 const Attachments = ({handleShowPopup}) => {
+    console.log(process.env.BUCKET_NAME)
     const dispatch= useDispatch();
     const [selectedFile, setSelectedFile] = useState(false);
     const handleFileInput = (e) => {

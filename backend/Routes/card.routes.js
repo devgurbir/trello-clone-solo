@@ -12,6 +12,7 @@ const {
   getChecklist,
   deleteChecklist,
   updateChecklistItem,
+  fileUpload,
 } = require("../Controllers/card.controller");
 const router = express.Router();
 const checkAuthenticated = require("../Middlewares/checkAuthenticated");
@@ -30,4 +31,5 @@ router.patch("/:card_id/toggleItem", toggleChecklistItemStatus);
 router.get("/:card_id/getChecklist", getChecklist);
 router.delete("/:card_id/deleteChecklist", deleteChecklist);
 router.patch("/:card_id/checklist/update-item", updateChecklistItem);
+router.post("/fileUpload", fileUpload);
 module.exports = router;
