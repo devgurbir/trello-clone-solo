@@ -14,7 +14,6 @@ const createCard = async (req, res) => {
       author: req.user._id,
     });
 
-    console.log(card);
     const list = await List.findByIdAndUpdate(
       req.body.list,
       {
@@ -254,14 +253,21 @@ const getChecklist = async (req, res) => {
 // delete checklist
 const deleteChecklist = async (req, res) => {
   try {
-    let id = new mongoose.Types.ObjectId(req.body.id);
-    const data = await Card.deleteOne({ "checklist.id": id });
 
-    if (!data) {
+    const card = await Card.findByIdAndUpdate(req.params.card_id, {
+      $pull: { 'checklist': new mongoose.Types.ObjectId(req.body.checklist_id) },
+   }, {returnOriginal: false})
+    
+    if (!card) {
       return res.status(400).send({ msg: "Something went wrong, try again" });
-    }
+    }  
 
-    res.status(201).send({ msg: "deleted", card: data });
+    const data = await Checklist.findByIdAndDelete(new mongoose.Types.ObjectId(req.body.checklist_id),
+     { returnOriginal: false });
+
+    // console.log(card)
+
+    res.status(201).send({ msg: "deleted", card: card, checklists: data });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }

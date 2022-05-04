@@ -21,16 +21,19 @@ userSchema.pre("save", function (next) {
   });
 });
 
-userSchema.methods.checkPassword = function (password) {
+userSchema.methods.checkPassword =  async function (password) {
   const hashedPassword = this.password;
 
-  return new Promise((resolve, reject) => {
-    bcrypt.compare(password, hashedPassword, (err, same) => {
-      if (err) return reject(err);
+  const match = await bcrypt.compare(password, hashedPassword);
 
-      resolve(same);
-    });
-  });
+
+    if(match) {
+        return true
+    }
+    else{
+      return false
+    }
+  
 };
 
 const User = mongoose.model("User", userSchema);

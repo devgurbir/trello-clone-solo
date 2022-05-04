@@ -22,10 +22,7 @@ const createUser = async (req, res) => {
       password: req.body.password,
     });
 
-    const token = generateToken(user);
-    // req.session.token = token;
-
-    return res.status(201).send({ msg: "Signup successful", user, token });
+    return res.status(201).send({ msg: "Signup successful", user });
   } catch (error) {
     res.status(500).send({ msg: "Something went wrong", error });
   }
@@ -64,9 +61,7 @@ const signIn = async (req, res) => {
 
   const user = await User.findOne({ email: email });
   const isMatch = user.password == password;
-  console.log(user);
-  console.log(user.password, password);
-  console.log(isMatch);
+
   if (isMatch) {
     const token = generateToken(user);
     return res.status(200).send({ status: "success", user, token });
@@ -83,13 +78,11 @@ const getUserData = async (req, res) => {
     
     
     // console.log(isAuth)
-  if(req.user){
-    
-    
+  if(req.user){    
       return res.status(200).send({user: req.user, isAuth})
   }
   else{
-      res.status(403).send({msg: "Didnt detect user"})
+      res.status(403).send({msg: "Didnt detect user",isAuth})
   }
 };
 
