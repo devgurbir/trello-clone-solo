@@ -7,6 +7,7 @@ const StyledBoardBox = styled.div`
   padding: 4px 8px;
   position: relative;
   width: 25%;
+  color: black;
 `;
 
 export default StyledBoardBox;
