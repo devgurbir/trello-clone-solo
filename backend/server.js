@@ -30,12 +30,9 @@ app.use(
     resave: true,
     saveUninitialized: true,
     proxy: true,    
-    // store: new MongoStore({
-    //   mongoUrl: process.env.DATABASE_URL,
-    // })
     cookie: {
       maxAge: 1000 * 60 * 60,
-      sameSite: "none",
+      // sameSite: "none",
       secure: true,
       store: new MongoStore({
         mongoUrl: process.env.DATABASE_URL,
