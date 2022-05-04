@@ -10,22 +10,22 @@ const {
 } = require("../Controllers/user.controller");
 require('dotenv').config()
 
-router.options("*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://trello-clone.com");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.end();
-});
+// router.options("*", (req, res) => {
+//   res.header("Access-Control-Allow-Origin", "https://trello-clone.com");
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+//   res.end();
+// });
 
 router.post("/create", createUser);
 router.get("/", getUserData);
-router.post("/signin", 
-passport.authenticate('local'),
-function(req, res) {
-  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_ROOT);
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  // res.redirect("http://localhost:3000")
-  let isAuth = req.isAuthenticated();
-  res.send({user: req.user, isAuth})
+// router.post("/signin", 
+// passport.authenticate('local'),
+// function(req, res) {
+//   res.header("Access-Control-Allow-Origin", process.env.FRONTEND_ROOT);
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+//   // res.redirect("http://localhost:3000")
+//   let isAuth = req.isAuthenticated();
+//   res.send({user: req.user, isAuth})
 
-})
+// })
 module.exports = router;
