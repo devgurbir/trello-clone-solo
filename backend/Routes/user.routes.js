@@ -10,11 +10,11 @@ const {
 } = require("../Controllers/user.controller");
 require('dotenv').config()
 
-// router.options("*", (req, res) => {
-//   res.header("Access-Control-Allow-Origin", "https://trello-clone.com");
-//   res.setHeader("Access-Control-Allow-Credentials", "true");
-//   res.end();
-// });
+router.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://trello-clone.com");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.end();
+});
 
 router.post("/create", createUser);
 router.get("/", getUserData);
