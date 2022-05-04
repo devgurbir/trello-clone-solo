@@ -29,15 +29,18 @@ app.use(
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
-    proxy: true,    
-    cookie: {
-      maxAge: 1000 * 60 * 60,
-      sameSite: "none",
-      secure: true,
-      store: new MongoStore({
-        mongoUrl: process.env.DATABASE_URL,
-      })
-    }
+    proxy: true,   
+    store: new MongoStore({
+      mongoUrl: process.env.DATABASE_URL,
+    }) 
+    // cookie: {
+    //   maxAge: 1000 * 60 * 60,
+    //   sameSite: "none",
+    //   secure: true,
+    //   store: new MongoStore({
+    //     mongoUrl: process.env.DATABASE_URL,
+    //   })
+    // }
   })
 );
 

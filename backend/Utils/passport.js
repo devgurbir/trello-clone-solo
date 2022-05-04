@@ -45,24 +45,24 @@ passport.use(
   )
 );
 
-// passport.use(new LocalStrategy({
-//     usernameField: 'email',
-//     passwordField: 'password',
-// },  
-//   function(username, password, done) {
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+},  
+  function(username, password, done) {
   
-//     User.findOne({ email: username }, async function (err, user) {
-//       if (err) { return done(err); }
-//       if (!user) { return done(null, false); }
+    User.findOne({ email: username }, async function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
 
-//       const match = await user.checkPassword(password)
-//       console.log('59', match)
+      const match = await user.checkPassword(password)
+      console.log('59', match)
     
 
-//       if (!match) { return done(null, false); }
-//       return done(null, user);
-//     });
-//   }
-// ));
+      if (!match) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
 
 module.exports = passport;
