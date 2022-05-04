@@ -140,6 +140,25 @@ const singleCardReducer = (state = initState, action) => {
         isLoading: false,
         isError: true,
       };
+      case actionConstants.DELETE_CHECKLIST_REQUEST:
+        return {
+          ...state,
+          isLoading: true,
+        };
+      case actionConstants.DELETE_CHECKLIST_SUCCESS:
+        return {
+          ...state,
+          isLoading: false,
+          card: action.payload.card,
+          checklists: state.checklists.filter(el => el._id != action.payload.checklists._id)
+          
+        };
+      case actionConstants.DELETE_CHECKLIST_FAILURE:
+        return {
+          ...state,
+          isLoading: false,
+          isError: true,
+        };
     default:
       return state;
   }

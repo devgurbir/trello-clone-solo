@@ -47,7 +47,7 @@ function AllRoutes() {
       <Route exact path="/">
         {/* {isAuthenticated ? <Homepage /> : <Redirect to={`/workspace/${workspaceID}`} /> } */}
         {isLoading || isAuthenticated == null ? null : isAuthenticated ? (
-          <Redirect to={`/workspace/${workspaces[0]}`} />
+          workspaces.length > 0 ? <Redirect to={`/workspace/${workspaces[0]}`} /> : <Redirect to={`/create-first-workspace`} />
         ) : (
           <Homepage />
         )}
@@ -63,14 +63,18 @@ function AllRoutes() {
       </Route>
 
       <Route exact path="/login">
+        {isAuthenticated ? <Redirect to="/" /> : (
         <Layout>
           <Login />
         </Layout>
+        )}
       </Route>
       <Route exact path="/signup">
+      {isLoading || isAuthenticated ? <Redirect to="/" /> : (
         <Layout>
           <Signup />
         </Layout>
+      )}
       </Route>
       <Route exact path="/create-first-workspace">
         {isLoading || isAuthenticated == null ? null : isAuthenticated ? (

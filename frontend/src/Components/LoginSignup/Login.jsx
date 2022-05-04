@@ -10,6 +10,11 @@ const Login = () => {
   const [val, setVal] = useState("");
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();
+
+  const xyz = async () => {
+    window.open(`${process.env.REACT_APP_BACKEND_ROOT}/auth/google`, "_self");
+  };
+
   return (
     <div className={styles.sectionWrapper}>
       <div className={styles.accountForm}>
@@ -44,6 +49,7 @@ const Login = () => {
             <div className={styles.loginMethodOr}>OR</div>
             <div className={styles.loginMethodContainer}>
               <OAuthButton
+              onClick={xyz}
                 label="Google"
                 url="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
               />

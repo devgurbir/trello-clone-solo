@@ -86,16 +86,16 @@ const createUserFailure = (err) => {
 export const loginUser = (email, password) => async (dispatch) => {
   try {
     dispatch(loginUserRequest());
-    const user = await axios.post(
+    const user = await axios_wc.post(
       `${process.env.REACT_APP_BACKEND_ROOT}/user/signin`,
       { email, password }
     );
 
-    const token = user.data.token;
-    document.cookie = `access_token=Bearer%20${token};max-age=604800;`;
+    // const token = user.data.token;
+    // document.cookie = `access_token=Bearer%20${token};max-age=604800;`;
 
     dispatch(loginUserSuccess(user.data.user));
-    window.location.href = `/workspace/${user.data.user.workspaces[0]}`;
+    window.location.href = `${process.env.REACT_APP_FRONTEND_ROOT}`;
   } catch (error) {
     dispatch(loginUserFailure(error));
   }
@@ -108,8 +108,8 @@ export const createUser = (email, password) => async (dispatch) => {
       `${process.env.REACT_APP_BACKEND_ROOT}/user/create`,
       { email, password }
     );
-    const token = user.data.token;
-    document.cookie = `access_token=Bearer%20${token};max-age=604800;`;
+    // const token = user.data.token;
+    // document.cookie = `access_token=Bearer%20${token};max-age=604800;`;
 
     dispatch(createUserSuccess(user.data.user));
   } catch (error) {
@@ -120,12 +120,7 @@ export const createUser = (email, password) => async (dispatch) => {
 export const getUser = () => async (dispatch) => {
   try {
     dispatch(getUserRequest());
-    const user = await axios_wc.get(`${process.env.REACT_APP_BACKEND_ROOT}/user`, {
-      // headers: {
-      //   Authorization: "Bearer " + token,
-      // },
-      // withCredentials: true
-    });
+    const user = await axios_wc.get(`${process.env.REACT_APP_BACKEND_ROOT}/user`);
     dispatch(getUserSuccess(user.data.user));
   } catch (error) {
     dispatch(getUserFailure(error));

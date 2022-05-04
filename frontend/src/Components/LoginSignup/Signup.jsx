@@ -51,7 +51,7 @@ const Signup = () => {
               <button
                 onClick={() => {
                   dispatch(createUser(val, pass));
-                  history.push("/create-first-workspace");
+                  
                 }}
                 className={styles.loginBtn}
               >

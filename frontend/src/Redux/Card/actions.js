@@ -1,4 +1,5 @@
 import axios from "axios";
+import axios_wc from "../../Utils/axios_wc_instance";
 
 
 export const actionConstants = {
@@ -28,7 +29,10 @@ export const actionConstants = {
   UPDATE_CHECKLIST_ITEM_FAILURE: "UPDATE_CHECKLIST_ITEM_FAILURE",
   FILE_UPLOAD_REQUEST: "FILE_UPLOAD_REQUEST",
   FILE_UPLOAD_SUCCESS: "FILE_UPLOAD_SUCCESS",
-  FILE_UPLOAD_FAILURE: "FILE_UPLOAD_FAILURE"
+  FILE_UPLOAD_FAILURE: "FILE_UPLOAD_FAILURE",
+  DELETE_CHECKLIST_REQUEST: "DELETE_CHECKLIST_REQUEST",
+  DELETE_CHECKLIST_SUCCESS: "DELETE_CHECKLIST_SUCCESS",
+  DELETE_CHECKLIST_FAILURE: "DELETE_CHECKLIST_FAILURE",
 };
 
 // action creators
@@ -221,6 +225,27 @@ const fileUploadFailure = (err) => {
   };
 };
 
+// add checklist
+const deleteChecklistRequest = () => {
+  return {
+    type: actionConstants.DELETE_CHECKLIST_REQUEST,
+  };
+};
+
+const deleteChecklistSuccess = (payload) => {
+  return {
+    type: actionConstants.DELETE_CHECKLIST_SUCCESS,
+    payload: payload,
+  };
+};
+
+const deleteChecklistFailure = (err) => {
+  return {
+    type: actionConstants.DELETE_CHECKLIST_FAILURE,
+    payload: err,
+  };
+};
+
 // thunks
 
 // export const fileUploadThunk = (file) => async (dispatch) => {
@@ -325,7 +350,7 @@ export const addChecklist = (card_id, title) => async (dispatch) => {
         title,
       }
     );
-    console.log("Data from add checklist", data);
+    console.log("Data from add checklist", data.data);
     dispatch(addChecklistSuccess(data.data));
     // dispatch(getCard(card_id))
   } catch (error) {
@@ -363,5 +388,22 @@ export const updateChecklistItem =
       // dispatch(getCard(card_id));
     } catch (error) {
       dispatch(updateChecklistItemFailure(error));
+    }
+  };
+
+  export const deleteChecklist =
+  (card_id, checklist_id) => async (dispatch) => {
+    try {
+      dispatch(deleteChecklistRequest());
+      const data = await axios_wc.delete(
+        `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/deleteChecklist`,
+        { data: { checklist_id: checklist_id } }
+      );
+      
+      console.log(data.data)
+      dispatch(deleteChecklistSuccess(data.data));
+      // dispatch(getCard(card_id));
+    } catch (error) {
+      dispatch(deleteChecklistFailure(error));
     }
   };
