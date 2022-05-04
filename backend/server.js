@@ -24,23 +24,21 @@ require("dotenv").config();
 app.use(cookieParser('keyboard cat'));
 // app.use(express.bodyParser());
 app.enable('trust proxy');
+app.enable('trust proxy');
 app.use(
   session({
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
-    proxy: true,   
-    store: new MongoStore({
-      mongoUrl: process.env.DATABASE_URL,
-    }) 
-    // cookie: {
-    //   maxAge: 1000 * 60 * 60,
-    //   sameSite: "none",
-    //   secure: true,
-    //   store: new MongoStore({
-    //     mongoUrl: process.env.DATABASE_URL,
-    //   })
-    // }
+    proxy: true,    
+    cookie: {
+      maxAge: 1000 * 60 * 60,
+      sameSite: "none",
+      secure: true,
+      store: new MongoStore({
+        mongoUrl: process.env.DATABASE_URL, 
+      })
+    }
   })
 );
 
@@ -48,8 +46,8 @@ app.use(
 
 // app.options("*", cors(corsOptions));
 app.use(cors({
-  origin: "https://trello-clone.com",
-  // origin: "http://localhost:3000",
+  // origin: "https://trello-clone.com",
+  origin: "http://localhost:3000",
   methods: "GET,POST,PATCH,PUT,DELETE",
   credentials: true
 }));
