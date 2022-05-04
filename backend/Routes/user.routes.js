@@ -11,7 +11,7 @@ const {
 require('dotenv').config()
 
 router.options("*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Origin", "https://trello-clone.com");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.end();
 });
