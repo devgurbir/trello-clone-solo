@@ -75,6 +75,7 @@ Add a cover
 
 ![card demo gif](https://github.com/devgurbir/trello-clone-solo/blob/demo-images/card.gif)
 
+Sorry for the quality, I blame the tool that I used to make this GIF.
 
 This is all that I have managed and something I’m really proud of. I will also list some features that I did work on, some I was able to complete but some I couldn’t, mainly due to a lack of time:
 
