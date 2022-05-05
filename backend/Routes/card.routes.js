@@ -26,7 +26,7 @@ router.patch("/:card_id/cover", updateCover);
 router.patch("/:card_id/labels", updateLabels);
 
 // Checklist
-router.post("/:card_id/add-checklist", checkAuthenticated, addChecklist);
+router.post("/:card_id/add-checklist",checkAuthenticated, addChecklist);
 router.post("/:card_id/checklist/addItem", checkAuthenticated, addItemInChecklist);
 router.patch("/:card_id/toggleItem", checkAuthenticated, toggleChecklistItemStatus);
 router.get("/:card_id/getChecklist", getChecklist);

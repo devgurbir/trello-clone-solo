@@ -133,6 +133,7 @@ const addChecklist = async (req, res) => {
   //   title: req.body.title,
   //   items: [],
   // };
+  console.log(req.body.title)
   try {
     const checklist = await Checklist.create({
       card_id: req.params.card_id,

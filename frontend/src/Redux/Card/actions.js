@@ -344,7 +344,7 @@ export const updateLabels = (card_id, labels) => async (dispatch) => {
 export const addChecklist = (card_id, title) => async (dispatch) => {
   try {
     dispatch(addChecklistRequest());
-    const data = await axios.post(
+    const data = await axios_wc.post(
       `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/add-checklist`,
       {
         title,

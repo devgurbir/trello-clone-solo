@@ -47,8 +47,8 @@ app.use(
 
 // app.options("*", cors(corsOptions));
 app.use(cors({
-  origin: "https://trello-clone.com",
-  // origin: "http://localhost:3000",
+  // origin: "https://trello-clone.com",
+  origin: "http://localhost:3000",
   methods: "GET,POST,PATCH,PUT,DELETE",
   credentials: true
 }));
