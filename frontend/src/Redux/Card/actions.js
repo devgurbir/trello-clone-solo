@@ -284,7 +284,7 @@ export const getCard = (card_id) => async (dispatch) => {
 export const updateDesc = (card_id, description) => async (dispatch) => {
   try {
     dispatch(updateCardDescRequest());
-    const desc = await axios.patch(
+    const desc = await axios_wc.patch(
       `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/description`,
       {
         description,
@@ -299,7 +299,7 @@ export const updateDesc = (card_id, description) => async (dispatch) => {
 export const updateTitle = (card_id, title) => async (dispatch) => {
   try {
     dispatch(updateCardTitleRequest());
-    const res = await axios.patch(
+    const res = await axios_wc.patch(
       `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/title`,
       {
         title,
@@ -314,7 +314,7 @@ export const updateTitle = (card_id, title) => async (dispatch) => {
 export const updateCover = (card_id, cover) => async (dispatch) => {
   try {
     dispatch(updateCardCoverRequest());
-    const res = await axios.patch(
+    const res = await axios_wc.patch(
       `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/cover`,
       {
         cover,
@@ -329,7 +329,7 @@ export const updateCover = (card_id, cover) => async (dispatch) => {
 export const updateLabels = (card_id, labels) => async (dispatch) => {
   try {
     dispatch(updateCardLabelsRequest());
-    const res = await axios.patch(
+    const res = await axios_wc.patch(
       `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/labels`,
       {
         labels,
@@ -362,7 +362,7 @@ export const addItemChecklist =
   (card_id, checklist_id, title) => async (dispatch) => {
     try {
       dispatch(addItemChecklistRequest());
-      const data = await axios.post(
+      const data = await axios_wc.post(
         `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/checklist/addItem`,
         { checklist_id, title }
       );
@@ -379,7 +379,7 @@ export const updateChecklistItem =
   (card_id, checklist_id, item_id, complete) => async (dispatch) => {
     try {
       dispatch(updateChecklistItemRequest());
-      const data = await axios.patch(
+      const data = await axios_wc.patch(
         `${process.env.REACT_APP_BACKEND_ROOT}/card/${card_id}/toggleItem`,
         { checklist_id, item_id, complete }
       );
